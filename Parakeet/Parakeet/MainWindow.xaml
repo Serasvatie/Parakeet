@@ -4,9 +4,31 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Parakeet"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        xmlns:View="clr-namespace:Parakeet.View"
+        Title="Parakeet" Height="350" Width="525" Background="White" ResizeMode="CanResizeWithGrip">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <View:MenuView Grid.Row="0" x:Name="MenuView"/>
+        <TabControl Grid.Row="1" x:Name="TabControl">
+            <TabItem Header="Remove Files">
+
+            </TabItem>
+            <TabItem Header="Change Filenames">
+
+            </TabItem>
+            <TabItem Header="Sort by">
+
+            </TabItem>
+            <TabItem Header="In Contruction">
+            </TabItem>
+        </TabControl>
+        <View:DirectoryControlView Grid.Row="2" x:Name="DirectoryControlView"/>
+        <View:StatusBarView Grid.Row="3" x:Name="StatusBarView"/>
     </Grid>
 </Window>
