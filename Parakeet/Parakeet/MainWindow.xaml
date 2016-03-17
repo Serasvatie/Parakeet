@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Parakeet"
         xmlns:View="clr-namespace:Parakeet.View"
-        Title="Parakeet" Height="350" Width="525" Background="White" ResizeMode="CanResizeWithGrip">
+        Title="Parakeet" MinHeight="700" MinWidth="700" Height="700" Width="700" Background="White" ResizeMode="CanResizeWithGrip">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
