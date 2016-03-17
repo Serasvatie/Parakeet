@@ -4,6 +4,11 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Parakeet.View">
+    <UserControl.Resources>
+            <Style TargetType="ListViewItem">
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+    </Style>
+    </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
@@ -20,6 +25,15 @@
                     <GridViewColumn Width="Auto" DisplayMemberBinding="{Binding Directories, Mode=OneWay}">
                         <GridViewColumnHeader Tag="Dossiers" FontSize="13">Dossiers</GridViewColumnHeader>
                     </GridViewColumn>
+                    <GridViewColumn Width="Auto">
+                        <GridViewColumnHeader Tag="Check">On</GridViewColumnHeader>
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <CheckBox IsChecked="{Binding Authorize}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
                 </GridView>
             </ListView.View>
         </ListView>
