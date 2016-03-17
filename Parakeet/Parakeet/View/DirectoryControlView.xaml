@@ -4,27 +4,41 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Parakeet.View">
-    <Grid Height="200" Width="200">
+    <UserControl.Resources>
+            <Style TargetType="ListViewItem">
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+    </Style>
+    </UserControl.Resources>
+    <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="0.5*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-        <ListView Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" x:Name="ListDirectory" ItemsSource="{Binding ListDirectory, Mode=OneWay}">
+        <ListView Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" x:Name="ListDirectory" ItemsSource="{Binding ListDirectory, Mode=OneWay}" Margin="10,10,0,10">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Width="Auto" DisplayMemberBinding="{Binding Directories, Mode=OneWay}">
-                        <GridViewColumnHeader Tag="Dossiers">Dossiers</GridViewColumnHeader>
+                        <GridViewColumnHeader Tag="Dossiers" FontSize="13">Dossiers</GridViewColumnHeader>
                     </GridViewColumn>
+                    <GridViewColumn Width="Auto">
+                        <GridViewColumnHeader Tag="Check">On</GridViewColumnHeader>
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <CheckBox IsChecked="{Binding Authorize}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
                 </GridView>
-            </ListView.View>            
+            </ListView.View>
         </ListView>
-        <Button Grid.Row="0" Grid.Column="1" Content="Ajouter un chemin" Command="{Binding AddPath}" Margin="25,10,29,28"/>
-        <Button Grid.Row="1" Grid.Column="1" Content="Supprimer un chemin" Command="{Binding DeletePath}" Margin="25,0,29,38"/>
-        <Button Grid.Row="2" Grid.Column="1" Content="Lancement du processus" Command="{Binding StartTask}" Margin="25,28,29,10"/>
+        <Button Grid.Row="0" Grid.Column="1" Content="Ajouter un chemin" FontSize="16" Command="{Binding AddPath}" Margin="30, 20, 40, 20" Height="35"/>
+        <Button Grid.Row="1" Grid.Column="1" Content="Supprimer un chemin" FontSize="16" Command="{Binding DeletePath}" Margin="30, 0,40,40" Height="35"/>
+        <Button Grid.Row="2" Grid.Column="1" Content="Lancement du processus" FontSize="16" Command="{Binding StartTask}" Width="200" Margin="0,70,0,0" Height="35"/>
     </Grid>
 </UserControl>
