@@ -10,21 +10,21 @@
             <ColumnDefinition Width="0.5*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <ListView Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" x:Name="ListDirectory" ItemsSource="{Binding ListDirectory, Mode=OneWay}" Margin="10,10,0,10">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Width="Auto" DisplayMemberBinding="{Binding Directories, Mode=OneWay}">
-                        <GridViewColumnHeader Tag="Dossiers">Dossiers</GridViewColumnHeader>
+                        <GridViewColumnHeader Tag="Dossiers" FontSize="13">Dossiers</GridViewColumnHeader>
                     </GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Grid.Row="0" Grid.Column="1" Content="Ajouter un chemin" Command="{Binding AddPath}" Margin="19.587,10,34.413,37"/>
-        <Button Grid.Row="1" Grid.Column="1" Content="Supprimer un chemin" Command="{Binding DeletePath}" Margin="19.587,0,34.413,47"/>
-        <Button Grid.Row="2" Grid.Column="1" Content="Lancement du processus" Command="{Binding StartTask}" Margin="19.587,36.999,34.413,10"/>
+        <Button Grid.Row="0" Grid.Column="1" Content="Ajouter un chemin" FontSize="16" Command="{Binding AddPath}" Margin="30, 20, 40, 20" Height="35"/>
+        <Button Grid.Row="1" Grid.Column="1" Content="Supprimer un chemin" FontSize="16" Command="{Binding DeletePath}" Margin="30, 0,40,40" Height="35"/>
+        <Button Grid.Row="2" Grid.Column="1" Content="Lancement du processus" FontSize="16" Command="{Binding StartTask}" Width="200" Margin="0,70,0,0" Height="35"/>
     </Grid>
 </UserControl>
