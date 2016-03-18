@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="Parakeet.View.DirectoryControlView"
+﻿<UserControl x:Class="Parakeet.View.RemoveFilesView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,10 +6,10 @@
              xmlns:local="clr-namespace:Parakeet.View">
     <UserControl.Resources>
         <Style TargetType="ListViewItem">
-                <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         </Style>
     </UserControl.Resources>
-    <Grid>
+    <Grid Height="132" Width="349">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="0.5*"/>
@@ -19,14 +19,24 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-        <ListView Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" x:Name="ListDirectory" ItemsSource="{Binding ListDirectory, Mode=OneWay}" Margin="10,10,0,10">
+        <ListView Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" x:Name="ListDirectory" ItemsSource="{Binding ListName, Mode=OneWay}" Margin="10,10,0,10">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Width="Auto" DisplayMemberBinding="{Binding Directories, Mode=OneWay}">
+                    <GridViewColumn Width="Auto" DisplayMemberBinding="{Binding Names, Mode=OneWay}">
                         <GridViewColumnHeader Tag="Dossiers" FontSize="13">Dossiers</GridViewColumnHeader>
                     </GridViewColumn>
+
                     <GridViewColumn Width="Auto">
-                        <GridViewColumnHeader Tag="Check">On</GridViewColumnHeader>
+                        <GridViewColumnHeader Tag="Extension">Extension</GridViewColumnHeader>
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <CheckBox IsChecked="{Binding IsExtension}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Width="Auto">
+                        <GridViewColumnHeader Tag="Activate">Activer</GridViewColumnHeader>
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <CheckBox IsChecked="{Binding Authorize}"/>
@@ -37,8 +47,8 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Grid.Row="0" Grid.Column="1" Content="Ajouter un chemin" FontSize="16" Command="{Binding AddPath}" Margin="30, 20, 40, 20" Height="35"/>
-        <Button Grid.Row="1" Grid.Column="1" Content="Supprimer un chemin" FontSize="16" Command="{Binding DeletePath}" Margin="30, 0,40,40" Height="35"/>
-        <Button Grid.Row="2" Grid.Column="1" Content="Lancement du processus" FontSize="16" Command="{Binding StartTask}" Width="200" Margin="0,70,0,0" Height="35"/>
+        <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding StringToAdd, Mode=TwoWay}" Height="35"/>
+        <Button Grid.Row="1" Grid.Column="1" Content="Ajouter chaînes." Command="{Binding AddString}" Height="35"/>
+        <Button Grid.Row="2" Grid.Column="1" Content="Supprimer sélection" Command="{Binding DeleteSelection}" Height="35"/>
     </Grid>
 </UserControl>
