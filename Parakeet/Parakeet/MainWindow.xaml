@@ -17,7 +17,7 @@
         <View:MenuView Grid.Row="0" x:Name="MenuView"/>
         <TabControl Grid.Row="1" x:Name="TabControl">
             <TabItem Header="Remove Files">
-
+                <View:RemoveFilesView x:Name="RemoveFilesView"/>
             </TabItem>
             <TabItem Header="Change Filenames">
 
