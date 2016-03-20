@@ -23,7 +23,7 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn Width="Auto" DisplayMemberBinding="{Binding Names, Mode=OneWay}">
-                        <GridViewColumnHeader Tag="Dossiers" FontSize="13">Dossiers</GridViewColumnHeader>
+                        <GridViewColumnHeader Tag="Chaînes" FontSize="13">Chaînes</GridViewColumnHeader>
                     </GridViewColumn>
 
                     <GridViewColumn Width="Auto">
@@ -47,7 +47,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <TextBox Grid.Row="0" Grid.Column="1" TextAlignment="Left" Text="{Binding StringToAdd, Mode=TwoWay}" Height="26" Margin="10,20,10,10"/>
+        <TextBox Grid.Row="0" Grid.Column="1" TextAlignment="Left" Text="{Binding StringToAdd, Mode=TwoWay}" Height="22" Margin="10,20,10,10"/>
         <Button Grid.Row="1" Grid.Column="1" Content="Ajouter chaînes" Command="{Binding AddString}" Height="30" Margin="10,0,10,0"/>
         <Button Grid.Row="2" Grid.Column="1" Content="Supprimer sélection" Command="{Binding DeleteSelection}" Height="30" Margin="10,0,10,100"/>
     </Grid>
