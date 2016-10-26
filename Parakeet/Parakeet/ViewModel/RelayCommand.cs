@@ -40,12 +40,11 @@ namespace Parakeet.ViewModel
         bool ICommand.CanExecute(object parameter)
         {
             return _canExecute?.Invoke() ?? true;
-            throw new NotImplementedException();
         }
 
         void ICommand.Execute(object parameter)
         {
-            throw new NotImplementedException();
+            this._execute();
         }
     }
 }
