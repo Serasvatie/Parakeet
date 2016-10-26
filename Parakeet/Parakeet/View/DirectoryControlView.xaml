@@ -37,8 +37,8 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Grid.Row="0" Grid.Column="1" Content="Ajouter un chemin" FontSize="16" Command="{Binding AddPath}" Margin="30, 20, 40, 20" Height="35"/>
-        <Button Grid.Row="1" Grid.Column="1" Content="Supprimer un chemin" FontSize="16" Command="{Binding DeletePath}" Margin="30, 0,40,40" Height="35"/>
-        <Button Grid.Row="2" Grid.Column="1" Content="Lancement du processus" FontSize="16" Command="{Binding StartTask}" Width="200" Margin="0,70,0,0" Height="35"/>
+        <Button Grid.Row="0" Grid.Column="1" Content="Ajouter un chemin" Command="{Binding AddPath}" Margin="30, 20, 40, 20" Height="35"/>
+        <Button Grid.Row="1" Grid.Column="1" Content="Supprimer un chemin" Command="{Binding DeletePath}" Margin="30, 0,40,40" Height="35"/>
+        <Button Grid.Row="2" Grid.Column="1" Content="Lancement du processus" Command="{Binding StartTask}" Width="200" Margin="0,70,0,0" Height="35"/>
     </Grid>
 </UserControl>
