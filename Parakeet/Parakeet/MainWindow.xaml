@@ -22,9 +22,6 @@
             <TabItem Header="Change Filenames">
                 <View:ChangeFileNameView x:Name="ChangeFileNameView"/>
             </TabItem>
-            <TabItem Header="Sort by">
-
-            </TabItem>
             <TabItem Header="In Contruction">
             </TabItem>
         </TabControl>
