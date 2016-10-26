@@ -31,6 +31,14 @@ namespace Parakeet
             _data = new Data();
 
             #endregion
+
+            #region INIT VIEWMODEL
+
+            #endregion
+
+            #region INIT VIEW
+
+            #endregion
         }
     }
 }
