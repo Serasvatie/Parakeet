@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Parakeet.Model;
 
 namespace Parakeet
 {
@@ -20,9 +21,16 @@ namespace Parakeet
     /// </summary>
     public partial class MainWindow : Window
     {
+        private Data _data;
+
         public MainWindow()
         {
             InitializeComponent();
+
+            #region INIT MODEL
+            _data = new Data();
+
+            #endregion
         }
     }
 }
