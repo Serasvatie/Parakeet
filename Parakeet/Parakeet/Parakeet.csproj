@@ -55,6 +55,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\Data.cs" />
+    <Compile Include="ViewModel\BaseNotifyPropertyChanged.cs" />
+    <Compile Include="ViewModel\EnumParakeet.cs" />
+    <Compile Include="ViewModel\RelayCommand.cs" />
     <Compile Include="View\ChangeFileNameView.xaml.cs">
       <DependentUpon>ChangeFileNameView.xaml</DependentUpon>
     </Compile>
@@ -131,9 +135,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Model\" />
     <Folder Include="Resources\" />
-    <Folder Include="ViewModel\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
