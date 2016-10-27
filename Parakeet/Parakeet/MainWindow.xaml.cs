@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,6 +32,9 @@ namespace Parakeet
         {
             InitializeComponent();
 
+            this.Closed += MainWindow_Close;
+            this.Closing += MainWindow_Closing;
+
             #region INIT MODEL
             _data = new Data();
 
@@ -51,6 +55,16 @@ namespace Parakeet
             this.RemoveFilesView.DataContext = removeFiles;
 
             #endregion
+        }
+
+        void MainWindow_Close(object sender, EventArgs e)
+        {
+
+        }
+
+        void MainWindow_Closing(object sender, EventArgs e)
+        {
+
         }
     }
 }
