@@ -71,7 +71,7 @@ namespace Parakeet.ViewModel.PrimaryWindow
 
         public ICommand DeleteRules
         {
-            get { return this.deleteRules ?? (this.addRules = new RelayCommand(DoDeleteRules, CanDeleteRules)); }
+            get { return this.deleteRules ?? (this.deleteRules = new RelayCommand(DoDeleteRules, CanDeleteRules)); }
         }
 
         private bool CanDeleteRules()

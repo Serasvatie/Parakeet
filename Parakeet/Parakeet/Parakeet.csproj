@@ -64,6 +64,7 @@
     <Compile Include="ViewModel\BaseNotifyPropertyChanged.cs" />
     <Compile Include="ViewModel\EnumParakeet.cs" />
     <Compile Include="ViewModel\PrimaryWindow\ChangeFileNameViewModel.cs" />
+    <Compile Include="ViewModel\PrimaryWindow\MenuViewModel.cs" />
     <Compile Include="ViewModel\PrimaryWindow\DirectoryControlViewModel.cs" />
     <Compile Include="ViewModel\PrimaryWindow\RemoveFilesViewModel.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />

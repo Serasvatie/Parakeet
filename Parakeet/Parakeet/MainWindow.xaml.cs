@@ -27,6 +27,7 @@ namespace Parakeet
         private DirectoryControlViewModel directoryControl;
         private ChangeFileNameViewModel changeFileName;
         private RemoveFilesViewModel removeFiles;
+        private MenuViewModel menu;
 
         public MainWindow()
         {
@@ -45,6 +46,7 @@ namespace Parakeet
             directoryControl = new DirectoryControlViewModel(_data);
             changeFileName = new ChangeFileNameViewModel(_data);
             removeFiles = new RemoveFilesViewModel(_data);
+            menu = new MenuViewModel(_data, this);
 
             #endregion
 
@@ -53,6 +55,7 @@ namespace Parakeet
             this.DirectoryControlView.DataContext = directoryControl;
             this.ChangeFileNameView.DataContext = changeFileName;
             this.RemoveFilesView.DataContext = removeFiles;
+            this.MenuView.DataContext = menu;
 
             #endregion
         }
