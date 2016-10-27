@@ -2,6 +2,11 @@
 
 namespace Parakeet.Model
 {
+
+    /// <summary>
+    /// To Serialize
+    /// </summary>
+
     public class OutputPathModel
     {
         private List<DirectoryModel> _path;

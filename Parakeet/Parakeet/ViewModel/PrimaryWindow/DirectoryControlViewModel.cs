@@ -15,6 +15,7 @@ namespace Parakeet.ViewModel.PrimaryWindow
     {
         private Data _data;
         private ObservableCollection<DirectoryModel> directories;
+        private int selectedItem;
 
         private ICommand addDirectory;
         private ICommand deleteDirectory;
@@ -23,12 +24,23 @@ namespace Parakeet.ViewModel.PrimaryWindow
         public DirectoryControlViewModel(Data data)
         {
             _data = data;
+            selectedItem = 0;
             directories = new ObservableCollection<DirectoryModel>(data.Path.Path);
         }
 
         public ObservableCollection<DirectoryModel> ListDirectory
         {
             get { return directories; }
+        }
+
+        public int SelectedItem
+        {
+            get { return selectedItem; }
+            set
+            {
+                selectedItem = value;
+                OnPropertyChanged(("SelectedItem"));
+            }
         }
 
         public ICommand AddDirectory
@@ -48,9 +60,14 @@ namespace Parakeet.ViewModel.PrimaryWindow
 
         private void DoAddDirectory()
         {
-            var dialog = new FolderBrowserDialog();
-            dialog.Description = Resources.DirectoryControlViewModel_DoAddDirectory_Select_a_folder_to_add____;
+            var dialog = new FolderBrowserDialog
+            {
+                Description = Resources.DirectoryControlViewModel_DoAddDirectory_Select_a_folder_to_add____,
+                ShowNewFolderButton = false
+            };
             DialogResult result = dialog.ShowDialog();
+            if (result != DialogResult.OK)
+                return;
             var tmp = new DirectoryModel(dialog.SelectedPath, true);
             ListDirectory.Add(tmp);
         }
@@ -67,12 +84,12 @@ namespace Parakeet.ViewModel.PrimaryWindow
 
         private bool CanDeleteDirectory()
         {
-            return true;
+            return directories.Count > 0;
         }
 
         private void DoDeleteDirectory()
         {
-            return;
+            ListDirectory.RemoveAt(SelectedItem);
         }
 
         public ICommand Start
@@ -88,7 +105,7 @@ namespace Parakeet.ViewModel.PrimaryWindow
 
         private bool CanStart()
         {
-            return true;
+            return directories.Count > 0;
         }
 
         private void DoStart()

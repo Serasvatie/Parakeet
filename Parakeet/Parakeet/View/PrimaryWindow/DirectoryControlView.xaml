@@ -19,7 +19,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-        <ListView Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" x:Name="ListDirectory" ItemsSource="{Binding ListDirectory, Mode=OneWay}" Margin="10,10,0,10">
+        <ListView Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" x:Name="List" ItemsSource="{Binding ListDirectory, Mode=OneWay}" SelectedIndex="{ Binding SelectedItem, Mode=TwoWay}" Margin="10,10,0,10">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Width="Auto" DisplayMemberBinding="{Binding Path, Mode=OneWay}">
