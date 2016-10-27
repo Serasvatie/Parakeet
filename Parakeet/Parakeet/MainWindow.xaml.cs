@@ -24,6 +24,8 @@ namespace Parakeet
     {
         private Data _data;
         private DirectoryControlViewModel directoryControl;
+        private ChangeFileNameViewModel changeFileName;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -36,12 +38,14 @@ namespace Parakeet
             #region INIT VIEWMODEL
 
             directoryControl = new DirectoryControlViewModel(_data);
+            changeFileName = new ChangeFileNameViewModel(_data);
 
             #endregion
 
             #region INIT VIEW
 
             this.DirectoryControlView.DataContext = directoryControl;
+            this.ChangeFileNameView.DataContext = changeFileName;
 
             #endregion
         }

@@ -11,7 +11,7 @@ using Parakeet.Properties;
 
 namespace Parakeet.ViewModel.PrimaryWindow
 {
-    public class DirectoryControlViewModel : BaseNotifyPropertyChanged, IDisposable
+    public class DirectoryControlViewModel : BaseNotifyPropertyChanged
     {
         private Data _data;
         private ObservableCollection<DirectoryModel> directories;
@@ -84,23 +84,18 @@ namespace Parakeet.ViewModel.PrimaryWindow
 
         private bool CanDeleteDirectory()
         {
-            return directories.Count > 0;
+            return directories.Count > 0 && SelectedItem > 0;
         }
 
         private void DoDeleteDirectory()
         {
             ListDirectory.RemoveAt(SelectedItem);
+            SelectedItem = 0;
         }
 
         public ICommand Start
         {
-            get
-            {
-                if (this.start == null)
-                    this.start = new RelayCommand(DoStart, CanStart);
-                return
-                    this.start;
-            }
+            get { return this.start ?? (this.start = new RelayCommand(DoStart, CanStart)); }
         }
 
         private bool CanStart()
@@ -111,10 +106,6 @@ namespace Parakeet.ViewModel.PrimaryWindow
         private void DoStart()
         {
             return;
-        }
-
-        public void Dispose()
-        {
         }
     }
 }
