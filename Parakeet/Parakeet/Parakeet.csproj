@@ -37,6 +37,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -56,22 +57,25 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Model\Data.cs" />
+    <Compile Include="Model\DirectoryModel.cs" />
+    <Compile Include="Model\OutputPathModel.cs" />
     <Compile Include="ViewModel\BaseNotifyPropertyChanged.cs" />
     <Compile Include="ViewModel\EnumParakeet.cs" />
+    <Compile Include="ViewModel\PrimaryWindow\DirectoryControlViewModel.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />
-    <Compile Include="View\ChangeFileNameView.xaml.cs">
+    <Compile Include="View\PrimaryWindow\ChangeFileNameView.xaml.cs">
       <DependentUpon>ChangeFileNameView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\DirectoryControlView.xaml.cs">
+    <Compile Include="View\PrimaryWindow\DirectoryControlView.xaml.cs">
       <DependentUpon>DirectoryControlView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\MenuView.xaml.cs">
+    <Compile Include="View\PrimaryWindow\MenuView.xaml.cs">
       <DependentUpon>MenuView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\RemoveFilesView.xaml.cs">
+    <Compile Include="View\PrimaryWindow\RemoveFilesView.xaml.cs">
       <DependentUpon>RemoveFilesView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\StatusBarView.xaml.cs">
+    <Compile Include="View\PrimaryWindow\StatusBarView.xaml.cs">
       <DependentUpon>StatusBarView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
@@ -86,23 +90,23 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="View\ChangeFileNameView.xaml">
+    <Page Include="View\PrimaryWindow\ChangeFileNameView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\DirectoryControlView.xaml">
+    <Page Include="View\PrimaryWindow\DirectoryControlView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\MenuView.xaml">
+    <Page Include="View\PrimaryWindow\MenuView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\RemoveFilesView.xaml">
+    <Page Include="View\PrimaryWindow\RemoveFilesView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\StatusBarView.xaml">
+    <Page Include="View\PrimaryWindow\StatusBarView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Parakeet.Model;
+using Parakeet.ViewModel.PrimaryWindow;
 
 namespace Parakeet
 {
@@ -22,13 +23,25 @@ namespace Parakeet
     public partial class MainWindow : Window
     {
         private Data _data;
-
+        private DirectoryControlViewModel directoryControl;
         public MainWindow()
         {
             InitializeComponent();
 
             #region INIT MODEL
             _data = new Data();
+
+            #endregion
+
+            #region INIT VIEWMODEL
+
+            directoryControl = new DirectoryControlViewModel(_data);
+
+            #endregion
+
+            #region INIT VIEW
+
+            this.DirectoryControlView.DataContext = directoryControl;
 
             #endregion
         }

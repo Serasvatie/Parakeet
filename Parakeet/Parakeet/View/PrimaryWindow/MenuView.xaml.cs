@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Parakeet.View
+namespace Parakeet.View.PrimaryWindow
 {
     /// <summary>
-    /// Logique d'interaction pour ChangeFileNameView.xaml
+    /// Logique d'interaction pour MenuView.xaml
     /// </summary>
-    public partial class ChangeFileNameView : UserControl
+    public partial class MenuView : UserControl
     {
-        public ChangeFileNameView()
+        public MenuView()
         {
             InitializeComponent();
         }
