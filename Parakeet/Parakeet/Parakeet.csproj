@@ -60,10 +60,12 @@
     <Compile Include="Model\Data.cs" />
     <Compile Include="Model\DirectoryModel.cs" />
     <Compile Include="Model\OutputPathModel.cs" />
+    <Compile Include="Model\RemoveRule.cs" />
     <Compile Include="ViewModel\BaseNotifyPropertyChanged.cs" />
     <Compile Include="ViewModel\EnumParakeet.cs" />
     <Compile Include="ViewModel\PrimaryWindow\ChangeFileNameViewModel.cs" />
     <Compile Include="ViewModel\PrimaryWindow\DirectoryControlViewModel.cs" />
+    <Compile Include="ViewModel\PrimaryWindow\RemoveFilesViewModel.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />
     <Compile Include="View\PrimaryWindow\ChangeFileNameView.xaml.cs">
       <DependentUpon>ChangeFileNameView.xaml</DependentUpon>
