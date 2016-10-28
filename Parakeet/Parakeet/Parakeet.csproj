@@ -80,6 +80,9 @@
     <Compile Include="View\PrimaryWindow\RemoveFilesView.xaml.cs">
       <DependentUpon>RemoveFilesView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\PrimaryWindow\SortByView.xaml.cs">
+      <DependentUpon>SortByView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\PrimaryWindow\StatusBarView.xaml.cs">
       <DependentUpon>StatusBarView.xaml</DependentUpon>
     </Compile>
@@ -108,6 +111,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\PrimaryWindow\RemoveFilesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PrimaryWindow\SortByView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
