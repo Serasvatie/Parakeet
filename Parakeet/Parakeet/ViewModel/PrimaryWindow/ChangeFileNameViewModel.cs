@@ -7,7 +7,7 @@ namespace Parakeet.ViewModel.PrimaryWindow
     class ChangeFileNameViewModel : BaseNotifyPropertyChanged
     {
         private Data data;
-        private ObservableCollection<ChangeRule> rules;
+        private static ObservableCollection<ChangeRule> rules;
         private int selectedItem;
 
         private string changeName;
@@ -23,7 +23,7 @@ namespace Parakeet.ViewModel.PrimaryWindow
             selectedItem = 0;
         }
 
-        public ObservableCollection<ChangeRule> ListChangeRules
+        public static ObservableCollection<ChangeRule> ListChangeRules
         {
             get { return rules; }
         }
@@ -72,14 +72,14 @@ namespace Parakeet.ViewModel.PrimaryWindow
 
         private bool CanAddRules()
         {
-            return ChangeName != "" && ByName != "";
+            return ChangeName != null && ByName != null;
         }
 
         private void DoAddRules()
         {
             var tmp = new ChangeRule(ChangeName, ByName, true);
-            ChangeName = "";
-            ByName = "";
+            ChangeName = null;
+            ByName = null;
             rules.Add(tmp);
         }
 

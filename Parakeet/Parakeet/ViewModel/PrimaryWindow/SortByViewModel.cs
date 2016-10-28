@@ -9,10 +9,11 @@ using Parakeet.Model;
 
 namespace Parakeet.ViewModel.PrimaryWindow
 {
-    class RemoveFilesViewModel : BaseNotifyPropertyChanged
+    public class SortByViewModel : BaseNotifyPropertyChanged
     {
         private Data _data;
-        private ObservableCollection<RemoveRule> rules;
+
+        private static ObservableCollection<SortByRule> rules;
         private int selectedIndex;
 
         private string strings;
@@ -20,14 +21,15 @@ namespace Parakeet.ViewModel.PrimaryWindow
         private ICommand addRules;
         private ICommand deleteRules;
 
-        public RemoveFilesViewModel(Data data)
+        public SortByViewModel(Data data)
         {
             _data = data;
+            rules = new ObservableCollection<SortByRule>();
             selectedIndex = 0;
-            rules = new ObservableCollection<RemoveRule>();
+            strings = null;
         }
 
-        public ObservableCollection<RemoveRule> ListRules
+        public static ObservableCollection<SortByRule> ListRules
         {
             get { return rules; }
         }
@@ -64,8 +66,8 @@ namespace Parakeet.ViewModel.PrimaryWindow
 
         private void DoAddRules()
         {
-            var tmp = new RemoveRule(Strings, true, true);
-            ListRules.Add(tmp);
+            var tmp = new SortByRule(Strings, true);
+            rules.Add(tmp);
             Strings = null;
         }
 
@@ -76,12 +78,12 @@ namespace Parakeet.ViewModel.PrimaryWindow
 
         private bool CanDeleteRules()
         {
-            return ListRules.Count > 0;
+            return rules.Count > 0;
         }
 
         private void DoDeleteRules()
         {
-            ListRules.RemoveAt(SelectedIndex);
+            rules.RemoveAt(SelectedIndex);
             SelectedIndex = 0;
         }
     }

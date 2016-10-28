@@ -28,6 +28,7 @@ namespace Parakeet
         private ChangeFileNameViewModel changeFileName;
         private RemoveFilesViewModel removeFiles;
         private MenuViewModel menu;
+        private SortByViewModel sortBy;
 
         public MainWindow()
         {
@@ -47,6 +48,7 @@ namespace Parakeet
             changeFileName = new ChangeFileNameViewModel(_data);
             removeFiles = new RemoveFilesViewModel(_data);
             menu = new MenuViewModel(_data, this);
+            sortBy = new SortByViewModel(_data);
 
             #endregion
 
@@ -56,6 +58,7 @@ namespace Parakeet
             this.ChangeFileNameView.DataContext = changeFileName;
             this.RemoveFilesView.DataContext = removeFiles;
             this.MenuView.DataContext = menu;
+            this.SortByView.DataContext = sortBy;
 
             #endregion
         }
