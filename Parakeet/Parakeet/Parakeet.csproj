@@ -61,12 +61,14 @@
     <Compile Include="Model\DirectoryModel.cs" />
     <Compile Include="Model\OutputPathModel.cs" />
     <Compile Include="Model\RemoveRule.cs" />
+    <Compile Include="Model\SortByRule.cs" />
     <Compile Include="ViewModel\BaseNotifyPropertyChanged.cs" />
     <Compile Include="ViewModel\EnumParakeet.cs" />
     <Compile Include="ViewModel\PrimaryWindow\ChangeFileNameViewModel.cs" />
     <Compile Include="ViewModel\PrimaryWindow\MenuViewModel.cs" />
     <Compile Include="ViewModel\PrimaryWindow\DirectoryControlViewModel.cs" />
     <Compile Include="ViewModel\PrimaryWindow\RemoveFilesViewModel.cs" />
+    <Compile Include="ViewModel\PrimaryWindow\SortByViewModel.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />
     <Compile Include="View\PrimaryWindow\ChangeFileNameView.xaml.cs">
       <DependentUpon>ChangeFileNameView.xaml</DependentUpon>
@@ -79,6 +81,9 @@
     </Compile>
     <Compile Include="View\PrimaryWindow\RemoveFilesView.xaml.cs">
       <DependentUpon>RemoveFilesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PrimaryWindow\SortByView.xaml.cs">
+      <DependentUpon>SortByView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\PrimaryWindow\StatusBarView.xaml.cs">
       <DependentUpon>StatusBarView.xaml</DependentUpon>
@@ -108,6 +113,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\PrimaryWindow\RemoveFilesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PrimaryWindow\SortByView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
