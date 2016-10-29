@@ -12,7 +12,7 @@ namespace Parakeet.ViewModel.PrimaryWindow
     class RemoveFilesViewModel : BaseNotifyPropertyChanged
     {
         private Data _data;
-        private ObservableCollection<RemoveRule> rules;
+        private static ObservableCollection<RemoveRule> rules;
         private int selectedIndex;
 
         private string strings;
@@ -27,7 +27,7 @@ namespace Parakeet.ViewModel.PrimaryWindow
             rules = new ObservableCollection<RemoveRule>();
         }
 
-        public ObservableCollection<RemoveRule> ListRules
+        public static ObservableCollection<RemoveRule> ListRules
         {
             get { return rules; }
         }

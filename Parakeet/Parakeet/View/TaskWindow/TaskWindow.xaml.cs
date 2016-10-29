@@ -22,11 +22,11 @@ namespace Parakeet.View.TaskWindow
     {
         private TaskViewModel taskViewModel;
 
-        public TaskWindow()
+        public TaskWindow(Dictionary<string, dynamic> lists)
         {
             InitializeComponent();
 
-            taskViewModel = new TaskViewModel(this);
+            taskViewModel = new TaskViewModel(this, lists);
 
             this.DataContext = taskViewModel;
         }

@@ -58,6 +58,7 @@
     </ApplicationDefinition>
     <Compile Include="Model\ChangeRule.cs" />
     <Compile Include="Model\Data.cs" />
+    <Compile Include="Model\DataList.cs" />
     <Compile Include="Model\DirectoryModel.cs" />
     <Compile Include="Model\OutputPathModel.cs" />
     <Compile Include="Model\RemoveRule.cs" />

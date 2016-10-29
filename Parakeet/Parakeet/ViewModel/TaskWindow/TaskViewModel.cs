@@ -10,6 +10,7 @@ namespace Parakeet.ViewModel.TaskWindow
     public class TaskViewModel : BaseNotifyPropertyChanged
     {
         private View.TaskWindow.TaskWindow taskWindow;
+        private Dictionary<string, dynamic> lists;
 
         private bool isRecursive;
         private bool isRemove;
@@ -19,9 +20,10 @@ namespace Parakeet.ViewModel.TaskWindow
         private ICommand startTask;
         private ICommand cancelTasks;
 
-        public TaskViewModel(View.TaskWindow.TaskWindow _taskWindow)
+        public TaskViewModel(View.TaskWindow.TaskWindow _taskWindow, Dictionary<string, dynamic> lists)
         {
             taskWindow = _taskWindow;
+            this.lists = lists;
         }
 
         public bool IsRecursive
