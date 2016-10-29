@@ -105,7 +105,8 @@ namespace Parakeet.ViewModel.PrimaryWindow
 
         private void DoStart()
         {
-            return;
+            var taskWindow = new View.TaskWindow.TaskWindow();
+            taskWindow.ShowDialog();
         }
     }
 }

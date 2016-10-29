@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Parakeet.View.TaskWindow"
-        Title="Lancement du traitement..." Height="200" Width="248" Background="White" ResizeMode="NoResize">
+        Title="Lancement du traitement..." Height="240" Width="248" Background="White" ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
     <Grid Margin="0,0,0,1">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="124*"/>
@@ -18,20 +18,25 @@
             <RowDefinition Height="1*" />
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="1*" />
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="1*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <CheckBox Grid.Row="0" Grid.Column="1" Margin="10,10,0,1" />
+        <CheckBox Grid.Row="0" Grid.Column="1" Margin="10,10,0,1" IsChecked="{Binding IsRemove}"/>
         <TextBlock Grid.Row="0" Grid.Column="0" TextWrapping="Wrap" FontSize="12" Margin="10">Suppresion des fichiers :</TextBlock>
         <Separator Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" />
-        <CheckBox Grid.Row="2" Grid.Column="1" Margin="10,10,12,10" RenderTransformOrigin="0.375,0.94" />
+        <CheckBox Grid.Row="2" Grid.Column="1" Margin="10,10,10,9.67" RenderTransformOrigin="0.375,0.94" IsChecked="{Binding IsRename}"/>
         <TextBlock Grid.Row="2" Grid.Column="0" TextWrapping="Wrap" FontSize="12" Margin="10,10,23,10">Changements des noms :</TextBlock>
         <Separator Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" />
-        <CheckBox Grid.Row="4" Grid.Column="1" Margin="10,10.33,10,9.67" RenderTransformOrigin="0.5,-0.178" />
+        <CheckBox Grid.Row="4" Grid.Column="1" Margin="10,10.33,10,9.67" RenderTransformOrigin="0.5,-0.178" IsChecked="{Binding IsSort}"/>
         <TextBlock Grid.Row="4" Grid.Column="0" TextWrapping="Wrap" FontSize="12" Margin="10,10,23,10">Organiser les dossiers :</TextBlock>
         <Separator Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" />
+        <TextBlock Grid.Row="6" Grid.Column="0" TextWrapping="Wrap" FontSize="12" Margin="10,10,10,0">Récursivement :</TextBlock>
+        <CheckBox Grid.Row="6" Grid.Column="1" Margin="10,10.33,10,9.67" RenderTransformOrigin="0.5,-0.178" IsChecked="{Binding IsRecursive}"/>
+        <Separator Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" />
 
-        <Button Grid.Row="6" Grid.Column="0" Margin="15,5,90,10" Content="Lancer les tâches"/>
-        <Button Grid.Row="6" Margin="131,5,19,10" Content="Annuler" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2"/>
+        <Button Grid.Row="8" Grid.Column="0" Margin="14,10,91,5" Content="Lancer les tâches" Command="{Binding StartTask}"/>
+        <Button Grid.Row="8" Grid.Column="0" Margin="130,10,20,5" Content="Annuler" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2" Command="{Binding CancelTask}"/>
     </Grid>
 </Window>

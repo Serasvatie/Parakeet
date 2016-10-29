@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Parakeet.ViewModel.TaskWindow;
 
 namespace Parakeet.View.TaskWindow
 {
@@ -19,14 +20,15 @@ namespace Parakeet.View.TaskWindow
     /// </summary>
     public partial class TaskWindow : Window
     {
+        private TaskViewModel taskViewModel;
+
         public TaskWindow()
         {
             InitializeComponent();
-        }
 
-        private void CheckBox_Checked(object sender, RoutedEventArgs e)
-        {
+            taskViewModel = new TaskViewModel(this);
 
+            this.DataContext = taskViewModel;
         }
     }
 }
