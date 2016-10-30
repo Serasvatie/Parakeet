@@ -1,6 +1,6 @@
-﻿using Parakeet.ViewModel;
+﻿using Model;
 
-namespace Parakeet.Model
+namespace Model
 {
     public class ChangeRule
     {

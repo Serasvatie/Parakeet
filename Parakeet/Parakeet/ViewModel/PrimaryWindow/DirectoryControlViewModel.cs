@@ -105,7 +105,15 @@ namespace Parakeet.ViewModel.PrimaryWindow
 
         private void DoStart()
         {
-            return;
+            var tmp = new Dictionary<string, dynamic>
+            {
+                {"Directory", ListDirectory},
+                {"RemovingRules", RemoveFilesViewModel.ListRules},
+                {"RenamingRules", ChangeFileNameViewModel.ListChangeRules},
+                {"SortingRules", SortByViewModel.ListRules}
+            };
+            var taskWindow = new View.TaskWindow.TaskWindow(tmp);
+            taskWindow.ShowDialog();
         }
     }
 }
