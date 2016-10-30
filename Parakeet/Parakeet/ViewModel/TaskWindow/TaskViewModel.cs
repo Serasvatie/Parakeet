@@ -78,6 +78,15 @@ namespace Parakeet.ViewModel.TaskWindow
 
         private void DoStartTask()
         {
+            lists.Add("Recursive", IsRecursive);
+            if (!IsRemove)
+                lists.Remove("RemovingRules");
+            if (!IsRename)
+                lists.Remove("RenamingRules");
+            if (!IsSort)
+                lists.Remove("SortingRules");
+            var manager = new FFManager.FFManager();
+            manager.SettingLists(lists);
         }
 
         public ICommand CancelTask

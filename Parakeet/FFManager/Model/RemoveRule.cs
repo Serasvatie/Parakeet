@@ -23,6 +23,7 @@
         public string Strings
         {
             get { return _string; }
+            set { _string = value; }
         }
 
         public bool IsExtension
