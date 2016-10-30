@@ -59,13 +59,31 @@ namespace FFManager
 
         private int? DoRename(string target)
         {
-            //int? res = null;
-            //foreach (var rule in _renameRules)
-            //{
-            //    if (!rule.IsActivate)
-            //        continue;
-            //}
-            return 0;
+            int? res = null;
+            foreach (var rule in _renameRules)
+            {
+                if (!rule.IsActivate)
+                    continue;
+                int index = target.LastIndexOf("\\", StringComparison.Ordinal);
+                string newPath = target.Substring(0, index) + target.Substring(index).Replace(rule.Old, rule.New);
+                if (newPath == target)
+                {
+                    continue;
+                }
+                if (Directory.Exists(target) && (rule.Target == Target.Folder || rule.Target == Target.All))
+                {
+                    File.Move(target, newPath);
+                    res++;
+                    continue;
+                }
+                if (File.Exists(target) && (rule.Target == Target.File || rule.Target == Target.All))
+                {
+                    File.Move(target, newPath);
+                    res++;
+                    continue;
+                }
+            }
+            return res;
         }
 
         private int? DoSort()

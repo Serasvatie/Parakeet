@@ -4,15 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Parakeet.ViewModel
+namespace Model
 {
-    public class EnumParakeet
+    public enum Target
     {
-        public enum Target
-        {
-            File,
-            Folder,
-            All
-        }
+        File,
+        Folder,
+        All
     }
 }

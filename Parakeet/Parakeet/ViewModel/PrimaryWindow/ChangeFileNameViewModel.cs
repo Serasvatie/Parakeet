@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
 using Parakeet.Model;
+using Parakeet.ViewModel;
 
 namespace Parakeet.ViewModel.PrimaryWindow
 {
@@ -77,7 +78,7 @@ namespace Parakeet.ViewModel.PrimaryWindow
 
         private void DoAddRules()
         {
-            var tmp = new ChangeRule(ChangeName, ByName, true);
+            var tmp = new ChangeRule(ChangeName, ByName, true, Target.All);
             ChangeName = null;
             ByName = null;
             rules.Add(tmp);
