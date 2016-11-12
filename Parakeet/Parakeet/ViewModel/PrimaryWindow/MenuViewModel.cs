@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using System.Windows.Input;
 using Parakeet.Model;
+using Parakeet.Properties;
 
 namespace Parakeet.ViewModel.PrimaryWindow
 {
@@ -74,11 +78,28 @@ namespace Parakeet.ViewModel.PrimaryWindow
 
         private bool CanSaveFilesUnder()
         {
-            return false;
+            return true;
         }
 
         private void DoSaveFilesUnder()
         {
+            SaveFileDialog save = new SaveFileDialog();
+            save.AddExtension = true;
+            save.CheckPathExists = true;
+            save.DefaultExt = ".xml";
+            save.Filter = Resources.MenuViewModel_DoSaveFilesUnder_Xml_files___xml______xml;
+            save.Title = Resources.MenuViewModel_DoSaveFilesUnder_Sous____;
+            save.FileOk += new CancelEventHandler(save_fileOk);
+            save.InitialDirectory = Environment.SpecialFolder.MyComputer.ToString();
+            save.ShowDialog();
+        }
+
+        private void save_fileOk(object sender, CancelEventArgs e)
+        {
+            string fileTitle = ((FileDialog)sender).FileName;
+            var data = new Data(fileTitle, ChangeFileNameViewModel.ListChangeRules,
+                RemoveFilesViewModel.ListRules, DirectoryControlViewModel.ListDirectory);
+            data.WriteData();
         }
 
         public ICommand Exit

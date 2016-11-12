@@ -10,7 +10,7 @@ using System.Xml.Serialization;
 
 namespace Parakeet.Model
 {
-    public class SerializableDictionary<TKey, TValue> : Dictionary<TKey, TValue>, IXmlSerializable
+    public class SerializableList<TValue> : List<TValue>, IXmlSerializable
     {
         public XmlSchema GetSchema()
         {
@@ -19,7 +19,6 @@ namespace Parakeet.Model
 
         public void ReadXml(XmlReader reader)
         {
-            XmlSerializer keySerializer = new XmlSerializer(typeof(TKey));
             XmlSerializer valueSerializer = new XmlSerializer(typeof(TValue));
 
             bool wasEmpty = reader.IsEmptyElement;
@@ -29,45 +28,31 @@ namespace Parakeet.Model
 
             while (reader.NodeType != System.Xml.XmlNodeType.EndElement)
             {
-                reader.ReadStartElement("Item");
-
-                reader.ReadStartElement("Key");
-                TKey key = (TKey)keySerializer.Deserialize(reader);
-                reader.ReadEndElement();
-
                 reader.ReadStartElement("Value");
                 TValue value = (TValue)valueSerializer.Deserialize(reader);
                 reader.ReadEndElement();
 
-                this.Add(key, value);
+                this.Add(value);
 
                 reader.ReadEndElement();
                 reader.MoveToContent();
             }
             reader.ReadEndElement();
-
         }
 
         public void WriteXml(XmlWriter writer)
         {
-            XmlSerializer keySerializer = new XmlSerializer(typeof(TKey));
             XmlSerializer valueSerializer = new XmlSerializer(typeof(TValue));
 
-            foreach (TKey key in this.Keys)
+            writer.WriteStartElement(typeof(TValue).ToString());
+
+            foreach (TValue value in this)
             {
-                writer.WriteStartElement("Item");
-
-                writer.WriteStartElement("Key");
-                keySerializer.Serialize(writer, key);
-                writer.WriteEndElement();
-
                 writer.WriteStartElement("Value");
-                TValue value = this[key];
                 valueSerializer.Serialize(writer, value);
                 writer.WriteEndElement();
-
-                writer.WriteEndElement();
             }
+            writer.WriteEndElement();
         }
     }
 }

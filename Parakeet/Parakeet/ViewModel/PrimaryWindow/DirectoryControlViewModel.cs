@@ -25,7 +25,7 @@ namespace Parakeet.ViewModel.PrimaryWindow
         {
             _data = data;
             selectedItem = 0;
-            directories = new ObservableCollection<DirectoryModel>(data.Path.Path);
+            directories = new ObservableCollection<DirectoryModel>();
         }
 
         public static ObservableCollection<DirectoryModel> ListDirectory

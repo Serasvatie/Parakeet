@@ -68,5 +68,23 @@ namespace Parakeet.Properties {
                 return ResourceManager.GetString("DirectoryControlViewModel_DoAddDirectory_Select_a_folder_to_add____", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Sous ....
+        /// </summary>
+        internal static string MenuViewModel_DoSaveFilesUnder_Sous____ {
+            get {
+                return ResourceManager.GetString("MenuViewModel_DoSaveFilesUnder_Sous____", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Xml files(*.xml) | *.xml.
+        /// </summary>
+        internal static string MenuViewModel_DoSaveFilesUnder_Xml_files___xml______xml {
+            get {
+                return ResourceManager.GetString("MenuViewModel_DoSaveFilesUnder_Xml_files___xml______xml", resourceCulture);
+            }
+        }
     }
 }

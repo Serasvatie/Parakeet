@@ -38,7 +38,7 @@ namespace Parakeet
             this.Closing += MainWindow_Closing;
 
             #region INIT MODEL
-            _data = new Data();
+            //_data = new Data();
 
             #endregion
 
