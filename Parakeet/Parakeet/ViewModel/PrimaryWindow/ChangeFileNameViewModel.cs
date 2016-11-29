@@ -8,7 +8,7 @@ namespace Parakeet.ViewModel.PrimaryWindow
     class ChangeFileNameViewModel : BaseNotifyPropertyChanged
     {
         private Data data;
-        private static ObservableCollection<ChangeRule> rules;
+        private static SerializableList<ChangeRule> rules;
         private int selectedItem;
 
         private string changeName;
@@ -20,11 +20,11 @@ namespace Parakeet.ViewModel.PrimaryWindow
         public ChangeFileNameViewModel(Data data)
         {
             this.data = data;
-            rules = new ObservableCollection<ChangeRule>();
+            rules = new SerializableList<ChangeRule>();
             selectedItem = 0;
         }
 
-        public static ObservableCollection<ChangeRule> ListChangeRules
+        public static SerializableList<ChangeRule> ListChangeRules
         {
             get { return rules; }
         }

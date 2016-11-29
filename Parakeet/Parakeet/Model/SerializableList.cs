@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.ObjectModel;
 using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
 
 namespace Parakeet.Model
 {
-    public class SerializableList<TValue> : List<TValue>, IXmlSerializable
+    public class SerializableList<TValue> : ObservableCollection<TValue>, IXmlSerializable
     {
         public XmlSchema GetSchema()
         {

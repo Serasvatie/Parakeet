@@ -54,12 +54,12 @@ namespace Parakeet.Model
             FileTitle = fileTitle;
         }
 
-        public Data(string fileTitle, ObservableCollection<ChangeRule> Changes, ObservableCollection<RemoveRule> Removes,
-            ObservableCollection<DirectoryModel> Directory) : this(fileTitle)
+        public Data(string fileTitle, SerializableList<ChangeRule> Changes, SerializableList<RemoveRule> Removes,
+            SerializableList<DirectoryModel> Directory) : this(fileTitle)
         {
-            RenameRules = (Changes.ToList()) as SerializableList<ChangeRule>;
-            RemoveRules = (Removes.ToList()) as SerializableList<RemoveRule>;
-            DirectoryModels = (Directory.ToList()) as SerializableList<DirectoryModel>;
+            RenameRules = Changes;
+            RemoveRules = Removes;
+            DirectoryModels = Directory;
         }
 
         public void WriteData()

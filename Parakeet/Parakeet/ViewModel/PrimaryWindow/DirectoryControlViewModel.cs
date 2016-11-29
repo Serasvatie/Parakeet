@@ -14,7 +14,7 @@ namespace Parakeet.ViewModel.PrimaryWindow
     public class DirectoryControlViewModel : BaseNotifyPropertyChanged
     {
         private Data _data;
-        private static ObservableCollection<DirectoryModel> directories;
+        private static SerializableList<DirectoryModel> directories;
         private int selectedItem;
 
         private ICommand addDirectory;
@@ -25,10 +25,10 @@ namespace Parakeet.ViewModel.PrimaryWindow
         {
             _data = data;
             selectedItem = 0;
-            directories = new ObservableCollection<DirectoryModel>();
+            directories = new SerializableList<DirectoryModel>();
         }
 
-        public static ObservableCollection<DirectoryModel> ListDirectory
+        public static SerializableList<DirectoryModel> ListDirectory
         {
             get { return directories; }
         }
