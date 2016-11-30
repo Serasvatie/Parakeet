@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
@@ -37,16 +38,13 @@ namespace Parakeet.Model
 
         public void WriteXml(XmlWriter writer)
         {
+            XmlSerializerNamespaces emptyNS = new XmlSerializerNamespaces(new[] { new XmlQualifiedName("", "") });
             XmlSerializer valueSerializer = new XmlSerializer(typeof(TValue));
 
             writer.WriteStartElement(typeof(TValue).ToString());
 
             foreach (TValue value in this)
-            {
-                writer.WriteStartElement("Value");
-                valueSerializer.Serialize(writer, value);
-                writer.WriteEndElement();
-            }
+                valueSerializer.Serialize(writer, value, emptyNS);
             writer.WriteEndElement();
         }
     }

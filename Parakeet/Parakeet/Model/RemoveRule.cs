@@ -9,7 +9,7 @@ using System.Xml.Serialization;
 
 namespace Parakeet.Model
 {
-    public class RemoveRule : IXmlSerializable
+    public class RemoveRule
     {
         private string _string;
         private bool _extension;
@@ -50,46 +50,46 @@ namespace Parakeet.Model
             set { _activated = value; }
         }
 
-        public XmlSchema GetSchema()
-        {
-            return null;
-        }
+        //public XmlSchema GetSchema()
+        //{
+        //    return null;
+        //}
 
-        public void ReadXml(XmlReader reader)
-        {
-            XmlSerializer stringSerializer = new XmlSerializer(typeof(string));
-            XmlSerializer boolSerializer = new XmlSerializer(typeof(bool));
+        //public void ReadXml(XmlReader reader)
+        //{
+        //    XmlSerializer stringSerializer = new XmlSerializer(typeof(string));
+        //    XmlSerializer boolSerializer = new XmlSerializer(typeof(bool));
 
-            reader.ReadStartElement("Strings");
-            Strings = (string)stringSerializer.Deserialize(reader);
-            reader.ReadEndElement();
+        //    reader.ReadStartElement("Strings");
+        //    Strings = (string)stringSerializer.Deserialize(reader);
+        //    reader.ReadEndElement();
 
-            reader.ReadStartElement("IsExtension");
-            IsExtension = (bool)boolSerializer.Deserialize(reader);
-            reader.ReadEndElement();
+        //    reader.ReadStartElement("IsExtension");
+        //    IsExtension = (bool)boolSerializer.Deserialize(reader);
+        //    reader.ReadEndElement();
 
-            reader.ReadStartElement("IsActivated");
-            IsActivated = (bool)boolSerializer.Deserialize(reader);
-            reader.ReadEndElement();
+        //    reader.ReadStartElement("IsActivated");
+        //    IsActivated = (bool)boolSerializer.Deserialize(reader);
+        //    reader.ReadEndElement();
 
-        }
+        //}
 
-        public void WriteXml(XmlWriter writer)
-        {
-            XmlSerializer stringSerializer = new XmlSerializer(typeof(string));
-            XmlSerializer boolSerializer = new XmlSerializer(typeof(bool));
+        //public void WriteXml(XmlWriter writer)
+        //{
+        //    XmlSerializer stringSerializer = new XmlSerializer(typeof(string));
+        //    XmlSerializer boolSerializer = new XmlSerializer(typeof(bool));
 
-            writer.WriteStartElement("Strings");
-            stringSerializer.Serialize(writer, Strings);
-            writer.WriteEndElement();
+        //    writer.WriteStartElement("Strings");
+        //    stringSerializer.Serialize(writer, Strings);
+        //    writer.WriteEndElement();
 
-            writer.WriteStartElement("IsExtension");
-            boolSerializer.Serialize(writer, IsExtension);
-            writer.WriteEndElement();
+        //    writer.WriteStartElement("IsExtension");
+        //    boolSerializer.Serialize(writer, IsExtension);
+        //    writer.WriteEndElement();
 
-            writer.WriteStartElement("IsActivated");
-            boolSerializer.Serialize(writer, IsActivated);
-            writer.WriteEndElement();
-        }
+        //    writer.WriteStartElement("IsActivated");
+        //    boolSerializer.Serialize(writer, IsActivated);
+        //    writer.WriteEndElement();
+        //}
     }
 }

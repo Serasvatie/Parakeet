@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.IO;
-using System.Linq;
 using System.Security.AccessControl;
 using System.Security.Principal;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
-using System.Xml.Serialization;
 
 namespace Parakeet.Model
 {
@@ -66,6 +60,7 @@ namespace Parakeet.Model
         {
             XmlWriterSettings settings = new XmlWriterSettings();
             settings.Indent = true;
+            settings.ConformanceLevel = ConformanceLevel.Fragment;
             using (XmlWriter wr = XmlWriter.Create(FileTitle, settings))
             {
                 DirectoryModels.WriteXml(wr);
