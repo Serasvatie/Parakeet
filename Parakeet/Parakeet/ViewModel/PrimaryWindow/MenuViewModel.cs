@@ -97,8 +97,11 @@ namespace Parakeet.ViewModel.PrimaryWindow
         private void save_fileOk(object sender, CancelEventArgs e)
         {
             string fileTitle = ((FileDialog)sender).FileName;
-            var data = new Data(fileTitle, ChangeFileNameViewModel.ListChangeRules,
-                RemoveFilesViewModel.ListRules, DirectoryControlViewModel.ListDirectory);
+            var data = Data.getInstance();
+            data.FileTitle = fileTitle;
+            data.DirectoryModels = DirectoryControlViewModel.ListDirectory;
+            data.RemoveRules = RemoveFilesViewModel.ListRules;
+            data.RenameRules = ChangeFileNameViewModel.ListChangeRules;
             data.WriteData();
         }
 
