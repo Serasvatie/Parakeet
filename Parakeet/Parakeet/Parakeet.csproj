@@ -60,8 +60,8 @@
     <Compile Include="Model\ChangeRule.cs" />
     <Compile Include="Model\Data.cs" />
     <Compile Include="Model\DirectoryModel.cs" />
-    <Compile Include="Model\OutputPathModel.cs" />
     <Compile Include="Model\RemoveRule.cs" />
+    <Compile Include="Model\SerializableList.cs" />
     <Compile Include="Model\SortByRule.cs" />
     <Compile Include="ViewModel\BaseNotifyPropertyChanged.cs" />
     <Compile Include="ViewModel\EnumParakeet.cs" />

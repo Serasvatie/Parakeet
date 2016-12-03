@@ -1,4 +1,8 @@
-﻿using Parakeet.ViewModel;
+﻿using System.Runtime.Serialization;
+using System.Xml;
+using System.Xml.Schema;
+using System.Xml.Serialization;
+using Parakeet.ViewModel;
 
 namespace Parakeet.Model
 {
@@ -49,5 +53,56 @@ namespace Parakeet.Model
 
             set { _activated = value; }
         }
+
+        //public XmlSchema GetSchema()
+        //{
+        //    return null;
+        //}
+
+        //public void ReadXml(XmlReader reader)
+        //{
+        //    XmlSerializer stringSerializer = new XmlSerializer(typeof(string));
+        //    XmlSerializer boolSerializer = new XmlSerializer(typeof(bool));
+        //    XmlSerializer enumSerializer = new XmlSerializer(typeof(Target));
+
+        //    reader.ReadStartElement("Old");
+        //    Old = (string)stringSerializer.Deserialize(reader);
+        //    reader.ReadEndElement();
+
+        //    reader.ReadStartElement("New");
+        //    New = (string)stringSerializer.Deserialize(reader);
+        //    reader.ReadEndElement();
+
+        //    reader.ReadStartElement("Target");
+        //    Target = (Target)enumSerializer.Deserialize(reader);
+        //    reader.ReadEndElement();
+
+        //    reader.ReadStartElement("IsActivate");
+        //    IsActivate = (bool)boolSerializer.Deserialize(reader);
+        //    reader.ReadEndElement();
+        //}
+
+        //public void WriteXml(XmlWriter writer)
+        //{
+        //    XmlSerializer stringSerializer = new XmlSerializer(typeof(string));
+        //    XmlSerializer boolSerializer = new XmlSerializer(typeof(bool));
+        //    XmlSerializer enumSerializer = new XmlSerializer(typeof(Target));
+
+        //    writer.WriteStartElement("Old");
+        //    stringSerializer.Serialize(writer, Old);
+        //    writer.WriteEndElement();
+
+        //    writer.WriteStartElement("New");
+        //    stringSerializer.Serialize(writer, New);
+        //    writer.WriteEndElement();
+
+        //    writer.WriteStartElement("Target");
+        //    enumSerializer.Serialize(writer, Target);
+        //    writer.WriteEndElement();
+
+        //    writer.WriteStartElement("IsActivate");
+        //    boolSerializer.Serialize(writer, IsActivate);
+        //    writer.WriteEndElement();
+        //}
     }
 }

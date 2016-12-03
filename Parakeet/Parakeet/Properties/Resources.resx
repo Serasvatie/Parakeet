@@ -117,4 +117,13 @@
   <data name="DirectoryControlViewModel_DoAddDirectory_Select_a_folder_to_add____" xml:space="preserve">
     <value>Select a folder to add ...</value>
   </data>
+  <data name="MenuViewModel_DoSaveFilesUnder_Xml_files___xml______xml" xml:space="preserve">
+    <value>Xml files(*.xml) | *.xml</value>
+  </data>
+  <data name="MenuViewModel_DoSaveFilesUnder_Sous____" xml:space="preserve">
+    <value>Sous ...</value>
+  </data>
+  <data name="MenuViewModel_DoNewFiles_Select_file_name___" xml:space="preserve">
+    <value>Select file name...</value>
+  </data>
 </root>
