@@ -36,11 +36,28 @@ namespace Parakeet.ViewModel.PrimaryWindow
 
         private bool CanNewFiles()
         {
-            return false;
+            return true;
         }
 
         private void DoNewFiles()
         {
+            FileDialog _new = new SaveFileDialog();
+            _new.AddExtension = true;
+            _new.CheckPathExists = true;
+            _new.DefaultExt = ".xml";
+            _new.Title = Resources.MenuViewModel_DoNewFiles_Select_file_name___;
+            _new.InitialDirectory = Data.FullPathSaveDirectory;
+            _new.FileOk += NewFile;
+            _new.ShowDialog();
+        }
+
+        private void NewFile(object sender, CancelEventArgs e)
+        {
+            FileDialog _new = (FileDialog)sender;
+            Data.getInstance().FileTitle = _new.FileName;
+            Data.getInstance().DirectoryModels.Clear();
+            Data.getInstance().RemoveRules.Clear();
+            Data.getInstance().RenameRules.Clear();
         }
 
         public ICommand OpenFiles
@@ -50,11 +67,24 @@ namespace Parakeet.ViewModel.PrimaryWindow
 
         private bool CanOpenFiles()
         {
-            return false;
+            return true;
         }
 
         private void DoOpenFiles()
         {
+            OpenFileDialog open = new OpenFileDialog();
+            open.Filter = "Xml files (*.xml)|*.xml";
+            open.InitialDirectory = Data.FullPathSaveDirectory;
+            open.Title = "Select a xml file";
+            open.FileOk += gettingFile;
+            open.ShowDialog();
+        }
+        private void gettingFile(object sender, CancelEventArgs e)
+        {
+            FileDialog tmp = (FileDialog)sender;
+            var data = Data.getInstance();
+            data.FileTitle = tmp.FileName;
+            data.ReadData();
         }
 
         public ICommand SaveFiles
@@ -89,8 +119,8 @@ namespace Parakeet.ViewModel.PrimaryWindow
             save.DefaultExt = ".xml";
             save.Filter = Resources.MenuViewModel_DoSaveFilesUnder_Xml_files___xml______xml;
             save.Title = Resources.MenuViewModel_DoSaveFilesUnder_Sous____;
-            save.FileOk += new CancelEventHandler(save_fileOk);
-            save.InitialDirectory = Environment.SpecialFolder.MyComputer.ToString();
+            save.FileOk += save_fileOk;
+            save.InitialDirectory = Data.FullPathSaveDirectory;
             save.ShowDialog();
         }
 
@@ -99,9 +129,6 @@ namespace Parakeet.ViewModel.PrimaryWindow
             string fileTitle = ((FileDialog)sender).FileName;
             var data = Data.getInstance();
             data.FileTitle = fileTitle;
-            data.DirectoryModels = DirectoryControlViewModel.ListDirectory;
-            data.RemoveRules = RemoveFilesViewModel.ListRules;
-            data.RenameRules = ChangeFileNameViewModel.ListChangeRules;
             data.WriteData();
         }
 

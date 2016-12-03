@@ -2,6 +2,7 @@
 using System.IO;
 using System.Security.AccessControl;
 using System.Security.Principal;
+using System.Windows;
 using System.Xml;
 
 namespace Parakeet.Model
@@ -13,7 +14,7 @@ namespace Parakeet.Model
         public static string DirectoryToSave = "\\Parakeet\\";
 
         public static string FullPathSaveDirectory =
-            Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + DirectoryToSave;
+            Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + DirectoryToSave;
 
         public SerializableList<ChangeRule> RenameRules;
         public SerializableList<RemoveRule> RemoveRules;
@@ -37,6 +38,10 @@ namespace Parakeet.Model
                     PropagationFlags.None, AccessControlType.Allow));
                 Directory.SetAccessControl(FullPathSaveDirectory, sec);
             }
+
+            RenameRules = new SerializableList<ChangeRule>();
+            DirectoryModels = new SerializableList<DirectoryModel>();
+            RemoveRules = new SerializableList<RemoveRule>();
         }
 
         public static Data getInstance()
@@ -51,12 +56,9 @@ namespace Parakeet.Model
         }
 
         public
-        string FileTitle
+            string FileTitle
         {
-            get
-            {
-                return fileTitle;
-            }
+            get { return fileTitle; }
 
             set
             {
@@ -75,25 +77,38 @@ namespace Parakeet.Model
             }
         }
 
+        public void ReadData()
+        {
+            XmlReaderSettings settings = new XmlReaderSettings();
+            settings.ConformanceLevel = ConformanceLevel.Fragment;
+            using (XmlReader xr = XmlReader.Create(FileTitle, settings))
+            {
+                DirectoryModels.ReadXml(xr);
+                RenameRules.ReadXml(xr);
+                RemoveRules.ReadXml(xr);
+                xr.Close();
+            }
+        }
 
-        public
-        void WriteData()
+        public void WriteData()
         {
             XmlWriterSettings settings = new XmlWriterSettings();
-            settings.Indent
-            = true;
-            settings.ConformanceLevel
-            =
-            ConformanceLevel.Fragment;
-            using (
-            XmlWriter wr = XmlWriter.Create(FileTitle, settings))
+            settings.Indent = true;
+            settings.ConformanceLevel = ConformanceLevel.Fragment;
+            try
             {
-                DirectoryModels.WriteXml(wr);
-                RenameRules.WriteXml(wr);
-                RemoveRules.WriteXml(wr);
-                wr.Close();
+                using (XmlWriter wr = XmlWriter.Create(FileTitle, settings))
+                {
+                    DirectoryModels.WriteXml(wr);
+                    RenameRules.WriteXml(wr);
+                    RemoveRules.WriteXml(wr);
+                    wr.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Erreur durant l'écriture du fichier.\n" + e.Message);
             }
         }
     }
-
 }

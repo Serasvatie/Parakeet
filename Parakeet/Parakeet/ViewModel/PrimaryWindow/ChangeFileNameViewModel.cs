@@ -8,7 +8,6 @@ namespace Parakeet.ViewModel.PrimaryWindow
     class ChangeFileNameViewModel : BaseNotifyPropertyChanged
     {
         private Data data;
-        private static SerializableList<ChangeRule> rules;
         private int selectedItem;
 
         private string changeName;
@@ -20,13 +19,12 @@ namespace Parakeet.ViewModel.PrimaryWindow
         public ChangeFileNameViewModel(Data data)
         {
             this.data = data;
-            rules = new SerializableList<ChangeRule>();
             selectedItem = 0;
         }
 
         public static SerializableList<ChangeRule> ListChangeRules
         {
-            get { return rules; }
+            get { return Data.getInstance().RenameRules; }
         }
 
         public int SelectedIndex
@@ -81,7 +79,7 @@ namespace Parakeet.ViewModel.PrimaryWindow
             var tmp = new ChangeRule(ChangeName, ByName, true, Target.All);
             ChangeName = null;
             ByName = null;
-            rules.Add(tmp);
+            ListChangeRules.Add(tmp);
         }
 
         public ICommand DeleteRules
@@ -91,12 +89,12 @@ namespace Parakeet.ViewModel.PrimaryWindow
 
         private bool CanDeleteRules()
         {
-            return rules.Count > 0;
+            return ListChangeRules.Count > 0;
         }
 
         private void DoDeleteRules()
         {
-            rules.RemoveAt(SelectedIndex);
+            ListChangeRules.RemoveAt(SelectedIndex);
             SelectedIndex = 0;
         }
     }

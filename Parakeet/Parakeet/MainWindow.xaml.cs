@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Parakeet.Model;
+using Parakeet.Properties;
 using Parakeet.ViewModel.PrimaryWindow;
 
 namespace Parakeet
@@ -70,7 +71,8 @@ namespace Parakeet
 
         void MainWindow_Closing(object sender, EventArgs e)
         {
-
+            Settings.Default.NameCurrentXmlFile = Data.getInstance().FileTitle;
+            Settings.Default.Save();
         }
     }
 }

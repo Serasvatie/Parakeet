@@ -14,7 +14,6 @@ namespace Parakeet.ViewModel.PrimaryWindow
     public class DirectoryControlViewModel : BaseNotifyPropertyChanged
     {
         private Data _data;
-        private static SerializableList<DirectoryModel> directories;
         private int selectedItem;
 
         private ICommand addDirectory;
@@ -25,12 +24,11 @@ namespace Parakeet.ViewModel.PrimaryWindow
         {
             _data = data;
             selectedItem = 0;
-            directories = new SerializableList<DirectoryModel>();
         }
 
         public static SerializableList<DirectoryModel> ListDirectory
         {
-            get { return directories; }
+            get { return Data.getInstance().DirectoryModels; }
         }
 
         public int SelectedItem
@@ -84,7 +82,7 @@ namespace Parakeet.ViewModel.PrimaryWindow
 
         private bool CanDeleteDirectory()
         {
-            return directories.Count > 0 && SelectedItem > 0;
+            return ListDirectory.Count > 0 && SelectedItem > 0;
         }
 
         private void DoDeleteDirectory()
@@ -100,7 +98,7 @@ namespace Parakeet.ViewModel.PrimaryWindow
 
         private bool CanStart()
         {
-            return directories.Count > 0;
+            return ListDirectory.Count > 0;
         }
 
         private void DoStart()

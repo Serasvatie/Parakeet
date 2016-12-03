@@ -70,6 +70,15 @@ namespace Parakeet.Properties {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Select file name....
+        /// </summary>
+        internal static string MenuViewModel_DoNewFiles_Select_file_name___ {
+            get {
+                return ResourceManager.GetString("MenuViewModel_DoNewFiles_Select_file_name___", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Sous ....
         /// </summary>
         internal static string MenuViewModel_DoSaveFilesUnder_Sous____ {

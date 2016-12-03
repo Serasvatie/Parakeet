@@ -18,19 +18,17 @@ namespace Parakeet.Model
             XmlSerializer valueSerializer = new XmlSerializer(typeof(TValue));
 
             bool wasEmpty = reader.IsEmptyElement;
-            reader.Read();
             if (wasEmpty)
                 return;
 
+            reader.ReadStartElement(typeof(TValue).ToString());
+
             while (reader.NodeType != System.Xml.XmlNodeType.EndElement)
             {
-                reader.ReadStartElement("Value");
                 TValue value = (TValue)valueSerializer.Deserialize(reader);
-                reader.ReadEndElement();
 
                 this.Add(value);
 
-                reader.ReadEndElement();
                 reader.MoveToContent();
             }
             reader.ReadEndElement();
