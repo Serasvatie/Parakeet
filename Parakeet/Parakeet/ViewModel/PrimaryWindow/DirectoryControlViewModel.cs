@@ -13,16 +13,14 @@ namespace Parakeet.ViewModel.PrimaryWindow
 {
     public class DirectoryControlViewModel : BaseNotifyPropertyChanged
     {
-        private Data _data;
         private int selectedItem;
 
         private ICommand addDirectory;
         private ICommand deleteDirectory;
         private ICommand start;
 
-        public DirectoryControlViewModel(Data data)
+        public DirectoryControlViewModel()
         {
-            _data = data;
             selectedItem = 0;
         }
 

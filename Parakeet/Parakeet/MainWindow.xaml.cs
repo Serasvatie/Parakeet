@@ -1,18 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Parakeet.Model;
 using Parakeet.Properties;
 using Parakeet.ViewModel.PrimaryWindow;
@@ -24,7 +11,6 @@ namespace Parakeet
     /// </summary>
     public partial class MainWindow : Window
     {
-        private Data _data;
         private DirectoryControlViewModel directoryControl;
         private ChangeFileNameViewModel changeFileName;
         private RemoveFilesViewModel removeFiles;
@@ -38,18 +24,24 @@ namespace Parakeet
             this.Closed += MainWindow_Close;
             this.Closing += MainWindow_Closing;
 
-            #region INIT MODEL
-            //_data = new Data();
-
-            #endregion
+            try
+            {
+                Data.getInstance().FileTitle = Settings.Default.NameCurrentXmlFile;
+                if (!string.IsNullOrEmpty(Data.getInstance().FileTitle))
+                    Data.getInstance().ReadData();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show(this, "Erreur durant la lecture du fichier xml par défaut.");
+            }
 
             #region INIT VIEWMODEL
 
-            directoryControl = new DirectoryControlViewModel(_data);
-            changeFileName = new ChangeFileNameViewModel(_data);
-            removeFiles = new RemoveFilesViewModel(_data);
-            menu = new MenuViewModel(_data, this);
-            sortBy = new SortByViewModel(_data);
+            directoryControl = new DirectoryControlViewModel();
+            changeFileName = new ChangeFileNameViewModel();
+            removeFiles = new RemoveFilesViewModel();
+            menu = new MenuViewModel(this);
+            sortBy = new SortByViewModel();
 
             #endregion
 
@@ -73,6 +65,7 @@ namespace Parakeet
         {
             Settings.Default.NameCurrentXmlFile = Data.getInstance().FileTitle;
             Settings.Default.Save();
+            Console.WriteLine(Settings.Default.NameCurrentXmlFile);
         }
     }
 }

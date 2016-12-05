@@ -7,7 +7,6 @@ namespace Parakeet.ViewModel.PrimaryWindow
 {
     class ChangeFileNameViewModel : BaseNotifyPropertyChanged
     {
-        private Data data;
         private int selectedItem;
 
         private string changeName;
@@ -16,9 +15,8 @@ namespace Parakeet.ViewModel.PrimaryWindow
         private ICommand addRules;
         private ICommand deleteRules;
 
-        public ChangeFileNameViewModel(Data data)
+        public ChangeFileNameViewModel()
         {
-            this.data = data;
             selectedItem = 0;
         }
 

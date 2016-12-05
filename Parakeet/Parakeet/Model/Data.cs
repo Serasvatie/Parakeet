@@ -55,24 +55,11 @@ namespace Parakeet.Model
             return _instance;
         }
 
-        public
-            string FileTitle
+        public string FileTitle
         {
             get { return fileTitle; }
-
             set
             {
-                //if (!File.Exists(fileTitle))
-                //{
-                //    File.Create(fileTitle);
-                //    SecurityIdentifier everyone = new SecurityIdentifier(WellKnownSidType.WorldSid, null);
-                //    FileSecurity sec = new FileSecurity();
-                //    sec.AddAccessRule(new FileSystemAccessRule(everyone,
-                //        FileSystemRights.Modify | FileSystemRights.Synchronize,
-                //        InheritanceFlags.ContainerInherit | InheritanceFlags.ObjectInherit,
-                //        PropagationFlags.None, AccessControlType.Allow));
-                //    File.SetAccessControl(fileTitle, sec);
-                //}
                 fileTitle = value;
             }
         }

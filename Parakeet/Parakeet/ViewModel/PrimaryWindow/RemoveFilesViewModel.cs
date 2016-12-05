@@ -11,7 +11,6 @@ namespace Parakeet.ViewModel.PrimaryWindow
 {
     class RemoveFilesViewModel : BaseNotifyPropertyChanged
     {
-        private Data _data;
         private int selectedIndex;
 
         private string strings;
@@ -19,9 +18,8 @@ namespace Parakeet.ViewModel.PrimaryWindow
         private ICommand addRules;
         private ICommand deleteRules;
 
-        public RemoveFilesViewModel(Data data)
+        public RemoveFilesViewModel()
         {
-            _data = data;
             selectedIndex = 0;
         }
 

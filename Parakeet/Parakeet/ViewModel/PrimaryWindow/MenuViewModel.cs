@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 using System.Windows.Forms;
 using System.Windows.Input;
 using Parakeet.Model;
@@ -14,7 +8,6 @@ namespace Parakeet.ViewModel.PrimaryWindow
 {
     public class MenuViewModel
     {
-        private Data _data;
         private MainWindow mainWindow;
 
         private ICommand newFiles;
@@ -23,9 +16,8 @@ namespace Parakeet.ViewModel.PrimaryWindow
         private ICommand saveFilesUnder;
         private ICommand exit;
 
-        public MenuViewModel(Data data, MainWindow mainWindow)
+        public MenuViewModel(MainWindow mainWindow)
         {
-            _data = data;
             this.mainWindow = mainWindow;
         }
 

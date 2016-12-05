@@ -11,8 +11,6 @@ namespace Parakeet.ViewModel.PrimaryWindow
 {
     public class SortByViewModel : BaseNotifyPropertyChanged
     {
-        private Data _data;
-
         private static ObservableCollection<SortByRule> rules;
         private int selectedIndex;
 
@@ -21,9 +19,8 @@ namespace Parakeet.ViewModel.PrimaryWindow
         private ICommand addRules;
         private ICommand deleteRules;
 
-        public SortByViewModel(Data data)
+        public SortByViewModel()
         {
-            _data = data;
             rules = new ObservableCollection<SortByRule>();
             selectedIndex = 0;
             strings = null;
