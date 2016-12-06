@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Parakeet.Properties;
 
 namespace Parakeet.ViewModel.TaskWindow
 {
@@ -23,7 +24,20 @@ namespace Parakeet.ViewModel.TaskWindow
         public TaskViewModel(View.TaskWindow.TaskWindow _taskWindow, Dictionary<string, dynamic> lists)
         {
             taskWindow = _taskWindow;
+            taskWindow.Closed += OnClose;
             this.lists = lists;
+            this.IsRecursive = Settings.Default.TaskRecursive;
+            this.IsRemove = Settings.Default.TaskRemove;
+            this.IsSort = Settings.Default.TaskSort;
+            this.IsRename = Settings.Default.TaskRename;
+        }
+
+        private void OnClose(object sender, EventArgs e)
+        {
+            Settings.Default.TaskSort = isSort;
+            Settings.Default.TaskRename = isRename;
+            Settings.Default.TaskRecursive = isRecursive;
+            Settings.Default.TaskRemove = isRemove;
         }
 
         public bool IsRecursive

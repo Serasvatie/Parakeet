@@ -36,7 +36,7 @@
         <CheckBox Grid.Row="6" Grid.Column="1" Margin="10,10.33,10,9.67" RenderTransformOrigin="0.5,-0.178" IsChecked="{Binding IsRecursive}"/>
         <Separator Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" />
 
-        <Button Grid.Row="8" Grid.Column="0" Margin="14,10,91,5" Content="Lancer les tâches" Command="{Binding StartTask}"/>
+        <Button Grid.Row="8" Grid.Column="0" Margin="14,10,91,5" Content="Commencer" Command="{Binding StartTask}"/>
         <Button Grid.Row="8" Grid.Column="0" Margin="130,10,20,5" Content="Annuler" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2" Command="{Binding CancelTask}"/>
     </Grid>
 </Window>

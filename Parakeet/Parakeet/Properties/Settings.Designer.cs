@@ -34,5 +34,53 @@ namespace Parakeet.Properties {
                 this["NameCurrentXmlFile"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool TaskRecursive {
+            get {
+                return ((bool)(this["TaskRecursive"]));
+            }
+            set {
+                this["TaskRecursive"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool TaskRemove {
+            get {
+                return ((bool)(this["TaskRemove"]));
+            }
+            set {
+                this["TaskRemove"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool TaskRename {
+            get {
+                return ((bool)(this["TaskRename"]));
+            }
+            set {
+                this["TaskRename"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool TaskSort {
+            get {
+                return ((bool)(this["TaskSort"]));
+            }
+            set {
+                this["TaskSort"] = value;
+            }
+        }
     }
 }
