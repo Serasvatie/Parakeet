@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Parakeet.Model;
 using Parakeet.Properties;
 
 namespace Parakeet.ViewModel.TaskWindow
@@ -99,8 +100,9 @@ namespace Parakeet.ViewModel.TaskWindow
                 lists.Remove("RenamingRules");
             if (!IsSort)
                 lists.Remove("SortingRules");
-            var manager = new FFManager.FFManager();
-            manager.SettingLists(lists);
+            Data.getInstance().manager.SettingLists(lists);
+            Data.getInstance().manager.bwTask.RunWorkerAsync();
+            MainWindow.statusbar.Refresh();
         }
 
         public ICommand CancelTask

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -15,8 +16,14 @@ namespace FFManager
         private List<ChangeRule> _renameRules;
         private bool _recursive;
 
+        public BackgroundWorker bwTask;
+
         public FFManager()
         {
+            bwTask = new BackgroundWorker();
+            bwTask.WorkerReportsProgress = true;
+            bwTask.WorkerSupportsCancellation = true;
+            bwTask.DoWork += DoTask;
         }
 
         public void SettingLists(Dictionary<string, object> lists)
@@ -30,6 +37,11 @@ namespace FFManager
             _removeRules = tmp as List<RemoveRule>;
             lists.TryGetValue("RenamingRules", out tmp);
             _renameRules = tmp as List<ChangeRule>;
+        }
+
+        private void DoTask(object sender, DoWorkEventArgs e)
+        {
+            e.Result = ExecuteTask();
         }
 
         private int? DoRemove(string target)
@@ -108,7 +120,7 @@ namespace FFManager
             return res;
         }
 
-        private int? EachElement()
+        private int? ExecuteTask()
         {
             int? res = null;
 
@@ -119,11 +131,6 @@ namespace FFManager
                 res = RecursiveTask(des.Path);
             }
             return res;
-        }
-
-        public int? ExecuteTask()
-        {
-            return EachElement();
         }
     }
 }

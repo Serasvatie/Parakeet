@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.IO;
 using System.Security.AccessControl;
 using System.Security.Principal;
@@ -22,6 +23,8 @@ namespace Parakeet.Model
 
         private string fileTitle;
 
+        public FFManager.FFManager manager = new FFManager.FFManager();
+
         private static Data _instance;
         static readonly object instancelock = new object();
 
@@ -42,6 +45,16 @@ namespace Parakeet.Model
             RenameRules = new SerializableList<ChangeRule>();
             DirectoryModels = new SerializableList<DirectoryModel>();
             RemoveRules = new SerializableList<RemoveRule>();
+            manager.bwTask.RunWorkerCompleted += TaskCompleted;
+        }
+
+        private void TaskCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            var res = e.Result as int?;
+            if (e.Cancelled)
+                MessageBox.Show(App.Current.MainWindow, "Action annulé par l'utiisateur !", "Résultat");
+            else
+                MessageBox.Show(App.Current.MainWindow, "Action éxecuté sur " + res + " éléments !", "Résultat");
         }
 
         public static Data getInstance()

@@ -70,6 +70,7 @@
     <Compile Include="ViewModel\PrimaryWindow\DirectoryControlViewModel.cs" />
     <Compile Include="ViewModel\PrimaryWindow\RemoveFilesViewModel.cs" />
     <Compile Include="ViewModel\PrimaryWindow\SortByViewModel.cs" />
+    <Compile Include="ViewModel\PrimaryWindow\StatusBarViewModel.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />
     <Compile Include="ViewModel\TaskWindow\TaskViewModel.cs" />
     <Compile Include="View\PrimaryWindow\ChangeFileNameView.xaml.cs">

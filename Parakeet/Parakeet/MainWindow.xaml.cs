@@ -16,6 +16,7 @@ namespace Parakeet
         private RemoveFilesViewModel removeFiles;
         private MenuViewModel menu;
         private SortByViewModel sortBy;
+        public static StatusBarViewModel statusbar;
 
         public MainWindow()
         {
@@ -42,6 +43,7 @@ namespace Parakeet
             removeFiles = new RemoveFilesViewModel();
             menu = new MenuViewModel(this);
             sortBy = new SortByViewModel();
+            statusbar = new StatusBarViewModel();
 
             #endregion
 
@@ -52,6 +54,7 @@ namespace Parakeet
             this.RemoveFilesView.DataContext = removeFiles;
             this.MenuView.DataContext = menu;
             this.SortByView.DataContext = sortBy;
+            this.StatusBarView.DataContext = statusbar;
 
             #endregion
         }
