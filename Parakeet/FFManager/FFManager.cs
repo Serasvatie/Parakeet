@@ -23,7 +23,7 @@ namespace FFManager
             bwTask = new BackgroundWorker();
             bwTask.WorkerReportsProgress = true;
             bwTask.WorkerSupportsCancellation = true;
-            bwTask.DoWork += DoTask;
+            bwTask.DoWork += ExecuteTask;
         }
 
         public void SettingLists(Dictionary<string, object> lists)
@@ -39,9 +39,19 @@ namespace FFManager
             _renameRules = tmp as List<ChangeRule>;
         }
 
-        private void DoTask(object sender, DoWorkEventArgs e)
+        private void ExecuteTask(object sender, DoWorkEventArgs e)
         {
-            e.Result = ExecuteTask();
+            int? res = null;
+
+            foreach (var des in _directory)
+            {
+                if (!des.Activated)
+                    continue;
+                res = RecursiveTask(des.Path);
+            }
+            if (bwTask.CancellationPending)
+                e.Cancel = true;
+            e.Result = res;
         }
 
         private int? DoRemove(string target)
@@ -108,6 +118,8 @@ namespace FFManager
             int? res = null;
             foreach (var d in Directory.GetDirectories(Path))
             {
+                if (bwTask.CancellationPending)
+                    return res;
                 foreach (var f in Directory.GetFiles(Path))
                 {
                     res += DoRemove(f);
@@ -116,19 +128,6 @@ namespace FFManager
                 if (_recursive)
                     RecursiveTask(d);
                 res += DoRename(d);
-            }
-            return res;
-        }
-
-        private int? ExecuteTask()
-        {
-            int? res = null;
-
-            foreach (var des in _directory)
-            {
-                if (!des.Activated)
-                    continue;
-                res = RecursiveTask(des.Path);
             }
             return res;
         }
