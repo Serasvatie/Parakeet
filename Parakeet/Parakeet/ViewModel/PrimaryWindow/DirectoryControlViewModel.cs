@@ -80,7 +80,7 @@ namespace Parakeet.ViewModel.PrimaryWindow
 
         private bool CanDeleteDirectory()
         {
-            return ListDirectory.Count > 0 && SelectedItem > 0;
+            return ListDirectory.Count > 0;
         }
 
         private void DoDeleteDirectory()

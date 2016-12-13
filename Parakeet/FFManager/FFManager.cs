@@ -20,13 +20,15 @@ namespace FFManager
 
         public FFManager()
         {
-            bwTask = new BackgroundWorker();
-            bwTask.WorkerReportsProgress = true;
-            bwTask.WorkerSupportsCancellation = true;
+            bwTask = new BackgroundWorker
+            {
+                WorkerReportsProgress = true,
+                WorkerSupportsCancellation = true
+            };
             bwTask.DoWork += ExecuteTask;
         }
 
-        public void SettingLists(Dictionary<string, object> lists)
+        public void SettingLists(Dictionary<string, dynamic> lists)
         {
             dynamic tmp;
             lists.TryGetValue("Recursive", out tmp);

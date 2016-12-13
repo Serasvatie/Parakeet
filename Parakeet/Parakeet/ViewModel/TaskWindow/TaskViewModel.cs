@@ -103,6 +103,7 @@ namespace Parakeet.ViewModel.TaskWindow
             Data.getInstance().manager.SettingLists(lists);
             Data.getInstance().manager.bwTask.RunWorkerAsync();
             MainWindow.statusbar.Refresh();
+            taskWindow.Close();
         }
 
         public ICommand CancelTask

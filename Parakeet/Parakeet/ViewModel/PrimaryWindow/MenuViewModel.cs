@@ -37,6 +37,7 @@ namespace Parakeet.ViewModel.PrimaryWindow
             _new.AddExtension = true;
             _new.CheckPathExists = true;
             _new.DefaultExt = ".xml";
+            _new.Filter = "Xml files (*.xml)|*.xml";
             _new.Title = Resources.MenuViewModel_DoNewFiles_Select_file_name___;
             _new.InitialDirectory = Data.FullPathSaveDirectory;
             _new.FileOk += NewFile;
