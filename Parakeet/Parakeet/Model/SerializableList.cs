@@ -22,7 +22,6 @@ namespace Parakeet.Model
                 return;
 
             reader.ReadStartElement(typeof(TValue).ToString());
-
             while (reader.NodeType != System.Xml.XmlNodeType.EndElement)
             {
                 TValue value = (TValue)valueSerializer.Deserialize(reader);
@@ -43,7 +42,7 @@ namespace Parakeet.Model
 
             foreach (TValue value in this)
                 valueSerializer.Serialize(writer, value, emptyNS);
-            writer.WriteEndElement();
+            writer.WriteFullEndElement();
         }
     }
 }

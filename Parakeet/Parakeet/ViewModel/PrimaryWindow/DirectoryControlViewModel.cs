@@ -103,10 +103,10 @@ namespace Parakeet.ViewModel.PrimaryWindow
         {
             var tmp = new Dictionary<string, dynamic>
             {
-                {"Directory", ListDirectory},
-                {"RemovingRules", RemoveFilesViewModel.ListRules},
-                {"RenamingRules", ChangeFileNameViewModel.ListChangeRules},
-                {"SortingRules", SortByViewModel.ListRules}
+                {"Directory", ListDirectory.ToList()},
+                {"RemovingRules", RemoveFilesViewModel.ListRules.ToList()},
+                {"RenamingRules", ChangeFileNameViewModel.ListChangeRules.ToList()},
+                {"SortingRules", SortByViewModel.ListRules.ToList()}
             };
             var taskWindow = new View.TaskWindow.TaskWindow(tmp);
             taskWindow.ShowDialog();

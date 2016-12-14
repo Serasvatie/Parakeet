@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using System.Windows.Input;
 using Parakeet.Model;
@@ -77,6 +78,9 @@ namespace Parakeet.ViewModel.PrimaryWindow
             FileDialog tmp = (FileDialog)sender;
             var data = Data.getInstance();
             data.FileTitle = tmp.FileName;
+            data.DirectoryModels.Clear();
+            data.RemoveRules.Clear();
+            data.RenameRules.Clear();
             data.ReadData();
         }
 
@@ -87,11 +91,12 @@ namespace Parakeet.ViewModel.PrimaryWindow
 
         private bool CanSaveFiles()
         {
-            return false;
+            return true;
         }
 
         private void DoSaveFiles()
         {
+            Data.getInstance().WriteData();
         }
 
         public ICommand SaveFilesUnder
