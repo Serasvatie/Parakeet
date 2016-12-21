@@ -52,6 +52,7 @@ namespace Parakeet.ViewModel.PrimaryWindow
             Data.getInstance().DirectoryModels.Clear();
             Data.getInstance().RemoveRules.Clear();
             Data.getInstance().RenameRules.Clear();
+            StatusBarViewModel.getInstance().RunRefresh();
         }
 
         public ICommand OpenFiles
@@ -72,7 +73,9 @@ namespace Parakeet.ViewModel.PrimaryWindow
             open.Title = "Select a xml file";
             open.FileOk += gettingFile;
             open.ShowDialog();
+            StatusBarViewModel.getInstance().RunRefresh();
         }
+
         private void gettingFile(object sender, CancelEventArgs e)
         {
             FileDialog tmp = (FileDialog)sender;
@@ -97,6 +100,7 @@ namespace Parakeet.ViewModel.PrimaryWindow
         private void DoSaveFiles()
         {
             Data.getInstance().WriteData();
+            StatusBarViewModel.getInstance().RunRefresh();
         }
 
         public ICommand SaveFilesUnder
@@ -128,6 +132,7 @@ namespace Parakeet.ViewModel.PrimaryWindow
             var data = Data.getInstance();
             data.FileTitle = fileTitle;
             data.WriteData();
+            StatusBarViewModel.getInstance().RunRefresh();
         }
 
         public ICommand Exit

@@ -13,6 +13,9 @@ namespace Parakeet.ViewModel.PrimaryWindow
 {
     public class StatusBarViewModel : BaseNotifyPropertyChanged
     {
+        private static StatusBarViewModel _instance;
+        static readonly object instancelock = new object();
+
         private ICommand cancel;
 
         public StatusBarViewModel()
@@ -21,12 +24,28 @@ namespace Parakeet.ViewModel.PrimaryWindow
             Data.getInstance().manager.bwTask.DoWork += Start;
         }
 
+        public static StatusBarViewModel getInstance()
+        {
+            if (_instance == null)
+            {
+                lock (instancelock)
+                    if (_instance == null)
+                        _instance = new StatusBarViewModel();
+            }
+            return _instance;
+        }
+
         private void Start(object sender, DoWorkEventArgs e)
         {
             RefreshAll();
         }
 
         private void Finish(object sender, RunWorkerCompletedEventArgs e)
+        {
+            RefreshAll();
+        }
+
+        public void RunRefresh()
         {
             RefreshAll();
         }
