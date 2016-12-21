@@ -102,7 +102,6 @@ namespace Parakeet.ViewModel.TaskWindow
                 lists.Remove("SortingRules");
             Data.getInstance().manager.SettingLists(lists);
             Data.getInstance().manager.bwTask.RunWorkerAsync();
-            MainWindow.statusbar.Refresh();
             taskWindow.Close();
         }
 
