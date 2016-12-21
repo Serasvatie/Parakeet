@@ -6,10 +6,5 @@ using System.Threading.Tasks;
 
 namespace Parakeet.ViewModel
 {
-    public enum Target
-    {
-        File,
-        Folder,
-        All
-    }
+
 }

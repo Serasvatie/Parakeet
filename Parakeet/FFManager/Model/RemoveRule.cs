@@ -1,4 +1,4 @@
-﻿namespace Model
+﻿namespace FFManager.Model
 {
     public class RemoveRule
     {

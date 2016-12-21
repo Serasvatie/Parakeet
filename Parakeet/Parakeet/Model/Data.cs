@@ -5,6 +5,7 @@ using System.Security.AccessControl;
 using System.Security.Principal;
 using System.Windows;
 using System.Xml;
+using FFManager.Model;
 
 namespace Parakeet.Model
 {

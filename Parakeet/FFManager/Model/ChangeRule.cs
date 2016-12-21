@@ -1,6 +1,6 @@
-﻿using Model;
+﻿using FFManager.Model;
 
-namespace Model
+namespace FFManager.Model
 {
     public class ChangeRule
     {

@@ -1,7 +1,6 @@
-﻿using System.Collections.ObjectModel;
-using System.Windows.Input;
+﻿using System.Windows.Input;
+using FFManager.Model;
 using Parakeet.Model;
-using Parakeet.ViewModel;
 
 namespace Parakeet.ViewModel.PrimaryWindow
 {

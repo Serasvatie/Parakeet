@@ -2,10 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Model;
+using FFManager.Model;
 
 namespace FFManager
 {
@@ -28,17 +25,21 @@ namespace FFManager
             bwTask.DoWork += ExecuteTask;
         }
 
-        public void SettingLists(Dictionary<string, dynamic> lists)
+        public void SettingLists(Dictionary<string, object> lists)
         {
-            dynamic tmp;
-            lists.TryGetValue("Recursive", out tmp);
-            _recursive = tmp ? tmp : false;
-            lists.TryGetValue("Directories", out tmp);
-            _directory = tmp as List<DirectoryModel>;
-            lists.TryGetValue("RemovingRules", out tmp);
-            _removeRules = tmp as List<RemoveRule>;
-            lists.TryGetValue("RenamingRules", out tmp);
-            _renameRules = tmp as List<ChangeRule>;
+            //dynamic tmp;
+            //lists.TryGetValue("Recursive", out tmp);
+            //_recursive = tmp ? tmp : false;
+            //lists.TryGetValue("Directories", out tmp);
+            //var list = tmp as List<DirectoryModel>;
+            //if (list != null)
+            //    _directory = new List<DirectoryModel>(list);
+            //lists.TryGetValue("RemovingRules", out tmp);
+            //_removeRules = new List<RemoveRule>(tmp);
+            //lists.TryGetValue("RenamingRules", out tmp);
+            //_renameRules = new List<ChangeRule>(tmp);
+            _recursive = (bool)lists["Recursive"];
+            _directory = lists["Directories"] as List<DirectoryModel>;
         }
 
         private void ExecuteTask(object sender, DoWorkEventArgs e)
