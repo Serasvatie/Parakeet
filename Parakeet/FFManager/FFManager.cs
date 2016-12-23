@@ -8,9 +8,9 @@ namespace FFManager
 {
     public class FFManager
     {
-        private List<DirectoryModel> _directory;
-        private List<RemoveRule> _removeRules;
-        private List<ChangeRule> _renameRules;
+        private List<DirectoryModel> _directory = new List<DirectoryModel>();
+        private List<RemoveRule> _removeRules = new List<RemoveRule>();
+        private List<ChangeRule> _renameRules = new List<ChangeRule>();
         private bool _recursive;
 
         public BackgroundWorker bwTask;
@@ -27,19 +27,14 @@ namespace FFManager
 
         public void SettingLists(Dictionary<string, object> lists)
         {
-            //dynamic tmp;
-            //lists.TryGetValue("Recursive", out tmp);
-            //_recursive = tmp ? tmp : false;
-            //lists.TryGetValue("Directories", out tmp);
-            //var list = tmp as List<DirectoryModel>;
-            //if (list != null)
-            //    _directory = new List<DirectoryModel>(list);
-            //lists.TryGetValue("RemovingRules", out tmp);
-            //_removeRules = new List<RemoveRule>(tmp);
-            //lists.TryGetValue("RenamingRules", out tmp);
-            //_renameRules = new List<ChangeRule>(tmp);
             _recursive = (bool)lists["Recursive"];
             _directory = lists["Directories"] as List<DirectoryModel>;
+            dynamic tmp;
+            if (lists.TryGetValue("RemovingRules", out tmp))
+                _removeRules = tmp as List<RemoveRule>;
+            tmp = null;
+            if (lists.TryGetValue("RenamingRules", out tmp))
+                _renameRules = tmp as List<ChangeRule>;
         }
 
         private void ExecuteTask(object sender, DoWorkEventArgs e)
@@ -109,11 +104,6 @@ namespace FFManager
                 }
             }
             return res;
-        }
-
-        private int? DoSort()
-        {
-            return 0;
         }
 
         private int? RecursiveTask(string Path)

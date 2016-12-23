@@ -100,7 +100,7 @@ namespace Parakeet.ViewModel.PrimaryWindow
         {
             var tmp = new Dictionary<string, dynamic>
             {
-                {"Directory", ListDirectory.ToList()},
+                {"Directories", ListDirectory.ToList()},
                 {"RemovingRules", RemoveFilesViewModel.ListRules.ToList()},
                 {"RenamingRules", ChangeFileNameViewModel.ListChangeRules.ToList()},
                 {"SortingRules", SortByViewModel.ListRules.ToList()}
