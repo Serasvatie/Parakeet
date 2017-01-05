@@ -66,7 +66,6 @@ namespace Parakeet
         {
             Settings.Default.NameCurrentXmlFile = Data.getInstance().FileTitle;
             Settings.Default.Save();
-            Console.WriteLine(Settings.Default.NameCurrentXmlFile);
         }
     }
 }

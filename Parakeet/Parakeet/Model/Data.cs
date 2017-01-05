@@ -9,8 +9,6 @@ using FFManager.Model;
 
 namespace Parakeet.Model
 {
-    // TO DO SERIALIZING
-
     public sealed class Data
     {
         public static string DirectoryToSave = "\\Parakeet\\";
@@ -51,11 +49,13 @@ namespace Parakeet.Model
 
         private void TaskCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            var res = e.Result as int?;
             if (e.Cancelled)
+            {
                 MessageBox.Show(App.Current.MainWindow, "Action annulé par l'utiisateur !", "Résultat");
-            else
-                MessageBox.Show(App.Current.MainWindow, "Action éxecuté sur " + res + " éléments !", "Résultat");
+                return;
+            }
+            var res = e.Result as int?;
+            MessageBox.Show(App.Current.MainWindow, "Action éxecuté sur " + res + " éléments !", "Résultat");
         }
 
         public static Data getInstance()
@@ -72,10 +72,7 @@ namespace Parakeet.Model
         public string FileTitle
         {
             get { return fileTitle; }
-            set
-            {
-                fileTitle = value;
-            }
+            set { fileTitle = value; }
         }
 
         public void ReadData()

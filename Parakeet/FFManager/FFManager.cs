@@ -15,6 +15,7 @@ namespace FFManager
         private List<ChangeRule> _renameRules = new List<ChangeRule>();
         private bool _recursive;
 
+        public event EventHandler IsBwStarted;
         public BackgroundWorker bwTask;
 
         public FFManager()
@@ -29,7 +30,7 @@ namespace FFManager
 
         public void SettingLists(Dictionary<string, object> lists)
         {
-            _recursive = (bool)lists["Recursive"];
+            _recursive = (bool) lists["Recursive"];
             _directory = lists["Directories"] as List<DirectoryModel>;
             dynamic tmp;
             if (lists.TryGetValue("RemovingRules", out tmp))
@@ -42,17 +43,30 @@ namespace FFManager
         private void ExecuteTask(object sender, DoWorkEventArgs e)
         {
             int res = 0;
+            List<Tuple<int, string>> output = new List<Tuple<int, string>>();
 
+            IsBwStarted?.Invoke(this, null);
             Thread.Sleep(10000);
             foreach (var des in _directory)
             {
-                if (!des.Activated)
-                    continue;
-                res = RecursiveTask(des.Path);
+                try
+                {
+                    if (!des.Activated)
+                        continue;
+                    res = RecursiveTask(des.Path);
+                }
+                catch (Exception ex)
+                {
+                    output.Add(new Tuple<int, string>(-1, ex.Message));
+                }
+                if (bwTask.CancellationPending)
+                {
+                    e.Cancel = true;
+                    e.Result = res;
+                    return;
+                }
+                e.Result = res;
             }
-            if (bwTask.CancellationPending)
-                e.Cancel = true;
-            e.Result = res;
         }
 
         private int DoRemove(string target)
@@ -90,7 +104,9 @@ namespace FFManager
                 if (!Path.GetFileNameWithoutExtension(target).Contains(rule.Old))
                     return res;
                 int index = target.LastIndexOf("\\", StringComparison.Ordinal);
-                string newPath = target.Substring(0, index) + "\\"  + Path.GetFileNameWithoutExtension(target).Replace(rule.Old, rule.New) + Path.GetExtension(target);
+                string newPath = target.Substring(0, index) + "\\" +
+                                 Path.GetFileNameWithoutExtension(target).Replace(rule.Old, rule.New) +
+                                 Path.GetExtension(target);
                 if (newPath == target)
                 {
                     continue;

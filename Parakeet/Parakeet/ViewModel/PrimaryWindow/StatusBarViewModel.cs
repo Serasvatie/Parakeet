@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.IO;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using Parakeet.Model;
 
@@ -20,8 +14,14 @@ namespace Parakeet.ViewModel.PrimaryWindow
 
         public StatusBarViewModel()
         {
-            Data.getInstance().manager.bwTask.RunWorkerCompleted += Finish;
-            Data.getInstance().manager.bwTask.DoWork += Start;
+            Data.getInstance().manager.IsBwStarted += (sender, args) =>
+            {
+                RefreshAll();
+            };
+            Data.getInstance().manager.bwTask.RunWorkerCompleted += (sender, args) =>
+            {
+                RefreshAll();
+            };
         }
 
         public static StatusBarViewModel getInstance()
@@ -33,16 +33,6 @@ namespace Parakeet.ViewModel.PrimaryWindow
                         _instance = new StatusBarViewModel();
             }
             return _instance;
-        }
-
-        private void Start(object sender, DoWorkEventArgs e)
-        {
-            RefreshAll();
-        }
-
-        private void Finish(object sender, RunWorkerCompletedEventArgs e)
-        {
-            RefreshAll();
         }
 
         public void RunRefresh()
