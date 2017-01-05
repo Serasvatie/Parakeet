@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using FFManager.Model;
+using System.Diagnostics;
+using System.Threading;
 
 namespace FFManager
 {
@@ -39,8 +41,9 @@ namespace FFManager
 
         private void ExecuteTask(object sender, DoWorkEventArgs e)
         {
-            int? res = null;
+            int res = 0;
 
+            Thread.Sleep(10000);
             foreach (var des in _directory)
             {
                 if (!des.Activated)
@@ -52,23 +55,23 @@ namespace FFManager
             e.Result = res;
         }
 
-        private int? DoRemove(string target)
+        private int DoRemove(string target)
         {
-            int? res = null;
+            int res = 0;
             foreach (var val in _removeRules)
             {
                 if (!val.IsActivated)
                     continue;
                 if (val.IsExtension)
                 {
-                    if (Path.GetExtension(target) == val.Strings)
+                    if (Path.GetExtension(target) == "." + val.Strings)
                     {
                         File.Delete(target);
                         res++;
                     }
                     continue;
                 }
-                if (target.Contains(val.Strings))
+                else if (Path.GetFileNameWithoutExtension(target).Contains(val.Strings))
                 {
                     File.Delete(target);
                     res++;
@@ -77,22 +80,24 @@ namespace FFManager
             return res;
         }
 
-        private int? DoRename(string target)
+        private int DoRename(string target)
         {
-            int? res = null;
+            int res = 0;
             foreach (var rule in _renameRules)
             {
                 if (!rule.IsActivate)
                     continue;
+                if (!Path.GetFileNameWithoutExtension(target).Contains(rule.Old))
+                    return res;
                 int index = target.LastIndexOf("\\", StringComparison.Ordinal);
-                string newPath = target.Substring(0, index) + target.Substring(index).Replace(rule.Old, rule.New);
+                string newPath = target.Substring(0, index) + "\\"  + Path.GetFileNameWithoutExtension(target).Replace(rule.Old, rule.New) + Path.GetExtension(target);
                 if (newPath == target)
                 {
                     continue;
                 }
                 if (Directory.Exists(target) && (rule.Target == Target.Folder || rule.Target == Target.All))
                 {
-                    File.Move(target, newPath);
+                    Directory.Move(target, newPath);
                     res++;
                     continue;
                 }
@@ -106,20 +111,23 @@ namespace FFManager
             return res;
         }
 
-        private int? RecursiveTask(string Path)
+        private int RecursiveTask(string Path)
         {
-            int? res = null;
+            int res = 0;
+
+            foreach (var f in Directory.GetFiles(Path))
+            {
+                if (bwTask.CancellationPending)
+                    return res;
+                res += DoRemove(f);
+                res += DoRename(f);
+            }
             foreach (var d in Directory.GetDirectories(Path))
             {
                 if (bwTask.CancellationPending)
                     return res;
-                foreach (var f in Directory.GetFiles(Path))
-                {
-                    res += DoRemove(f);
-                    res += DoRename(f);
-                }
                 if (_recursive)
-                    RecursiveTask(d);
+                    res += RecursiveTask(d);
                 res += DoRename(d);
             }
             return res;

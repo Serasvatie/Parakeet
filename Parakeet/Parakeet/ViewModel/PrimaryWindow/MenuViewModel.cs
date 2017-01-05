@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel;
-using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using System.Windows.Input;
 using Parakeet.Model;
 using Parakeet.Properties;
+using System;
 
 namespace Parakeet.ViewModel.PrimaryWindow
 {
@@ -94,7 +94,7 @@ namespace Parakeet.ViewModel.PrimaryWindow
 
         private bool CanSaveFiles()
         {
-            return true;
+            return !string.IsNullOrEmpty(Data.getInstance().FileTitle);
         }
 
         private void DoSaveFiles()

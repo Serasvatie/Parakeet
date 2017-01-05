@@ -27,11 +27,11 @@
         <ListView Grid.Column="0" Grid.Row="0" Grid.RowSpan="4" x:Name="ListChangeFileName" ItemsSource="{Binding ListChangeRules, Mode=OneWay}" SelectedIndex="{ Binding SelectedIndex, Mode=TwoWay }" Margin="10,10,0,10">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Width="Auto" DisplayMemberBinding="{Binding Old, Mode=OneWay}">
+                    <GridViewColumn Width="Auto" DisplayMemberBinding="{Binding Old, StringFormat='\'{0}\'', Mode=OneWay}">
                         <GridViewColumnHeader Tag="Chaînes" FontSize="13">Changer</GridViewColumnHeader>
                     </GridViewColumn>
 
-                    <GridViewColumn Width="Auto" DisplayMemberBinding="{Binding New, Mode=OneWay}">
+                    <GridViewColumn Width="Auto" DisplayMemberBinding="{Binding New, StringFormat='\'{0}\'', Mode=OneWay}">
                         <GridViewColumnHeader Tag="ByChaînes" FontSize="13">Par</GridViewColumnHeader>
                     </GridViewColumn>
 
