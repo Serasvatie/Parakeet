@@ -46,7 +46,6 @@ namespace FFManager
             List<Tuple<int, string>> output = new List<Tuple<int, string>>();
 
             IsBwStarted?.Invoke(this, null);
-            Thread.Sleep(10000);
             foreach (var des in _directory)
             {
                 try
