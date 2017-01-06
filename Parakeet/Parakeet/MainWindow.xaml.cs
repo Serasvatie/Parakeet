@@ -1,17 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using Parakeet.Model;
+using Parakeet.Properties;
+using Parakeet.ViewModel.PrimaryWindow;
 
 namespace Parakeet
 {
@@ -20,9 +11,61 @@ namespace Parakeet
     /// </summary>
     public partial class MainWindow : Window
     {
+        private DirectoryControlViewModel directoryControl;
+        private ChangeFileNameViewModel changeFileName;
+        private RemoveFilesViewModel removeFiles;
+        private MenuViewModel menu;
+        private SortByViewModel sortBy;
+
         public MainWindow()
         {
             InitializeComponent();
+
+            this.Closed += MainWindow_Close;
+            this.Closing += MainWindow_Closing;
+
+            try
+            {
+                Data.getInstance().FileTitle = Settings.Default.NameCurrentXmlFile;
+                if (!string.IsNullOrEmpty(Data.getInstance().FileTitle))
+                    Data.getInstance().ReadData();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show(this, "Erreur durant la lecture du fichier xml par défaut.");
+            }
+
+            #region INIT VIEWMODEL
+
+            directoryControl = new DirectoryControlViewModel();
+            changeFileName = new ChangeFileNameViewModel();
+            removeFiles = new RemoveFilesViewModel();
+            menu = new MenuViewModel(this);
+            sortBy = new SortByViewModel();
+
+            #endregion
+
+            #region INIT VIEW
+
+            this.DirectoryControlView.DataContext = directoryControl;
+            this.ChangeFileNameView.DataContext = changeFileName;
+            this.RemoveFilesView.DataContext = removeFiles;
+            this.MenuView.DataContext = menu;
+            this.SortByView.DataContext = sortBy;
+            this.StatusBarView.DataContext = StatusBarViewModel.getInstance();
+
+            #endregion
+        }
+
+        void MainWindow_Close(object sender, EventArgs e)
+        {
+
+        }
+
+        void MainWindow_Closing(object sender, EventArgs e)
+        {
+            Settings.Default.NameCurrentXmlFile = Data.getInstance().FileTitle;
+            Settings.Default.Save();
         }
     }
 }

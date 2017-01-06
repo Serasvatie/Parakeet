@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Parakeet.View
+namespace Parakeet.View.PrimaryWindow
 {
     /// <summary>
-    /// Logique d'interaction pour StatusBarView.xaml
+    /// Logique d'interaction pour RemoveFilesView.xaml
     /// </summary>
-    public partial class StatusBarView : UserControl
+    public partial class RemoveFilesView : UserControl
     {
-        public StatusBarView()
+        public RemoveFilesView()
         {
             InitializeComponent();
         }

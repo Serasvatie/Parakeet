@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Parakeet.View
+namespace Parakeet.View.PrimaryWindow
 {
     /// <summary>
-    /// Logique d'interaction pour DirectoryControlView.xaml
+    /// Logique d'interaction pour StatusBarView.xaml
     /// </summary>
-    public partial class DirectoryControlView : UserControl
+    public partial class StatusBarView : UserControl
     {
-        public DirectoryControlView()
+        public StatusBarView()
         {
             InitializeComponent();
         }

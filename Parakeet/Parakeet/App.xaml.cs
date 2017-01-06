@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using Parakeet;
 
 namespace Parakeet
 {
@@ -13,5 +14,12 @@ namespace Parakeet
     /// </summary>
     public partial class App : Application
     {
+
+        private void Application_StartUp(object sender, StartupEventArgs e)
+        {
+            Current.ShutdownMode = System.Windows.ShutdownMode.OnMainWindowClose;
+            MainWindow main = new MainWindow();
+            main.Show();
+        }
     }
 }

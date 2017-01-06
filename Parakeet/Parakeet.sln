@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Parakeet", "Parakeet\Parakeet.csproj", "{A5D74C80-FB6D-4415-81D3-C0C2FF608518}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FFManager", "FFManager\FFManager.csproj", "{2D478C0A-C99C-4336-A47E-3A2E789F98E3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{A5D74C80-FB6D-4415-81D3-C0C2FF608518}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A5D74C80-FB6D-4415-81D3-C0C2FF608518}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A5D74C80-FB6D-4415-81D3-C0C2FF608518}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D478C0A-C99C-4336-A47E-3A2E789F98E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D478C0A-C99C-4336-A47E-3A2E789F98E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D478C0A-C99C-4336-A47E-3A2E789F98E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D478C0A-C99C-4336-A47E-3A2E789F98E3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

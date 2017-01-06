@@ -10,19 +10,25 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Parakeet.ViewModel.TaskWindow;
 
-namespace Parakeet.View
+namespace Parakeet.View.TaskWindow
 {
     /// <summary>
-    /// Logique d'interaction pour MenuView.xaml
+    /// Logique d'interaction pour TaskWindow.xaml
     /// </summary>
-    public partial class MenuView : UserControl
+    public partial class TaskWindow : Window
     {
-        public MenuView()
+        private TaskViewModel taskViewModel;
+
+        public TaskWindow(Dictionary<string, dynamic> lists)
         {
             InitializeComponent();
+
+            taskViewModel = new TaskViewModel(this, lists);
+
+            this.DataContext = taskViewModel;
         }
     }
 }

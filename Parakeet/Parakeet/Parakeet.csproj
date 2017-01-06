@@ -9,11 +9,12 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Parakeet</RootNamespace>
     <AssemblyName>Parakeet</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -37,6 +38,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -55,14 +57,38 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="View\DirectoryControlView.xaml.cs">
+    <Compile Include="Model\Data.cs" />
+    <Compile Include="Model\SerializableList.cs" />
+    <Compile Include="ViewModel\BaseNotifyPropertyChanged.cs" />
+    <Compile Include="ViewModel\EnumParakeet.cs" />
+    <Compile Include="ViewModel\PrimaryWindow\ChangeFileNameViewModel.cs" />
+    <Compile Include="ViewModel\PrimaryWindow\MenuViewModel.cs" />
+    <Compile Include="ViewModel\PrimaryWindow\DirectoryControlViewModel.cs" />
+    <Compile Include="ViewModel\PrimaryWindow\RemoveFilesViewModel.cs" />
+    <Compile Include="ViewModel\PrimaryWindow\SortByViewModel.cs" />
+    <Compile Include="ViewModel\PrimaryWindow\StatusBarViewModel.cs" />
+    <Compile Include="ViewModel\RelayCommand.cs" />
+    <Compile Include="ViewModel\TaskWindow\TaskViewModel.cs" />
+    <Compile Include="View\PrimaryWindow\ChangeFileNameView.xaml.cs">
+      <DependentUpon>ChangeFileNameView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PrimaryWindow\DirectoryControlView.xaml.cs">
       <DependentUpon>DirectoryControlView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\MenuView.xaml.cs">
+    <Compile Include="View\PrimaryWindow\MenuView.xaml.cs">
       <DependentUpon>MenuView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\StatusBarView.xaml.cs">
+    <Compile Include="View\PrimaryWindow\RemoveFilesView.xaml.cs">
+      <DependentUpon>RemoveFilesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PrimaryWindow\SortByView.xaml.cs">
+      <DependentUpon>SortByView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PrimaryWindow\StatusBarView.xaml.cs">
       <DependentUpon>StatusBarView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TaskWindow\TaskWindow.xaml.cs">
+      <DependentUpon>TaskWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -76,15 +102,31 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="View\DirectoryControlView.xaml">
+    <Page Include="View\PrimaryWindow\ChangeFileNameView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\MenuView.xaml">
+    <Page Include="View\PrimaryWindow\DirectoryControlView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\StatusBarView.xaml">
+    <Page Include="View\PrimaryWindow\MenuView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PrimaryWindow\RemoveFilesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PrimaryWindow\SortByView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PrimaryWindow\StatusBarView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TaskWindow\TaskWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -117,9 +159,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Model\" />
     <Folder Include="Resources\" />
-    <Folder Include="ViewModel\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FFManager\FFManager.csproj">
+      <Project>{2d478c0a-c99c-4336-a47e-3a2e789f98e3}</Project>
+      <Name>FFManager</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

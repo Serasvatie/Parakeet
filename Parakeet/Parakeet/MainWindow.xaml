@@ -4,8 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Parakeet"
-        xmlns:View="clr-namespace:Parakeet.View"
-        Title="Parakeet" MinHeight="700" MinWidth="700" Height="700" Width="700" Background="White" ResizeMode="CanResizeWithGrip">
+        xmlns:View="clr-namespace:Parakeet.View.PrimaryWindow"
+        Title="Parakeet" MinHeight="700" MinWidth="700" Height="700" Width="700" Background="White" ResizeMode="NoResize">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -17,13 +17,13 @@
         <View:MenuView Grid.Row="0" x:Name="MenuView"/>
         <TabControl Grid.Row="1" x:Name="TabControl">
             <TabItem Header="Remove Files">
-
+                <View:RemoveFilesView x:Name="RemoveFilesView"/>
             </TabItem>
             <TabItem Header="Change Filenames">
-
+                <View:ChangeFileNameView x:Name="ChangeFileNameView"/>
             </TabItem>
-            <TabItem Header="Sort by">
-
+            <TabItem Header="Sort By">
+                <View:SortByView x:Name="SortByView"/>
             </TabItem>
             <TabItem Header="In Contruction">
             </TabItem>
