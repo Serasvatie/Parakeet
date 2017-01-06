@@ -20,15 +20,15 @@ namespace Parakeet.View.TaskWindow
     /// </summary>
     public partial class TaskWindow : Window
     {
-        private TaskViewModel taskViewModel;
+        private TaskViewModel _taskViewModel;
 
         public TaskWindow(Dictionary<string, dynamic> lists)
         {
             InitializeComponent();
 
-            taskViewModel = new TaskViewModel(this, lists);
+            _taskViewModel = new TaskViewModel(this, lists);
 
-            this.DataContext = taskViewModel;
+            this.DataContext = _taskViewModel;
         }
     }
 }

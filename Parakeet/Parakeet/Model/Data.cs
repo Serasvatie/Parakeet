@@ -5,7 +5,7 @@ using System.Security.AccessControl;
 using System.Security.Principal;
 using System.Windows;
 using System.Xml;
-using FFManager.Model;
+using Manager.Manager;
 
 namespace Parakeet.Model
 {
@@ -20,12 +20,13 @@ namespace Parakeet.Model
         public SerializableList<RemoveRule> RemoveRules;
         public SerializableList<DirectoryModel> DirectoryModels;
 
-        private string fileTitle;
+        private string _fileTitle;
 
-        public FFManager.FFManager manager = new FFManager.FFManager();
+        public FFManager.FFManager FFManager = new FFManager.FFManager();
+        public SManager.SManager SManager = new SManager.SManager();
 
         private static Data _instance;
-        static readonly object instancelock = new object();
+        static readonly object Instancelock = new object();
 
         private Data()
         {
@@ -44,7 +45,8 @@ namespace Parakeet.Model
             RenameRules = new SerializableList<ChangeRule>();
             DirectoryModels = new SerializableList<DirectoryModel>();
             RemoveRules = new SerializableList<RemoveRule>();
-            manager.bwTask.RunWorkerCompleted += TaskCompleted;
+            FFManager.BwTask.RunWorkerCompleted += TaskCompleted;
+            SManager.BwTask.RunWorkerCompleted += TaskCompleted;
         }
 
         private void TaskCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -58,11 +60,11 @@ namespace Parakeet.Model
             MessageBox.Show(App.Current.MainWindow, "Action éxecuté sur " + res + " éléments !", "Résultat");
         }
 
-        public static Data getInstance()
+        public static Data GetInstance()
         {
             if (_instance == null)
             {
-                lock (instancelock)
+                lock (Instancelock)
                     if (_instance == null)
                         _instance = new Data();
             }
@@ -71,8 +73,8 @@ namespace Parakeet.Model
 
         public string FileTitle
         {
-            get { return fileTitle; }
-            set { fileTitle = value; }
+            get { return _fileTitle; }
+            set { _fileTitle = value; }
         }
 
         public void ReadData()

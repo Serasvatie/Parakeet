@@ -1,38 +1,38 @@
 ﻿using System.Windows.Input;
-using FFManager.Model;
+using Manager.Manager;
 using Parakeet.Model;
 
 namespace Parakeet.ViewModel.PrimaryWindow
 {
     class ChangeFileNameViewModel : BaseNotifyPropertyChanged
     {
-        private int selectedItem;
+        private int _selectedItem;
 
-        private string changeName;
-        private string byName;
+        private string _changeName;
+        private string _byName;
 
-        private ICommand addRules;
-        private ICommand deleteRules;
+        private ICommand _addRules;
+        private ICommand _deleteRules;
 
         public ChangeFileNameViewModel()
         {
-            selectedItem = 0;
+            _selectedItem = 0;
         }
 
         public static SerializableList<ChangeRule> ListChangeRules
         {
-            get { return Data.getInstance().RenameRules; }
+            get { return Data.GetInstance().RenameRules; }
         }
 
         public int SelectedIndex
         {
             get
             {
-                return selectedItem;
+                return _selectedItem;
             }
             set
             {
-                selectedItem = value;
+                _selectedItem = value;
                 OnPropertyChanged("SelectedItem");
             }
         }
@@ -41,29 +41,29 @@ namespace Parakeet.ViewModel.PrimaryWindow
         {
             get
             {
-                return changeName;
+                return _changeName;
 
             }
             set
             {
-                changeName = value;
+                _changeName = value;
                 OnPropertyChanged("ChangeName");
             }
         }
 
         public string ByName
         {
-            get { return byName; }
+            get { return _byName; }
             set
             {
-                byName = value;
+                _byName = value;
                 OnPropertyChanged("ByName");
             }
         }
 
         public ICommand AddRules
         {
-            get { return this.addRules ?? (this.addRules = new RelayCommand(DoAddRules, CanAddRules)); }
+            get { return this._addRules ?? (this._addRules = new RelayCommand(DoAddRules, CanAddRules)); }
         }
 
         private bool CanAddRules()
@@ -81,7 +81,7 @@ namespace Parakeet.ViewModel.PrimaryWindow
 
         public ICommand DeleteRules
         {
-            get { return this.deleteRules ?? (this.deleteRules = new RelayCommand(DoDeleteRules, CanDeleteRules)); }
+            get { return this._deleteRules ?? (this._deleteRules = new RelayCommand(DoDeleteRules, CanDeleteRules)); }
         }
 
         private bool CanDeleteRules()

@@ -1,5 +1,4 @@
-﻿
-namespace FFManager.Model
+﻿namespace Manager.Manager
 {
     public class DirectoryModel
     {

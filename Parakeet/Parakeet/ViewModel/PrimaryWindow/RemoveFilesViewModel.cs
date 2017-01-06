@@ -1,53 +1,51 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Windows.Input;
-using FFManager.Model;
+﻿using System.Windows.Input;
+using Manager.Manager;
 using Parakeet.Model;
 
 namespace Parakeet.ViewModel.PrimaryWindow
 {
     class RemoveFilesViewModel : BaseNotifyPropertyChanged
     {
-        private int selectedIndex;
+        private int _selectedIndex;
 
-        private string strings;
+        private string _strings;
 
-        private ICommand addRules;
-        private ICommand deleteRules;
+        private ICommand _addRules;
+        private ICommand _deleteRules;
 
         public RemoveFilesViewModel()
         {
-            selectedIndex = 0;
+            _selectedIndex = 0;
         }
 
         public static SerializableList<RemoveRule> ListRules
         {
-            get { return Data.getInstance().RemoveRules; }
+            get { return Data.GetInstance().RemoveRules; }
         }
 
         public int SelectedIndex
         {
-            get { return selectedIndex; }
+            get { return _selectedIndex; }
             set
             {
-                selectedIndex = value;
+                _selectedIndex = value;
                 OnPropertyChanged("SelectedIndex");
             }
         }
 
         public string Strings
         {
-            get { return strings; }
+            get { return _strings; }
             set
             {
-                strings = value;
+                _strings = value;
                 OnPropertyChanged("Strings");
             }
         }
 
         public ICommand AddRules
         {
-            get { return this.addRules ?? (this.addRules = new RelayCommand(DoAddRules, CanAddRules)); }
+            get { return this._addRules ?? (this._addRules = new RelayCommand(DoAddRules, CanAddRules)); }
         }
 
         private bool CanAddRules()
@@ -64,7 +62,7 @@ namespace Parakeet.ViewModel.PrimaryWindow
 
         public ICommand DeleteRules
         {
-            get { return this.deleteRules ?? (this.deleteRules = new RelayCommand(DoDeleteRules, CanDeleteRules)); }
+            get { return this._deleteRules ?? (this._deleteRules = new RelayCommand(DoDeleteRules, CanDeleteRules)); }
         }
 
         private bool CanDeleteRules()
