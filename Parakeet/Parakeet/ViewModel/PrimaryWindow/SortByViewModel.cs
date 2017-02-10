@@ -13,6 +13,9 @@ namespace Parakeet.ViewModel.PrimaryWindow
 
         private ICommand _addRules;
         private ICommand _deleteRules;
+        private ICommand _doUp;
+        private ICommand _doDown;
+
 
         public SortByViewModel()
         {
@@ -63,7 +66,7 @@ namespace Parakeet.ViewModel.PrimaryWindow
             Strings = null;
         }
 
-        public ICommand DeleteRules
+        public ICommand DeleteEntry
         {
             get { return this._deleteRules ?? (this._deleteRules = new RelayCommand(DoDeleteRules, CanDeleteRules)); }
         }
@@ -77,6 +80,36 @@ namespace Parakeet.ViewModel.PrimaryWindow
         {
             _rules.RemoveAt(SelectedIndex);
             SelectedIndex = 0;
+        }
+
+        public ICommand DoUp
+        {
+            get { return this._doUp ?? (this._doUp = new RelayCommand(DoUpC, CanUp)); }
+        }
+
+        private bool CanUp()
+        {
+            return SelectedIndex >= 1;
+        }
+
+        private void DoUpC()
+        {
+            ListRules.Move(SelectedIndex, SelectedIndex - 1);
+        }
+
+        public ICommand DoDown
+        {
+            get { return this._doDown ?? (this._doDown = new RelayCommand(DoDownC, CanDown)); }
+        }
+
+        private bool CanDown()
+        {
+            return SelectedIndex < ListRules.Count - 1;
+        }
+
+        private void DoDownC()
+        {
+            ListRules.Move(SelectedIndex, SelectedIndex + 1);
         }
     }
 }

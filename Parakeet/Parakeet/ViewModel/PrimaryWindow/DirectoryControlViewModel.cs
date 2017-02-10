@@ -15,6 +15,8 @@ namespace Parakeet.ViewModel.PrimaryWindow
         private ICommand _addDirectory;
         private ICommand _deleteDirectory;
         private ICommand _start;
+        private ICommand _doUp;
+        private ICommand _doDown;
 
         public DirectoryControlViewModel()
         {
@@ -65,7 +67,7 @@ namespace Parakeet.ViewModel.PrimaryWindow
             ListDirectory.Add(tmp);
         }
 
-        public ICommand DeleteDirectory
+        public ICommand DeleteEntry
         {
             get
             {
@@ -107,6 +109,36 @@ namespace Parakeet.ViewModel.PrimaryWindow
             };
             var taskWindow = new View.TaskWindow.TaskWindow(tmp);
             taskWindow.ShowDialog();
+        }
+
+        public ICommand DoUp
+        {
+            get { return this._doUp ?? (this._doUp = new RelayCommand(DoUpC, CanUp)); }
+        }
+
+        private bool CanUp()
+        {
+            return SelectedItem >= 1;
+        }
+
+        private void DoUpC()
+        {
+            ListDirectory.Move(SelectedItem, SelectedItem - 1);
+        }
+
+        public ICommand DoDown
+        {
+            get { return this._doDown ?? (this._doDown = new RelayCommand(DoDownC, CanDown)); }
+        }
+
+        private bool CanDown()
+        {
+            return SelectedItem < ListDirectory.Count - 1;
+        }
+
+        private void DoDownC()
+        {
+            ListDirectory.Move(SelectedItem, SelectedItem + 1);
         }
     }
 }

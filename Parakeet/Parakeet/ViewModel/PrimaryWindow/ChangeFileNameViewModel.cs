@@ -13,6 +13,8 @@ namespace Parakeet.ViewModel.PrimaryWindow
 
         private ICommand _addRules;
         private ICommand _deleteRules;
+        private ICommand _doUp;
+        private ICommand _doDown;
 
         public ChangeFileNameViewModel()
         {
@@ -79,7 +81,7 @@ namespace Parakeet.ViewModel.PrimaryWindow
             ListChangeRules.Add(tmp);
         }
 
-        public ICommand DeleteRules
+        public ICommand DeleteEntry
         {
             get { return this._deleteRules ?? (this._deleteRules = new RelayCommand(DoDeleteRules, CanDeleteRules)); }
         }
@@ -93,6 +95,36 @@ namespace Parakeet.ViewModel.PrimaryWindow
         {
             ListChangeRules.RemoveAt(SelectedIndex);
             SelectedIndex = 0;
+        }
+
+        public ICommand DoUp
+        {
+            get { return this._doUp ?? (this._doUp = new RelayCommand(DoUpC, CanUp)); }
+        }
+
+        private bool CanUp()
+        {
+            return SelectedIndex >= 1;
+        }
+
+        private void DoUpC()
+        {
+            ListChangeRules.Move(SelectedIndex, SelectedIndex - 1);
+        }
+
+        public ICommand DoDown
+        {
+            get { return this._doDown ?? (this._doDown = new RelayCommand(DoDownC, CanDown)); }
+        }
+
+        private bool CanDown()
+        {
+            return SelectedIndex < ListChangeRules.Count - 1;
+        }
+
+        private void DoDownC()
+        {
+            ListChangeRules.Move(SelectedIndex, SelectedIndex + 1);
         }
     }
 }
