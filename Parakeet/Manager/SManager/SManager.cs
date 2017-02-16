@@ -13,7 +13,6 @@ namespace SManager
     public class SManager : AManager
     {
         private string[] _input;
-        private string[] _output;
 
         public SManager()
         {
