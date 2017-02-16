@@ -19,6 +19,7 @@ namespace Parakeet.Model
         public SerializableList<ChangeRule> RenameRules;
         public SerializableList<RemoveRule> RemoveRules;
         public SerializableList<DirectoryModel> DirectoryModels;
+        public SerializableList<SortByRule> SortRules;
 
         private string _fileTitle;
 
@@ -45,6 +46,7 @@ namespace Parakeet.Model
             RenameRules = new SerializableList<ChangeRule>();
             DirectoryModels = new SerializableList<DirectoryModel>();
             RemoveRules = new SerializableList<RemoveRule>();
+            SortRules = new SerializableList<SortByRule>();
             FFManager.BwTask.RunWorkerCompleted += TaskCompleted;
             SManager.BwTask.RunWorkerCompleted += TaskCompleted;
         }
@@ -86,6 +88,7 @@ namespace Parakeet.Model
                 DirectoryModels.ReadXml(xr);
                 RenameRules.ReadXml(xr);
                 RemoveRules.ReadXml(xr);
+                SortRules.ReadXml(xr);
                 xr.Close();
             }
         }
@@ -102,6 +105,7 @@ namespace Parakeet.Model
                     DirectoryModels.WriteXml(wr);
                     RenameRules.WriteXml(wr);
                     RemoveRules.WriteXml(wr);
+                    SortRules.WriteXml(wr);
                     wr.Close();
                 }
             }

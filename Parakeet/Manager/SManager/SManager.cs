@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Linq;
@@ -68,9 +69,11 @@ namespace SManager
             _input = Directory.GetDirectories(mainDirectory);
             for (int i = 0; i < _input.Length; i++)
             {
+                Debug.WriteLine(_input[i]);
                 var nDir = DoCheckRules(_input[i]);
                 if (nDir != "")
                 {
+
                     moveDirectory(mainDirectory, _input[i], nDir);
                     res++;
                     int save = _input.Length;
@@ -84,14 +87,17 @@ namespace SManager
 
         private void moveDirectory(string mainDirectory, string target, string ndir)
         {
-            if (Directory.Exists(mainDirectory + ndir))
+            if (Directory.Exists(mainDirectory + "\\" + ndir))
             {
-                Directory.Move(target, mainDirectory + "\\" + ndir + Path.GetFileName(target));
+                Debug.WriteLine("Target : " + target + " move to :" + mainDirectory + "\\" + ndir + Path.GetFileName(target));
+                Directory.Move(target, mainDirectory + "\\" + ndir + "\\" + Path.GetFileName(target));
             }
             else
             {
+                Debug.WriteLine("Create Directory : " + mainDirectory + "\\" + ndir);
                 Directory.CreateDirectory(mainDirectory + "\\" + ndir);
-                Directory.Move(target, mainDirectory + "\\" + ndir + Path.GetFileName(target));
+                Debug.WriteLine("Target : " + target + " move to :" + mainDirectory + "\\" + ndir + "\\" + Path.GetFileName(target));
+                Directory.Move(target, mainDirectory + "\\" + ndir + "\\" + Path.GetFileName(target));
             }
         }
 
@@ -101,9 +107,12 @@ namespace SManager
             {
                 if (!rule.IsActivated)
                     continue;
-                var tmp = Regex.Match(Path.GetFileNameWithoutExtension(p), rule.Strings).Groups[0].Value;
+                var tmp = Regex.Match(Path.GetFileNameWithoutExtension(p), @rule.Strings).Groups[0].Value;
+                Debug.WriteLine("Result of sort regex : " + tmp);
                 if (tmp != "")
+                {
                     return tmp;
+                }
             }
             return "";
         }

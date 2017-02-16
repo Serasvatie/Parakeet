@@ -1,12 +1,12 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
 using Manager.Manager;
+using Parakeet.Model;
 
 namespace Parakeet.ViewModel.PrimaryWindow
 {
     public class SortByViewModel : BaseNotifyPropertyChanged
     {
-        private static ObservableCollection<SortByRule> _rules;
         private int _selectedIndex;
 
         private string _strings;
@@ -19,14 +19,13 @@ namespace Parakeet.ViewModel.PrimaryWindow
 
         public SortByViewModel()
         {
-            _rules = new ObservableCollection<SortByRule>();
             _selectedIndex = 0;
             _strings = null;
         }
 
         public static ObservableCollection<SortByRule> ListRules
         {
-            get { return _rules; }
+            get { return Data.GetInstance().SortRules; }
         }
 
         public int SelectedIndex
@@ -62,7 +61,7 @@ namespace Parakeet.ViewModel.PrimaryWindow
         private void DoAddRules()
         {
             var tmp = new SortByRule(Strings, true);
-            _rules.Add(tmp);
+            ListRules.Add(tmp);
             Strings = null;
         }
 
@@ -73,12 +72,12 @@ namespace Parakeet.ViewModel.PrimaryWindow
 
         private bool CanDeleteRules()
         {
-            return _rules.Count > 0;
+            return ListRules.Count > 0;
         }
 
         private void DoDeleteRules()
         {
-            _rules.RemoveAt(SelectedIndex);
+            ListRules.RemoveAt(SelectedIndex);
             SelectedIndex = 0;
         }
 
