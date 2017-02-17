@@ -61,7 +61,7 @@ namespace Parakeet.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Ajouter règle.
+        ///   Recherche une chaîne localisée semblable à .
         /// </summary>
         public static string ChangeFileNameView_AddRules {
             get {
@@ -70,7 +70,7 @@ namespace Parakeet.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Supprimer règle.
+        ///   Recherche une chaîne localisée semblable à .
         /// </summary>
         public static string ChangeFileNameView_DeleteRules {
             get {
@@ -79,7 +79,7 @@ namespace Parakeet.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à On.
+        ///   Recherche une chaîne localisée semblable à .
         /// </summary>
         public static string ChangeFileNameView_HeaderActivated {
             get {
@@ -88,7 +88,7 @@ namespace Parakeet.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Changer.
+        ///   Recherche une chaîne localisée semblable à .
         /// </summary>
         public static string ChangeFileNameView_HeaderFirst {
             get {
@@ -97,7 +97,7 @@ namespace Parakeet.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Par.
+        ///   Recherche une chaîne localisée semblable à .
         /// </summary>
         public static string ChangeFileNameView_HeaderSecond {
             get {
@@ -106,7 +106,7 @@ namespace Parakeet.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Cible.
+        ///   Recherche une chaîne localisée semblable à .
         /// </summary>
         public static string ChangeFileNameView_HeaderTarget {
             get {
@@ -115,7 +115,7 @@ namespace Parakeet.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Ajouter un dossier.
+        ///   Recherche une chaîne localisée semblable à .
         /// </summary>
         public static string DirectoryControlView_AddDirectory {
             get {
@@ -124,7 +124,7 @@ namespace Parakeet.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Supprimer.
+        ///   Recherche une chaîne localisée semblable à .
         /// </summary>
         public static string DirectoryControlView_DeleteEntry {
             get {
@@ -133,7 +133,7 @@ namespace Parakeet.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à On.
+        ///   Recherche une chaîne localisée semblable à .
         /// </summary>
         public static string DirectoryControlView_HeaderActivated {
             get {
@@ -142,7 +142,7 @@ namespace Parakeet.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Dossiers.
+        ///   Recherche une chaîne localisée semblable à .
         /// </summary>
         public static string DirectoryControlView_HeaderFolder {
             get {
@@ -151,7 +151,7 @@ namespace Parakeet.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Lancement du processus.
+        ///   Recherche une chaîne localisée semblable à .
         /// </summary>
         public static string DirectoryControlView_StartTask {
             get {
@@ -169,7 +169,7 @@ namespace Parakeet.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Supprimer.
+        ///   Recherche une chaîne localisée semblable à .
         /// </summary>
         public static string ListContextMenuView_Delete {
             get {
@@ -178,7 +178,7 @@ namespace Parakeet.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Dépalcer vers le bas.
+        ///   Recherche une chaîne localisée semblable à .
         /// </summary>
         public static string ListContextMenuView_Down {
             get {
@@ -187,7 +187,7 @@ namespace Parakeet.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Déplacer vers le haut.
+        ///   Recherche une chaîne localisée semblable à .
         /// </summary>
         public static string ListContextMenuView_Up {
             get {
@@ -196,7 +196,7 @@ namespace Parakeet.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Erreur durant la lecture du fichier xml par défaut..
+        ///   Recherche une chaîne localisée semblable à .
         /// </summary>
         public static string MainWindow_MainWindow_Error_File_Reading {
             get {
@@ -205,7 +205,7 @@ namespace Parakeet.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Quitter.
+        ///   Recherche une chaîne localisée semblable à .
         /// </summary>
         public static string MenuView_Exit {
             get {
@@ -214,7 +214,7 @@ namespace Parakeet.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Fichier.
+        ///   Recherche une chaîne localisée semblable à .
         /// </summary>
         public static string MenuView_FileHeader {
             get {
@@ -223,7 +223,7 @@ namespace Parakeet.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Langue.
+        ///   Recherche une chaîne localisée semblable à .
         /// </summary>
         public static string MenuView_Language {
             get {
@@ -232,7 +232,7 @@ namespace Parakeet.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Nouveau fichier.
+        ///   Recherche une chaîne localisée semblable à .
         /// </summary>
         public static string MenuView_NewFile {
             get {
@@ -241,7 +241,7 @@ namespace Parakeet.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Ouvrir un fichier ....
+        ///   Recherche une chaîne localisée semblable à .
         /// </summary>
         public static string MenuView_OpenFile {
             get {
@@ -250,7 +250,7 @@ namespace Parakeet.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Enregsitrer.
+        ///   Recherche une chaîne localisée semblable à .
         /// </summary>
         public static string MenuView_Save {
             get {
@@ -259,7 +259,7 @@ namespace Parakeet.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Enregistrer sous....
+        ///   Recherche une chaîne localisée semblable à .
         /// </summary>
         public static string MenuView_SaveUnder {
             get {
@@ -268,7 +268,7 @@ namespace Parakeet.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Entrer un nouveau nom de fichier.
+        ///   Recherche une chaîne localisée semblable à .
         /// </summary>
         public static string MenuViewModel_DoNewFiles_Select_file_name___ {
             get {
@@ -277,7 +277,7 @@ namespace Parakeet.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Select a xml file.
+        ///   Recherche une chaîne localisée semblable à .
         /// </summary>
         public static string MenuViewModel_DoOpenFiles_Select_a_xml_file {
             get {
@@ -286,7 +286,7 @@ namespace Parakeet.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Xml files (*.xml)|*.xml.
+        ///   Recherche une chaîne localisée semblable à .
         /// </summary>
         public static string MenuViewModel_DoOpenFiles_Xml_files____xml____xml {
             get {
@@ -295,7 +295,7 @@ namespace Parakeet.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Enregistrer sous.
+        ///   Recherche une chaîne localisée semblable à .
         /// </summary>
         public static string MenuViewModel_DoSaveFilesUnder_Sous____ {
             get {
@@ -304,7 +304,7 @@ namespace Parakeet.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Xml files (*.xml)|*.xml.
+        ///   Recherche une chaîne localisée semblable à .
         /// </summary>
         public static string MenuViewModel_DoSaveFilesUnder_Xml_files___xml______xml {
             get {
@@ -313,7 +313,7 @@ namespace Parakeet.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Ajouter.
+        ///   Recherche une chaîne localisée semblable à .
         /// </summary>
         public static string RemoveFilesView_Add {
             get {
@@ -322,7 +322,7 @@ namespace Parakeet.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Supprimer sélection.
+        ///   Recherche une chaîne localisée semblable à .
         /// </summary>
         public static string RemoveFilesView_Delete {
             get {
@@ -331,7 +331,7 @@ namespace Parakeet.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à On.
+        ///   Recherche une chaîne localisée semblable à .
         /// </summary>
         public static string RemoveFilesView_HeaderActivated {
             get {
@@ -340,7 +340,7 @@ namespace Parakeet.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Extension.
+        ///   Recherche une chaîne localisée semblable à .
         /// </summary>
         public static string RemoveFilesView_HeaderExtension {
             get {
@@ -349,7 +349,7 @@ namespace Parakeet.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Chaînes.
+        ///   Recherche une chaîne localisée semblable à .
         /// </summary>
         public static string RemoveFilesView_HeaderString {
             get {
@@ -358,7 +358,7 @@ namespace Parakeet.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Ajouter Regex.
+        ///   Recherche une chaîne localisée semblable à .
         /// </summary>
         public static string SortByView_AddRegex {
             get {
@@ -367,7 +367,7 @@ namespace Parakeet.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Supprimer Regex.
+        ///   Recherche une chaîne localisée semblable à .
         /// </summary>
         public static string SortByView_DeleteEntry {
             get {
@@ -376,7 +376,7 @@ namespace Parakeet.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à On.
+        ///   Recherche une chaîne localisée semblable à .
         /// </summary>
         public static string SortByView_HeaderActivated {
             get {
@@ -385,7 +385,7 @@ namespace Parakeet.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Regex.
+        ///   Recherche une chaîne localisée semblable à .
         /// </summary>
         public static string SortByView_HeaderRegex {
             get {
@@ -394,7 +394,7 @@ namespace Parakeet.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Annuler.
+        ///   Recherche une chaîne localisée semblable à .
         /// </summary>
         public static string StatusBarView_Cancel {
             get {
@@ -403,7 +403,7 @@ namespace Parakeet.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Fichier :.
+        ///   Recherche une chaîne localisée semblable à .
         /// </summary>
         public static string StatusBarView_File {
             get {
@@ -412,7 +412,7 @@ namespace Parakeet.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à En cours..
+        ///   Recherche une chaîne localisée semblable à .
         /// </summary>
         public static string StatusBarViewModel_StatusTask_Running {
             get {
@@ -421,7 +421,7 @@ namespace Parakeet.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à En attente..
+        ///   Recherche une chaîne localisée semblable à .
         /// </summary>
         public static string StatusBarViewModel_StatusTask_Waiting {
             get {

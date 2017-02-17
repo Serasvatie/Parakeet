@@ -118,126 +118,126 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="DirectoryControlViewModel_DoAddDirectory_Select_a_folder_to_add____" xml:space="preserve">
-    <value />
+    <value>Sélectionner un dossier</value>
   </data>
   <data name="MenuViewModel_DoNewFiles_Select_file_name___" xml:space="preserve">
-    <value />
+    <value>Entrer un nouveau nom de fichier</value>
   </data>
   <data name="MenuViewModel_DoSaveFilesUnder_Sous____" xml:space="preserve">
-    <value />
+    <value>Enregistrer sous</value>
   </data>
   <data name="MenuViewModel_DoSaveFilesUnder_Xml_files___xml______xml" xml:space="preserve">
-    <value />
+    <value>Xml files (*.xml)|*.xml</value>
   </data>
   <data name="MenuView_Exit" xml:space="preserve">
-    <value />
+    <value>Quitter</value>
   </data>
   <data name="MenuView_FileHeader" xml:space="preserve">
-    <value />
+    <value>Fichier</value>
   </data>
   <data name="MenuView_Language" xml:space="preserve">
-    <value />
+    <value>Langue</value>
   </data>
   <data name="MenuView_NewFile" xml:space="preserve">
-    <value />
+    <value>Nouveau fichier</value>
   </data>
   <data name="MenuView_OpenFile" xml:space="preserve">
-    <value />
+    <value>Ouvrir un fichier ...</value>
   </data>
   <data name="MenuView_Save" xml:space="preserve">
-    <value />
+    <value>Enregsitrer</value>
   </data>
   <data name="MenuView_SaveUnder" xml:space="preserve">
-    <value />
+    <value>Enregistrer sous...</value>
   </data>
   <data name="MenuViewModel_DoOpenFiles_Xml_files____xml____xml" xml:space="preserve">
-    <value />
+    <value>Xml files (*.xml)|*.xml</value>
   </data>
   <data name="MenuViewModel_DoOpenFiles_Select_a_xml_file" xml:space="preserve">
-    <value />
+    <value>Sélectionner un fichier xml</value>
   </data>
   <data name="StatusBarViewModel_StatusTask_Running" xml:space="preserve">
-    <value />
+    <value>En cours.</value>
   </data>
   <data name="StatusBarViewModel_StatusTask_Waiting" xml:space="preserve">
-    <value />
+    <value>En attente.</value>
   </data>
   <data name="ListContextMenuView_Delete" xml:space="preserve">
-    <value />
+    <value>Supprimer</value>
   </data>
   <data name="ListContextMenuView_Down" xml:space="preserve">
-    <value />
+    <value>Dépalcer vers le bas</value>
   </data>
   <data name="ListContextMenuView_Up" xml:space="preserve">
-    <value />
+    <value>Déplacer vers le haut</value>
   </data>
   <data name="StatusBarView_Cancel" xml:space="preserve">
-    <value />
+    <value>Annuler</value>
   </data>
   <data name="StatusBarView_File" xml:space="preserve">
-    <value />
+    <value>Fichier :</value>
   </data>
   <data name="ChangeFileNameView_AddRules" xml:space="preserve">
-    <value />
+    <value>Ajouter règle</value>
   </data>
   <data name="ChangeFileNameView_DeleteRules" xml:space="preserve">
-    <value />
+    <value>Supprimer règle</value>
   </data>
   <data name="ChangeFileNameView_HeaderActivated" xml:space="preserve">
-    <value />
+    <value>Activer</value>
   </data>
   <data name="ChangeFileNameView_HeaderFirst" xml:space="preserve">
-    <value />
+    <value>Changer</value>
   </data>
   <data name="ChangeFileNameView_HeaderSecond" xml:space="preserve">
-    <value />
+    <value>Par</value>
   </data>
   <data name="ChangeFileNameView_HeaderTarget" xml:space="preserve">
-    <value />
+    <value>Cible</value>
   </data>
   <data name="DirectoryControlView_AddDirectory" xml:space="preserve">
-    <value />
+    <value>Ajouter un dossier</value>
   </data>
   <data name="DirectoryControlView_DeleteEntry" xml:space="preserve">
-    <value />
+    <value>Supprimer</value>
   </data>
   <data name="DirectoryControlView_HeaderActivated" xml:space="preserve">
-    <value />
+    <value>Activer</value>
   </data>
   <data name="DirectoryControlView_HeaderFolder" xml:space="preserve">
-    <value />
+    <value>Dossiers</value>
   </data>
   <data name="DirectoryControlView_StartTask" xml:space="preserve">
-    <value />
+    <value>Lancement du processus</value>
   </data>
   <data name="RemoveFilesView_Add" xml:space="preserve">
-    <value />
+    <value>Ajouter</value>
   </data>
   <data name="RemoveFilesView_Delete" xml:space="preserve">
-    <value />
+    <value>Supprimer sélection</value>
   </data>
   <data name="RemoveFilesView_HeaderActivated" xml:space="preserve">
-    <value />
+    <value>Activer</value>
   </data>
   <data name="RemoveFilesView_HeaderExtension" xml:space="preserve">
-    <value />
+    <value>Extension</value>
   </data>
   <data name="RemoveFilesView_HeaderString" xml:space="preserve">
-    <value />
+    <value>Chaînes</value>
   </data>
   <data name="SortByView_AddRegex" xml:space="preserve">
-    <value />
+    <value>Ajouter Regex</value>
   </data>
   <data name="SortByView_DeleteEntry" xml:space="preserve">
-    <value />
+    <value>Supprimer Regex</value>
   </data>
   <data name="SortByView_HeaderActivated" xml:space="preserve">
-    <value />
+    <value>Activer</value>
   </data>
   <data name="SortByView_HeaderRegex" xml:space="preserve">
-    <value />
+    <value>Regex</value>
   </data>
   <data name="MainWindow_MainWindow_Error_File_Reading" xml:space="preserve">
-    <value />
+    <value>Erreur durant la lecture du fichier xml par défaut.</value>
   </data>
 </root>
