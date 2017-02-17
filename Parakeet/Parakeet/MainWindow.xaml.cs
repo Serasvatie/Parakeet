@@ -11,11 +11,11 @@ namespace Parakeet
     /// </summary>
     public partial class MainWindow : Window
     {
-        private DirectoryControlViewModel directoryControl;
-        private ChangeFileNameViewModel changeFileName;
-        private RemoveFilesViewModel removeFiles;
-        private MenuViewModel menu;
-        private SortByViewModel sortBy;
+        private DirectoryControlViewModel _directoryControl;
+        private ChangeFileNameViewModel _changeFileName;
+        private RemoveFilesViewModel _removeFiles;
+        private MenuViewModel _menu;
+        private SortByViewModel _sortBy;
 
         public MainWindow()
         {
@@ -26,9 +26,9 @@ namespace Parakeet
 
             try
             {
-                Data.getInstance().FileTitle = Settings.Default.NameCurrentXmlFile;
-                if (!string.IsNullOrEmpty(Data.getInstance().FileTitle))
-                    Data.getInstance().ReadData();
+                Data.GetInstance().FileTitle = Settings.Default.NameCurrentXmlFile;
+                if (!string.IsNullOrEmpty(Data.GetInstance().FileTitle))
+                    Data.GetInstance().ReadData();
             }
             catch (Exception)
             {
@@ -37,22 +37,22 @@ namespace Parakeet
 
             #region INIT VIEWMODEL
 
-            directoryControl = new DirectoryControlViewModel();
-            changeFileName = new ChangeFileNameViewModel();
-            removeFiles = new RemoveFilesViewModel();
-            menu = new MenuViewModel(this);
-            sortBy = new SortByViewModel();
+            _directoryControl = new DirectoryControlViewModel();
+            _changeFileName = new ChangeFileNameViewModel();
+            _removeFiles = new RemoveFilesViewModel();
+            _menu = new MenuViewModel(this);
+            _sortBy = new SortByViewModel();
 
             #endregion
 
             #region INIT VIEW
 
-            this.DirectoryControlView.DataContext = directoryControl;
-            this.ChangeFileNameView.DataContext = changeFileName;
-            this.RemoveFilesView.DataContext = removeFiles;
-            this.MenuView.DataContext = menu;
-            this.SortByView.DataContext = sortBy;
-            this.StatusBarView.DataContext = StatusBarViewModel.getInstance();
+            this.DirectoryControlView.DataContext = _directoryControl;
+            this.ChangeFileNameView.DataContext = _changeFileName;
+            this.RemoveFilesView.DataContext = _removeFiles;
+            this.MenuView.DataContext = _menu;
+            this.SortByView.DataContext = _sortBy;
+            this.StatusBarView.DataContext = StatusBarViewModel.GetInstance();
 
             #endregion
         }
@@ -64,7 +64,7 @@ namespace Parakeet
 
         void MainWindow_Closing(object sender, EventArgs e)
         {
-            Settings.Default.NameCurrentXmlFile = Data.getInstance().FileTitle;
+            Settings.Default.NameCurrentXmlFile = Data.GetInstance().FileTitle;
             Settings.Default.Save();
         }
     }

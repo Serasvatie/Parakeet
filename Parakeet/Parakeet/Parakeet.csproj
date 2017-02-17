@@ -75,6 +75,9 @@
     <Compile Include="View\PrimaryWindow\DirectoryControlView.xaml.cs">
       <DependentUpon>DirectoryControlView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\PrimaryWindow\ListContextMenuView.xaml.cs">
+      <DependentUpon>ListContextMenuView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\PrimaryWindow\MenuView.xaml.cs">
       <DependentUpon>MenuView.xaml</DependentUpon>
     </Compile>
@@ -107,6 +110,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\PrimaryWindow\DirectoryControlView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PrimaryWindow\ListContextMenuView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -162,9 +169,17 @@
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FFManager\FFManager.csproj">
+    <ProjectReference Include="..\Manager\FFManager\FFManager.csproj">
       <Project>{2d478c0a-c99c-4336-a47e-3a2e789f98e3}</Project>
       <Name>FFManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Manager\Manager\Manager.csproj">
+      <Project>{2D34F9AA-31A2-4F7B-B075-B0AFA4AF7231}</Project>
+      <Name>Manager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Manager\SManager\SManager.csproj">
+      <Project>{2EF2AEBC-1AF3-4ECC-AA1C-BB2C417888F8}</Project>
+      <Name>SManager</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

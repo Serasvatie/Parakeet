@@ -8,27 +8,35 @@ namespace Parakeet.ViewModel.PrimaryWindow
     public class StatusBarViewModel : BaseNotifyPropertyChanged
     {
         private static StatusBarViewModel _instance;
-        static readonly object instancelock = new object();
+        static readonly object Instancelock = new object();
 
-        private ICommand cancel;
+        private ICommand _cancel;
 
         public StatusBarViewModel()
         {
-            Data.getInstance().manager.IsBwStarted += (sender, args) =>
+            Data.GetInstance().FFManager.IsBwStarted += (sender, args) =>
             {
                 RefreshAll();
             };
-            Data.getInstance().manager.bwTask.RunWorkerCompleted += (sender, args) =>
+            Data.GetInstance().FFManager.BwTask.RunWorkerCompleted += (sender, args) =>
+            {
+                RefreshAll();
+            };
+            Data.GetInstance().SManager.BwTask.RunWorkerCompleted += (sender, args) =>
+            {
+                RefreshAll();
+            };
+            Data.GetInstance().SManager.IsBwStarted += (sender, args) =>
             {
                 RefreshAll();
             };
         }
 
-        public static StatusBarViewModel getInstance()
+        public static StatusBarViewModel GetInstance()
         {
             if (_instance == null)
             {
-                lock (instancelock)
+                lock (Instancelock)
                     if (_instance == null)
                         _instance = new StatusBarViewModel();
             }
@@ -40,28 +48,31 @@ namespace Parakeet.ViewModel.PrimaryWindow
             RefreshAll();
         }
 
-        public string FileName => Path.GetFileNameWithoutExtension(Data.getInstance().FileTitle);
+        public string FileName => Path.GetFileNameWithoutExtension(Data.GetInstance().FileTitle);
 
         public string StatusTask
         {
-            get { return Data.getInstance().manager.bwTask.IsBusy ? "En cours." : "En attente."; }
+            get { return Data.GetInstance().FFManager.BwTask.IsBusy || Data.GetInstance().SManager.BwTask.IsBusy ? "En cours." : "En attente."; }
         }
 
         public bool StatusValue
         {
-            get { return Data.getInstance().manager.bwTask.IsBusy; }
+            get { return Data.GetInstance().FFManager.BwTask.IsBusy || Data.GetInstance().SManager.BwTask.IsBusy; }
         }
 
-        public ICommand Cancel => this.cancel ?? (cancel = new RelayCommand(DoCancel, CanCancel));
+        public ICommand Cancel => this._cancel ?? (_cancel = new RelayCommand(DoCancel, CanCancel));
 
         private void DoCancel()
         {
-            Data.getInstance().manager.bwTask.CancelAsync();
+            if (Data.GetInstance().FFManager.BwTask.IsBusy)
+                Data.GetInstance().FFManager.BwTask.CancelAsync();
+            if (Data.GetInstance().SManager.BwTask.IsBusy)
+                Data.GetInstance().SManager.BwTask.CancelAsync();
         }
 
         private bool CanCancel()
         {
-            return Data.getInstance().manager.bwTask.IsBusy;
+            return Data.GetInstance().FFManager.BwTask.IsBusy || Data.GetInstance().SManager.BwTask.IsBusy;
         }
     }
 }

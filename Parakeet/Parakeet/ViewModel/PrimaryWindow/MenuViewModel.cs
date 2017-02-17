@@ -9,22 +9,22 @@ namespace Parakeet.ViewModel.PrimaryWindow
 {
     public class MenuViewModel
     {
-        private MainWindow mainWindow;
+        private MainWindow _mainWindow;
 
-        private ICommand newFiles;
-        private ICommand openFiles;
-        private ICommand saveFiles;
-        private ICommand saveFilesUnder;
-        private ICommand exit;
+        private ICommand _newFiles;
+        private ICommand _openFiles;
+        private ICommand _saveFiles;
+        private ICommand _saveFilesUnder;
+        private ICommand _exit;
 
         public MenuViewModel(MainWindow mainWindow)
         {
-            this.mainWindow = mainWindow;
+            this._mainWindow = mainWindow;
         }
 
         public ICommand NewFiles
         {
-            get { return newFiles ?? (newFiles = new RelayCommand(DoNewFiles, CanNewFiles)); }
+            get { return _newFiles ?? (_newFiles = new RelayCommand(DoNewFiles, CanNewFiles)); }
         }
 
         private bool CanNewFiles()
@@ -48,16 +48,16 @@ namespace Parakeet.ViewModel.PrimaryWindow
         private void NewFile(object sender, CancelEventArgs e)
         {
             FileDialog _new = (FileDialog)sender;
-            Data.getInstance().FileTitle = _new.FileName;
-            Data.getInstance().DirectoryModels.Clear();
-            Data.getInstance().RemoveRules.Clear();
-            Data.getInstance().RenameRules.Clear();
-            StatusBarViewModel.getInstance().RunRefresh();
+            Data.GetInstance().FileTitle = _new.FileName;
+            Data.GetInstance().DirectoryModels.Clear();
+            Data.GetInstance().RemoveRules.Clear();
+            Data.GetInstance().RenameRules.Clear();
+            StatusBarViewModel.GetInstance().RunRefresh();
         }
 
         public ICommand OpenFiles
         {
-            get { return openFiles ?? (openFiles = new RelayCommand(DoOpenFiles, CanOpenFiles)); }
+            get { return _openFiles ?? (_openFiles = new RelayCommand(DoOpenFiles, CanOpenFiles)); }
         }
 
         private bool CanOpenFiles()
@@ -71,15 +71,15 @@ namespace Parakeet.ViewModel.PrimaryWindow
             open.Filter = "Xml files (*.xml)|*.xml";
             open.InitialDirectory = Data.FullPathSaveDirectory;
             open.Title = "Select a xml file";
-            open.FileOk += gettingFile;
+            open.FileOk += GettingFile;
             open.ShowDialog();
-            StatusBarViewModel.getInstance().RunRefresh();
+            StatusBarViewModel.GetInstance().RunRefresh();
         }
 
-        private void gettingFile(object sender, CancelEventArgs e)
+        private void GettingFile(object sender, CancelEventArgs e)
         {
             FileDialog tmp = (FileDialog)sender;
-            var data = Data.getInstance();
+            var data = Data.GetInstance();
             data.FileTitle = tmp.FileName;
             data.DirectoryModels.Clear();
             data.RemoveRules.Clear();
@@ -89,23 +89,23 @@ namespace Parakeet.ViewModel.PrimaryWindow
 
         public ICommand SaveFiles
         {
-            get { return saveFiles ?? (saveFiles = new RelayCommand(DoSaveFiles, CanSaveFiles)); }
+            get { return _saveFiles ?? (_saveFiles = new RelayCommand(DoSaveFiles, CanSaveFiles)); }
         }
 
         private bool CanSaveFiles()
         {
-            return !string.IsNullOrEmpty(Data.getInstance().FileTitle);
+            return !string.IsNullOrEmpty(Data.GetInstance().FileTitle);
         }
 
         private void DoSaveFiles()
         {
-            Data.getInstance().WriteData();
-            StatusBarViewModel.getInstance().RunRefresh();
+            Data.GetInstance().WriteData();
+            StatusBarViewModel.GetInstance().RunRefresh();
         }
 
         public ICommand SaveFilesUnder
         {
-            get { return saveFilesUnder ?? (saveFilesUnder = new RelayCommand(DoSaveFilesUnder, CanSaveFilesUnder)); }
+            get { return _saveFilesUnder ?? (_saveFilesUnder = new RelayCommand(DoSaveFilesUnder, CanSaveFilesUnder)); }
         }
 
         private bool CanSaveFilesUnder()
@@ -129,15 +129,15 @@ namespace Parakeet.ViewModel.PrimaryWindow
         private void save_fileOk(object sender, CancelEventArgs e)
         {
             string fileTitle = ((FileDialog)sender).FileName;
-            var data = Data.getInstance();
+            var data = Data.GetInstance();
             data.FileTitle = fileTitle;
             data.WriteData();
-            StatusBarViewModel.getInstance().RunRefresh();
+            StatusBarViewModel.GetInstance().RunRefresh();
         }
 
         public ICommand Exit
         {
-            get { return exit ?? (exit = new RelayCommand(DoExit, CanExit)); }
+            get { return _exit ?? (_exit = new RelayCommand(DoExit, CanExit)); }
         }
 
         private bool CanExit()
@@ -147,7 +147,7 @@ namespace Parakeet.ViewModel.PrimaryWindow
 
         private void DoExit()
         {
-            mainWindow.Close();
+            _mainWindow.Close();
         }
     }
 }

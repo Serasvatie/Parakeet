@@ -1,0 +1,8 @@
+﻿<ContextMenu x:Class="Parakeet.View.PrimaryWindow.ListContextMenuView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <MenuItem Header="Up" Name="Up" Command="{Binding DoUp}"/>
+    <MenuItem Header="Down" Name="Down" Command="{Binding DoDown}"/>
+    <Separator/>
+    <MenuItem Header="Delete" Name="Delete" Command="{Binding DeleteEntry}"/>
+</ContextMenu>
