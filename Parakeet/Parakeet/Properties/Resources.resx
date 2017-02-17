@@ -46,7 +46,7 @@
     
     mimetype: application/x-microsoft.net.object.binary.base64
     value   : The object must be serialized with 
-            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
     
     mimetype: application/x-microsoft.net.object.soap.base64
@@ -60,6 +60,7 @@
             : and then encoded with base64 encoding.
     -->
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
@@ -68,9 +69,10 @@
               <xsd:sequence>
                 <xsd:element name="value" type="xsd:string" minOccurs="0" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="name" use="required" type="xsd:string" />
               <xsd:attribute name="type" type="xsd:string" />
               <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
@@ -85,9 +87,10 @@
                 <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
                 <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
               <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
               <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
@@ -109,21 +112,132 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="DirectoryControlViewModel_DoAddDirectory_Select_a_folder_to_add____" xml:space="preserve">
-    <value>Select a folder to add ...</value>
-  </data>
-  <data name="MenuViewModel_DoSaveFilesUnder_Xml_files___xml______xml" xml:space="preserve">
-    <value>Xml files(*.xml) | *.xml</value>
-  </data>
-  <data name="MenuViewModel_DoSaveFilesUnder_Sous____" xml:space="preserve">
-    <value>Sous ...</value>
+    <value />
   </data>
   <data name="MenuViewModel_DoNewFiles_Select_file_name___" xml:space="preserve">
-    <value>Select file name...</value>
+    <value>Entrer un nouveau nom de fichier</value>
+  </data>
+  <data name="MenuViewModel_DoSaveFilesUnder_Sous____" xml:space="preserve">
+    <value>Enregistrer sous</value>
+  </data>
+  <data name="MenuViewModel_DoSaveFilesUnder_Xml_files___xml______xml" xml:space="preserve">
+    <value>Xml files (*.xml)|*.xml</value>
+  </data>
+  <data name="MenuView_Exit" xml:space="preserve">
+    <value>Quitter</value>
+  </data>
+  <data name="MenuView_FileHeader" xml:space="preserve">
+    <value>Fichier</value>
+  </data>
+  <data name="MenuView_Language" xml:space="preserve">
+    <value>Langue</value>
+  </data>
+  <data name="MenuView_NewFile" xml:space="preserve">
+    <value>Nouveau fichier</value>
+  </data>
+  <data name="MenuView_OpenFile" xml:space="preserve">
+    <value>Ouvrir un fichier ...</value>
+  </data>
+  <data name="MenuView_Save" xml:space="preserve">
+    <value>Enregsitrer</value>
+  </data>
+  <data name="MenuView_SaveUnder" xml:space="preserve">
+    <value>Enregistrer sous...</value>
+  </data>
+  <data name="MenuViewModel_DoOpenFiles_Xml_files____xml____xml" xml:space="preserve">
+    <value>Xml files (*.xml)|*.xml</value>
+  </data>
+  <data name="MenuViewModel_DoOpenFiles_Select_a_xml_file" xml:space="preserve">
+    <value>Select a xml file</value>
+  </data>
+  <data name="StatusBarViewModel_StatusTask_Running" xml:space="preserve">
+    <value>En cours.</value>
+  </data>
+  <data name="StatusBarViewModel_StatusTask_Waiting" xml:space="preserve">
+    <value>En attente.</value>
+  </data>
+  <data name="ListContextMenuView_Delete" xml:space="preserve">
+    <value>Supprimer</value>
+  </data>
+  <data name="ListContextMenuView_Down" xml:space="preserve">
+    <value>Dépalcer vers le bas</value>
+  </data>
+  <data name="ListContextMenuView_Up" xml:space="preserve">
+    <value>Déplacer vers le haut</value>
+  </data>
+  <data name="StatusBarView_Cancel" xml:space="preserve">
+    <value>Annuler</value>
+  </data>
+  <data name="StatusBarView_File" xml:space="preserve">
+    <value>Fichier :</value>
+  </data>
+  <data name="ChangeFileNameView_AddRules" xml:space="preserve">
+    <value>Ajouter règle</value>
+  </data>
+  <data name="ChangeFileNameView_DeleteRules" xml:space="preserve">
+    <value>Supprimer règle</value>
+  </data>
+  <data name="ChangeFileNameView_HeaderActivated" xml:space="preserve">
+    <value>On</value>
+  </data>
+  <data name="ChangeFileNameView_HeaderFirst" xml:space="preserve">
+    <value>Changer</value>
+  </data>
+  <data name="ChangeFileNameView_HeaderSecond" xml:space="preserve">
+    <value>Par</value>
+  </data>
+  <data name="ChangeFileNameView_HeaderTarget" xml:space="preserve">
+    <value>Cible</value>
+  </data>
+  <data name="DirectoryControlView_AddDirectory" xml:space="preserve">
+    <value>Ajouter un dossier</value>
+  </data>
+  <data name="DirectoryControlView_DeleteEntry" xml:space="preserve">
+    <value>Supprimer</value>
+  </data>
+  <data name="DirectoryControlView_HeaderActivated" xml:space="preserve">
+    <value>On</value>
+  </data>
+  <data name="DirectoryControlView_HeaderFolder" xml:space="preserve">
+    <value>Dossiers</value>
+  </data>
+  <data name="DirectoryControlView_StartTask" xml:space="preserve">
+    <value>Lancement du processus</value>
+  </data>
+  <data name="RemoveFilesView_Add" xml:space="preserve">
+    <value>Ajouter</value>
+  </data>
+  <data name="RemoveFilesView_Delete" xml:space="preserve">
+    <value>Supprimer sélection</value>
+  </data>
+  <data name="RemoveFilesView_HeaderActivated" xml:space="preserve">
+    <value>On</value>
+  </data>
+  <data name="RemoveFilesView_HeaderExtension" xml:space="preserve">
+    <value>Extension</value>
+  </data>
+  <data name="RemoveFilesView_HeaderString" xml:space="preserve">
+    <value>Chaînes</value>
+  </data>
+  <data name="SortByView_AddRegex" xml:space="preserve">
+    <value>Ajouter Regex</value>
+  </data>
+  <data name="SortByView_DeleteEntry" xml:space="preserve">
+    <value>Supprimer Regex</value>
+  </data>
+  <data name="SortByView_HeaderActivated" xml:space="preserve">
+    <value>On</value>
+  </data>
+  <data name="SortByView_HeaderRegex" xml:space="preserve">
+    <value>Regex</value>
+  </data>
+  <data name="MainWindow_MainWindow_Error_File_Reading" xml:space="preserve">
+    <value>Erreur durant la lecture du fichier xml par défaut.</value>
   </data>
 </root>
