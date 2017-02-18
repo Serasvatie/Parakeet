@@ -199,7 +199,7 @@ namespace Parakeet.ViewModel.PrimaryWindow
             FrCheck = true;
             CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("fr");
             Settings.Default.CultureInfo = "fr";
-            System.Windows.MessageBox.Show(System.Windows.Application.Current.MainWindow, "Redémarrer Parakeet pour que la modification prennet effet.", "Français");
+            System.Windows.MessageBox.Show(System.Windows.Application.Current.MainWindow, "Redémarrer Parakeet pour que la modification prenne effet.", "Français");
         }
 
         public bool FrCheck {
