@@ -13,8 +13,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SManager", "Manager\SManage
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manager", "Manager\Manager\Manager.csproj", "{2D34F9AA-31A2-4F7B-B075-B0AFA4AF7231}"
 EndProject
-Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "ParakeetSetup", "ParakeetSetup\ParakeetSetup.wixproj", "{9945D800-438F-4493-9450-66727FD4D7F6}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,12 +53,6 @@ Global
 		{2D34F9AA-31A2-4F7B-B075-B0AFA4AF7231}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2D34F9AA-31A2-4F7B-B075-B0AFA4AF7231}.Release|x86.ActiveCfg = Release|Any CPU
 		{2D34F9AA-31A2-4F7B-B075-B0AFA4AF7231}.Release|x86.Build.0 = Release|Any CPU
-		{9945D800-438F-4493-9450-66727FD4D7F6}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{9945D800-438F-4493-9450-66727FD4D7F6}.Debug|x86.ActiveCfg = Debug|x86
-		{9945D800-438F-4493-9450-66727FD4D7F6}.Debug|x86.Build.0 = Debug|x86
-		{9945D800-438F-4493-9450-66727FD4D7F6}.Release|Any CPU.ActiveCfg = Release|x86
-		{9945D800-438F-4493-9450-66727FD4D7F6}.Release|x86.ActiveCfg = Release|x86
-		{9945D800-438F-4493-9450-66727FD4D7F6}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
