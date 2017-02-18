@@ -1,25 +1,39 @@
-﻿using System.ComponentModel;
+﻿using Parakeet.Model;
+using Parakeet.Properties;
+using System.ComponentModel;
+using System.Globalization;
 using System.Windows.Forms;
 using System.Windows.Input;
-using Parakeet.Model;
-using Parakeet.Properties;
-using System;
 
 namespace Parakeet.ViewModel.PrimaryWindow
 {
-    public class MenuViewModel
+    public class MenuViewModel : BaseNotifyPropertyChanged
     {
         private MainWindow _mainWindow;
+
+        private bool _en;
+        private bool _fr;
 
         private ICommand _newFiles;
         private ICommand _openFiles;
         private ICommand _saveFiles;
         private ICommand _saveFilesUnder;
         private ICommand _exit;
+        private ICommand _english;
+        private ICommand _french;
 
         public MenuViewModel(MainWindow mainWindow)
         {
             this._mainWindow = mainWindow;
+            switch (Settings.Default.CultureInfo)
+            {
+                case "en":
+                    EnCheck = true;
+                    break;
+                case "fr":
+                    FrCheck = true;
+                    break;
+            }
         }
 
         public ICommand NewFiles
@@ -38,7 +52,7 @@ namespace Parakeet.ViewModel.PrimaryWindow
             _new.AddExtension = true;
             _new.CheckPathExists = true;
             _new.DefaultExt = ".xml";
-            _new.Filter = "Xml files (*.xml)|*.xml";
+            _new.Filter = Resources.MenuViewModel_DoOpenFiles_Xml_files____xml____xml;
             _new.Title = Resources.MenuViewModel_DoNewFiles_Select_file_name___;
             _new.InitialDirectory = Data.FullPathSaveDirectory;
             _new.FileOk += NewFile;
@@ -68,9 +82,9 @@ namespace Parakeet.ViewModel.PrimaryWindow
         private void DoOpenFiles()
         {
             OpenFileDialog open = new OpenFileDialog();
-            open.Filter = "Xml files (*.xml)|*.xml";
+            open.Filter = Resources.MenuViewModel_DoOpenFiles_Xml_files____xml____xml;
             open.InitialDirectory = Data.FullPathSaveDirectory;
-            open.Title = "Select a xml file";
+            open.Title = Resources.MenuViewModel_DoOpenFiles_Select_a_xml_file;
             open.FileOk += GettingFile;
             open.ShowDialog();
             StatusBarViewModel.GetInstance().RunRefresh();
@@ -148,6 +162,53 @@ namespace Parakeet.ViewModel.PrimaryWindow
         private void DoExit()
         {
             _mainWindow.Close();
+        }
+
+        public ICommand English
+        {
+            get { return this._english ?? (this._english = new RelayCommand(DoEnglish)); }
+        }
+
+        private void DoEnglish()
+        {
+            EnCheck = true;
+            FrCheck = false;
+            CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("en");
+            Settings.Default.CultureInfo = "en";
+            System.Windows.MessageBox.Show(System.Windows.Application.Current.MainWindow, "Please restart Parakeet to make the modification take effect.", "English");
+        }
+
+        public bool EnCheck
+        {
+            get { return _en; }
+            set
+            {
+                _en = value;
+                OnPropertyChanged("EnCheck");
+            }
+        }
+
+        public ICommand French
+        {
+            get { return this._french ?? (this._french = new RelayCommand(DoFrench)); }
+        }
+
+        private void DoFrench()
+        {
+            EnCheck = false;
+            FrCheck = true;
+            CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("fr");
+            Settings.Default.CultureInfo = "fr";
+            System.Windows.MessageBox.Show(System.Windows.Application.Current.MainWindow, "Redémarrer Parakeet pour que la modification prennet effet.", "Français");
+        }
+
+        public bool FrCheck {
+            get { return _fr; }
+            set
+            {
+                _fr = value;
+                OnPropertyChanged("FrCheck");
+            }
         }
     }
 }

@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:System="clr-namespace:System;assembly=mscorlib"
              xmlns:local="clr-namespace:Parakeet.View.PrimaryWindow"
+             xmlns:l="clr-namespace:Parakeet.Properties"
              xmlns:manager="clr-namespace:Manager.Manager;assembly=Manager">
     <Control.Resources>
         <ObjectDataProvider x:Key="dataFromEnum" MethodName="GetValues"
@@ -31,15 +32,15 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn Width="Auto" DisplayMemberBinding="{Binding Old, StringFormat='\'{0}\'', Mode=OneWay}">
-                        <GridViewColumnHeader Tag="Chaînes" FontSize="13">Changer</GridViewColumnHeader>
+                        <GridViewColumnHeader Tag="Chaînes" FontSize="13" Content="{x:Static l:Resources.ChangeFileNameView_HeaderFirst}"/>
                     </GridViewColumn>
 
                     <GridViewColumn Width="Auto" DisplayMemberBinding="{Binding New, StringFormat='\'{0}\'', Mode=OneWay}">
-                        <GridViewColumnHeader Tag="ByChaînes" FontSize="13">Par</GridViewColumnHeader>
+                        <GridViewColumnHeader Tag="ByChaînes" FontSize="13" Content="{x:Static l:Resources.ChangeFileNameView_HeaderSecond}"/>
                     </GridViewColumn>
 
                     <GridViewColumn Width="Auto">
-                        <GridViewColumnHeader Tag="Cible" FontSize="13">Cible</GridViewColumnHeader>
+                        <GridViewColumnHeader Tag="Cible" FontSize="13" Content="{x:Static l:Resources.ChangeFileNameView_HeaderTarget}"/>
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <ComboBox ItemsSource="{Binding Source={StaticResource dataFromEnum}}" SelectedItem="{Binding Target}"/>
@@ -48,7 +49,7 @@
                     </GridViewColumn>
                     
                     <GridViewColumn Width="Auto">
-                        <GridViewColumnHeader>Activer</GridViewColumnHeader>
+                        <GridViewColumnHeader Content="{x:Static l:Resources.ChangeFileNameView_HeaderActivated}"/>
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <CheckBox IsChecked="{Binding IsActivate, Mode=TwoWay}"/>
@@ -61,7 +62,7 @@
 
         <TextBox x:Name="ChangeNameBox"  Grid.Column="1" Grid.Row="0" TextAlignment="Left" Text="{Binding ChangeName}" Height="22" Margin="10,20,10,10"/>
         <TextBox x:Name="ByNameBox"  Grid.Column="1" Grid.Row="1" TextAlignment="Left" Text="{Binding ByName}" Height="22" Margin="10,10,10,10"/>
-        <Button Grid.Column="1" Grid.Row="2" Content="Ajouter règles" Command="{Binding AddRules}" Height="30" Margin="10,0,10,0"/>
-        <Button Grid.Column="1" Grid.Row="3" Content="Supprimer règles" Command="{Binding DeleteEntry}" Height="30" Margin="10,0,10,20"/>
+        <Button Grid.Column="1" Grid.Row="2" Content="{x:Static l:Resources.ChangeFileNameView_AddRules}" Command="{Binding AddRules}" Height="30" Margin="10,0,10,0"/>
+        <Button Grid.Column="1" Grid.Row="3" Content="{x:Static l:Resources.ChangeFileNameView_DeleteRules}" Command="{Binding DeleteEntry}" Height="30" Margin="10,0,10,20"/>
     </Grid>
 </UserControl>

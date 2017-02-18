@@ -32,7 +32,7 @@ namespace Parakeet
             }
             catch (Exception)
             {
-                MessageBox.Show(this, "Erreur durant la lecture du fichier xml par défaut.");
+                MessageBox.Show(this, Properties.Resources.MainWindow_MainWindow_Error_File_Reading);
             }
 
             #region INIT VIEWMODEL

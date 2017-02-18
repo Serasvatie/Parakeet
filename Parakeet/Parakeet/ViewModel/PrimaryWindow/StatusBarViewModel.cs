@@ -2,6 +2,7 @@
 using System.IO;
 using System.Windows.Input;
 using Parakeet.Model;
+using Parakeet.Properties;
 
 namespace Parakeet.ViewModel.PrimaryWindow
 {
@@ -52,7 +53,7 @@ namespace Parakeet.ViewModel.PrimaryWindow
 
         public string StatusTask
         {
-            get { return Data.GetInstance().FFManager.BwTask.IsBusy || Data.GetInstance().SManager.BwTask.IsBusy ? "En cours." : "En attente."; }
+            get { return Data.GetInstance().FFManager.BwTask.IsBusy || Data.GetInstance().SManager.BwTask.IsBusy ? Resources.StatusBarViewModel_StatusTask_Running : Resources.StatusBarViewModel_StatusTask_Waiting; }
         }
 
         public bool StatusValue

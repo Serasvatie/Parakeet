@@ -82,5 +82,17 @@ namespace Parakeet.Properties {
                 this["TaskSort"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string CultureInfo {
+            get {
+                return ((string)(this["CultureInfo"]));
+            }
+            set {
+                this["CultureInfo"] = value;
+            }
+        }
     }
 }
