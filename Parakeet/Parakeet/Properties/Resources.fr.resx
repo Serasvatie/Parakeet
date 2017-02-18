@@ -240,4 +240,26 @@
   <data name="MainWindow_MainWindow_Error_File_Reading" xml:space="preserve">
     <value>Erreur durant la lecture du fichier xml par défaut.</value>
   </data>
+  <data name="MainWindow_ChangeName" xml:space="preserve">
+    <value>Renommer</value>
+  </data>
+  <data name="MainWindow_RemoveFile" xml:space="preserve">
+    <value>Supprimer</value>
+  </data>
+  <data name="MainWindow_SortBy" xml:space="preserve">
+    <value>Trier</value>
+  </data>
+  <data name="Data_TaskCompleted_ActionExecuteOn" xml:space="preserve">
+    <value>Action éxecuté sur</value>
+  </data>
+  <data name="Data_TaskCompleted_ActionUserCancel" xml:space="preserve">
+    <value>Action annulé par l'utiisateur !</value>
+  </data>
+  <data name="Data_TaskCompleted_Result" xml:space="preserve">
+    <value>Résultat</value>
+  </data>
+  <data name="Data_WriteData_Error" xml:space="preserve">
+    <value>Erreur durant l'écriture du fichier.
+</value>
+  </data>
 </root>

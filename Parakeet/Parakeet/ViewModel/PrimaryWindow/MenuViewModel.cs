@@ -1,11 +1,9 @@
-﻿using System.ComponentModel;
+﻿using Parakeet.Model;
+using Parakeet.Properties;
+using System.ComponentModel;
+using System.Globalization;
 using System.Windows.Forms;
 using System.Windows.Input;
-using Parakeet.Model;
-using Parakeet.Properties;
-using System;
-using System.Globalization;
-using System.Security.Cryptography.X509Certificates;
 
 namespace Parakeet.ViewModel.PrimaryWindow
 {
@@ -27,6 +25,15 @@ namespace Parakeet.ViewModel.PrimaryWindow
         public MenuViewModel(MainWindow mainWindow)
         {
             this._mainWindow = mainWindow;
+            switch (Settings.Default.CultureInfo)
+            {
+                case "en":
+                    EnCheck = true;
+                    break;
+                case "fr":
+                    FrCheck = true;
+                    break;
+            }
         }
 
         public ICommand NewFiles
@@ -166,7 +173,9 @@ namespace Parakeet.ViewModel.PrimaryWindow
         {
             EnCheck = true;
             FrCheck = false;
-            System.Threading.Thread.CurrentThread.CurrentUICulture = new CultureInfo("en");
+            CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("en");
+            Settings.Default.CultureInfo = "en";
+            System.Windows.MessageBox.Show(System.Windows.Application.Current.MainWindow, "Please restart Parakeet to make the modification take effect.", "English");
         }
 
         public bool EnCheck
@@ -188,7 +197,9 @@ namespace Parakeet.ViewModel.PrimaryWindow
         {
             EnCheck = false;
             FrCheck = true;
-            System.Threading.Thread.CurrentThread.CurrentUICulture = new CultureInfo("fr");
+            CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("fr");
+            Settings.Default.CultureInfo = "fr";
+            System.Windows.MessageBox.Show(System.Windows.Application.Current.MainWindow, "Redémarrer Parakeet pour que la modification prennet effet.", "Français");
         }
 
         public bool FrCheck {

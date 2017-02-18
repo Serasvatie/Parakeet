@@ -240,4 +240,25 @@
   <data name="MainWindow_MainWindow_Error_File_Reading" xml:space="preserve">
     <value />
   </data>
+  <data name="MainWindow_ChangeName" xml:space="preserve">
+    <value />
+  </data>
+  <data name="MainWindow_RemoveFile" xml:space="preserve">
+    <value />
+  </data>
+  <data name="MainWindow_SortBy" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Data_TaskCompleted_Result" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Data_TaskCompleted_ActionUserCancel" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Data_TaskCompleted_ActionExecuteOn" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Data_WriteData_Error" xml:space="preserve">
+    <value />
+  </data>
 </root>

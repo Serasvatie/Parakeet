@@ -117,6 +117,42 @@ namespace Parakeet.Properties {
         /// <summary>
         ///   Recherche une chaîne localisée semblable à .
         /// </summary>
+        public static string Data_TaskCompleted_ActionExecuteOn {
+            get {
+                return ResourceManager.GetString("Data_TaskCompleted_ActionExecuteOn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à .
+        /// </summary>
+        public static string Data_TaskCompleted_ActionUserCancel {
+            get {
+                return ResourceManager.GetString("Data_TaskCompleted_ActionUserCancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à .
+        /// </summary>
+        public static string Data_TaskCompleted_Result {
+            get {
+                return ResourceManager.GetString("Data_TaskCompleted_Result", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à .
+        /// </summary>
+        public static string Data_WriteData_Error {
+            get {
+                return ResourceManager.GetString("Data_WriteData_Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à .
+        /// </summary>
         public static string DirectoryControlView_AddDirectory {
             get {
                 return ResourceManager.GetString("DirectoryControlView_AddDirectory", resourceCulture);
@@ -198,9 +234,36 @@ namespace Parakeet.Properties {
         /// <summary>
         ///   Recherche une chaîne localisée semblable à .
         /// </summary>
+        public static string MainWindow_ChangeName {
+            get {
+                return ResourceManager.GetString("MainWindow_ChangeName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à .
+        /// </summary>
         public static string MainWindow_MainWindow_Error_File_Reading {
             get {
                 return ResourceManager.GetString("MainWindow_MainWindow_Error_File_Reading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à .
+        /// </summary>
+        public static string MainWindow_RemoveFile {
+            get {
+                return ResourceManager.GetString("MainWindow_RemoveFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à .
+        /// </summary>
+        public static string MainWindow_SortBy {
+            get {
+                return ResourceManager.GetString("MainWindow_SortBy", resourceCulture);
             }
         }
         

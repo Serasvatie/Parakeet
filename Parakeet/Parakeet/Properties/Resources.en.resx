@@ -240,4 +240,26 @@
   <data name="MainWindow_MainWindow_Error_File_Reading" xml:space="preserve">
     <value>Error during reading of default file.</value>
   </data>
+  <data name="MainWindow_ChangeName" xml:space="preserve">
+    <value>Rename</value>
+  </data>
+  <data name="MainWindow_RemoveFile" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="MainWindow_SortBy" xml:space="preserve">
+    <value>Sort</value>
+  </data>
+  <data name="Data_TaskCompleted_ActionExecuteOn" xml:space="preserve">
+    <value>Action execute on</value>
+  </data>
+  <data name="Data_TaskCompleted_ActionUserCancel" xml:space="preserve">
+    <value>Task cancel by user!</value>
+  </data>
+  <data name="Data_TaskCompleted_Result" xml:space="preserve">
+    <value>Result</value>
+  </data>
+  <data name="Data_WriteData_Error" xml:space="preserve">
+    <value>Writing Error.
+</value>
+  </data>
 </root>

@@ -6,6 +6,7 @@ using System.Security.Principal;
 using System.Windows;
 using System.Xml;
 using Manager.Manager;
+using Parakeet.Properties;
 
 namespace Parakeet.Model
 {
@@ -55,11 +56,11 @@ namespace Parakeet.Model
         {
             if (e.Cancelled)
             {
-                MessageBox.Show(App.Current.MainWindow, "Action annulé par l'utiisateur !", "Résultat");
+                MessageBox.Show(App.Current.MainWindow, Resources.Data_TaskCompleted_ActionUserCancel, Resources.Data_TaskCompleted_Result);
                 return;
             }
             var res = e.Result as int?;
-            MessageBox.Show(App.Current.MainWindow, "Action éxecuté sur " + res + " éléments !", "Résultat");
+            MessageBox.Show(App.Current.MainWindow, Resources.Data_TaskCompleted_ActionExecuteOn + res + " éléments !", Resources.Data_TaskCompleted_Result);
         }
 
         public static Data GetInstance()
@@ -111,7 +112,7 @@ namespace Parakeet.Model
             }
             catch (Exception e)
             {
-                MessageBox.Show("Erreur durant l'écriture du fichier.\n" + e.Message);
+                MessageBox.Show(Resources.Data_WriteData_Error + e.Message);
             }
         }
     }

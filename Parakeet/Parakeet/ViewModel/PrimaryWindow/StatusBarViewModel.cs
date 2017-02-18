@@ -53,7 +53,7 @@ namespace Parakeet.ViewModel.PrimaryWindow
 
         public string StatusTask
         {
-            get { return Data.GetInstance().FFManager.BwTask.IsBusy || Data.GetInstance().SManager.BwTask.IsBusy ? Resources.StatusBarViewModel_StatusTask_Waiting : Resources.StatusBarViewModel_StatusTask_Running; }
+            get { return Data.GetInstance().FFManager.BwTask.IsBusy || Data.GetInstance().SManager.BwTask.IsBusy ? Resources.StatusBarViewModel_StatusTask_Running : Resources.StatusBarViewModel_StatusTask_Waiting; }
         }
 
         public bool StatusValue
