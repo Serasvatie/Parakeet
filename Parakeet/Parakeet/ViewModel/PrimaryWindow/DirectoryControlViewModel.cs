@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Windows.Forms;
 using System.Windows.Input;
-using FFManager.Model;
+using Manager.Manager;
 using Parakeet.Model;
 using Parakeet.Properties;
 
@@ -10,28 +10,30 @@ namespace Parakeet.ViewModel.PrimaryWindow
 {
     public class DirectoryControlViewModel : BaseNotifyPropertyChanged
     {
-        private int selectedItem;
+        private int _selectedItem;
 
-        private ICommand addDirectory;
-        private ICommand deleteDirectory;
-        private ICommand start;
+        private ICommand _addDirectory;
+        private ICommand _deleteDirectory;
+        private ICommand _start;
+        private ICommand _doUp;
+        private ICommand _doDown;
 
         public DirectoryControlViewModel()
         {
-            selectedItem = 0;
+            _selectedItem = 0;
         }
 
         public static SerializableList<DirectoryModel> ListDirectory
         {
-            get { return Data.getInstance().DirectoryModels; }
+            get { return Data.GetInstance().DirectoryModels; }
         }
 
         public int SelectedItem
         {
-            get { return selectedItem; }
+            get { return _selectedItem; }
             set
             {
-                selectedItem = value;
+                _selectedItem = value;
                 OnPropertyChanged(("SelectedItem"));
             }
         }
@@ -40,9 +42,9 @@ namespace Parakeet.ViewModel.PrimaryWindow
         {
             get
             {
-                if (this.addDirectory == null)
-                    this.addDirectory = new RelayCommand(DoAddDirectory, CanAddDirectory);
-                return addDirectory;
+                if (this._addDirectory == null)
+                    this._addDirectory = new RelayCommand(DoAddDirectory, CanAddDirectory);
+                return _addDirectory;
             }
         }
 
@@ -65,13 +67,13 @@ namespace Parakeet.ViewModel.PrimaryWindow
             ListDirectory.Add(tmp);
         }
 
-        public ICommand DeleteDirectory
+        public ICommand DeleteEntry
         {
             get
             {
-                if (this.deleteDirectory == null)
-                    this.deleteDirectory = new RelayCommand(DoDeleteDirectory, CanDeleteDirectory);
-                return deleteDirectory;
+                if (this._deleteDirectory == null)
+                    this._deleteDirectory = new RelayCommand(DoDeleteDirectory, CanDeleteDirectory);
+                return _deleteDirectory;
             }
         }
 
@@ -88,7 +90,7 @@ namespace Parakeet.ViewModel.PrimaryWindow
 
         public ICommand Start
         {
-            get { return this.start ?? (this.start = new RelayCommand(DoStart, CanStart)); }
+            get { return this._start ?? (this._start = new RelayCommand(DoStart, CanStart)); }
         }
 
         private bool CanStart()
@@ -107,6 +109,36 @@ namespace Parakeet.ViewModel.PrimaryWindow
             };
             var taskWindow = new View.TaskWindow.TaskWindow(tmp);
             taskWindow.ShowDialog();
+        }
+
+        public ICommand DoUp
+        {
+            get { return this._doUp ?? (this._doUp = new RelayCommand(DoUpC, CanUp)); }
+        }
+
+        private bool CanUp()
+        {
+            return SelectedItem >= 1;
+        }
+
+        private void DoUpC()
+        {
+            ListDirectory.Move(SelectedItem, SelectedItem - 1);
+        }
+
+        public ICommand DoDown
+        {
+            get { return this._doDown ?? (this._doDown = new RelayCommand(DoDownC, CanDown)); }
+        }
+
+        private bool CanDown()
+        {
+            return SelectedItem < ListDirectory.Count - 1;
+        }
+
+        private void DoDownC()
+        {
+            ListDirectory.Move(SelectedItem, SelectedItem + 1);
         }
     }
 }

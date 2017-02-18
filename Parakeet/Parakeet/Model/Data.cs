@@ -5,7 +5,8 @@ using System.Security.AccessControl;
 using System.Security.Principal;
 using System.Windows;
 using System.Xml;
-using FFManager.Model;
+using Manager.Manager;
+using Parakeet.Properties;
 
 namespace Parakeet.Model
 {
@@ -19,13 +20,15 @@ namespace Parakeet.Model
         public SerializableList<ChangeRule> RenameRules;
         public SerializableList<RemoveRule> RemoveRules;
         public SerializableList<DirectoryModel> DirectoryModels;
+        public SerializableList<SortByRule> SortRules;
 
-        private string fileTitle;
+        private string _fileTitle;
 
-        public FFManager.FFManager manager = new FFManager.FFManager();
+        public FFManager.FFManager FFManager = new FFManager.FFManager();
+        public SManager.SManager SManager = new SManager.SManager();
 
         private static Data _instance;
-        static readonly object instancelock = new object();
+        static readonly object Instancelock = new object();
 
         private Data()
         {
@@ -44,25 +47,27 @@ namespace Parakeet.Model
             RenameRules = new SerializableList<ChangeRule>();
             DirectoryModels = new SerializableList<DirectoryModel>();
             RemoveRules = new SerializableList<RemoveRule>();
-            manager.bwTask.RunWorkerCompleted += TaskCompleted;
+            SortRules = new SerializableList<SortByRule>();
+            FFManager.BwTask.RunWorkerCompleted += TaskCompleted;
+            SManager.BwTask.RunWorkerCompleted += TaskCompleted;
         }
 
         private void TaskCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             if (e.Cancelled)
             {
-                MessageBox.Show(App.Current.MainWindow, "Action annulé par l'utiisateur !", "Résultat");
+                MessageBox.Show(App.Current.MainWindow, Resources.Data_TaskCompleted_ActionUserCancel, Resources.Data_TaskCompleted_Result);
                 return;
             }
             var res = e.Result as int?;
-            MessageBox.Show(App.Current.MainWindow, "Action éxecuté sur " + res + " éléments !", "Résultat");
+            MessageBox.Show(App.Current.MainWindow, Resources.Data_TaskCompleted_ActionExecuteOn + res + " éléments !", Resources.Data_TaskCompleted_Result);
         }
 
-        public static Data getInstance()
+        public static Data GetInstance()
         {
             if (_instance == null)
             {
-                lock (instancelock)
+                lock (Instancelock)
                     if (_instance == null)
                         _instance = new Data();
             }
@@ -71,8 +76,8 @@ namespace Parakeet.Model
 
         public string FileTitle
         {
-            get { return fileTitle; }
-            set { fileTitle = value; }
+            get { return _fileTitle; }
+            set { _fileTitle = value; }
         }
 
         public void ReadData()
@@ -84,6 +89,7 @@ namespace Parakeet.Model
                 DirectoryModels.ReadXml(xr);
                 RenameRules.ReadXml(xr);
                 RemoveRules.ReadXml(xr);
+                SortRules.ReadXml(xr);
                 xr.Close();
             }
         }
@@ -100,12 +106,13 @@ namespace Parakeet.Model
                     DirectoryModels.WriteXml(wr);
                     RenameRules.WriteXml(wr);
                     RemoveRules.WriteXml(wr);
+                    SortRules.WriteXml(wr);
                     wr.Close();
                 }
             }
             catch (Exception e)
             {
-                MessageBox.Show("Erreur durant l'écriture du fichier.\n" + e.Message);
+                MessageBox.Show(Resources.Data_WriteData_Error + e.Message);
             }
         }
     }

@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
-using FFManager.Model;
-using System.Diagnostics;
-using System.Threading;
+using Manager.Manager;
 
 namespace FFManager
 {
@@ -16,16 +14,16 @@ namespace FFManager
         private bool _recursive;
 
         public event EventHandler IsBwStarted;
-        public BackgroundWorker bwTask;
+        public BackgroundWorker BwTask;
 
         public FFManager()
         {
-            bwTask = new BackgroundWorker
+            BwTask = new BackgroundWorker
             {
                 WorkerReportsProgress = true,
                 WorkerSupportsCancellation = true
             };
-            bwTask.DoWork += ExecuteTask;
+            BwTask.DoWork += ExecuteTask;
         }
 
         public void SettingLists(Dictionary<string, object> lists)
@@ -58,7 +56,7 @@ namespace FFManager
                 {
                     output.Add(new Tuple<int, string>(-1, ex.Message));
                 }
-                if (bwTask.CancellationPending)
+                if (BwTask.CancellationPending)
                 {
                     e.Cancel = true;
                     e.Result = res;
@@ -126,20 +124,20 @@ namespace FFManager
             return res;
         }
 
-        private int RecursiveTask(string Path)
+        private int RecursiveTask(string path)
         {
             int res = 0;
 
-            foreach (var f in Directory.GetFiles(Path))
+            foreach (var f in Directory.GetFiles(path))
             {
-                if (bwTask.CancellationPending)
+                if (BwTask.CancellationPending)
                     return res;
                 res += DoRemove(f);
                 res += DoRename(f);
             }
-            foreach (var d in Directory.GetDirectories(Path))
+            foreach (var d in Directory.GetDirectories(path))
             {
-                if (bwTask.CancellationPending)
+                if (BwTask.CancellationPending)
                     return res;
                 if (_recursive)
                     res += RecursiveTask(d);

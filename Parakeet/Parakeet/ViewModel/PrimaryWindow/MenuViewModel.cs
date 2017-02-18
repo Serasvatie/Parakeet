@@ -1,30 +1,44 @@
-﻿using System.ComponentModel;
+﻿using Parakeet.Model;
+using Parakeet.Properties;
+using System.ComponentModel;
+using System.Globalization;
 using System.Windows.Forms;
 using System.Windows.Input;
-using Parakeet.Model;
-using Parakeet.Properties;
-using System;
 
 namespace Parakeet.ViewModel.PrimaryWindow
 {
-    public class MenuViewModel
+    public class MenuViewModel : BaseNotifyPropertyChanged
     {
-        private MainWindow mainWindow;
+        private MainWindow _mainWindow;
 
-        private ICommand newFiles;
-        private ICommand openFiles;
-        private ICommand saveFiles;
-        private ICommand saveFilesUnder;
-        private ICommand exit;
+        private bool _en;
+        private bool _fr;
+
+        private ICommand _newFiles;
+        private ICommand _openFiles;
+        private ICommand _saveFiles;
+        private ICommand _saveFilesUnder;
+        private ICommand _exit;
+        private ICommand _english;
+        private ICommand _french;
 
         public MenuViewModel(MainWindow mainWindow)
         {
-            this.mainWindow = mainWindow;
+            this._mainWindow = mainWindow;
+            switch (Settings.Default.CultureInfo)
+            {
+                case "en":
+                    EnCheck = true;
+                    break;
+                case "fr":
+                    FrCheck = true;
+                    break;
+            }
         }
 
         public ICommand NewFiles
         {
-            get { return newFiles ?? (newFiles = new RelayCommand(DoNewFiles, CanNewFiles)); }
+            get { return _newFiles ?? (_newFiles = new RelayCommand(DoNewFiles, CanNewFiles)); }
         }
 
         private bool CanNewFiles()
@@ -38,7 +52,7 @@ namespace Parakeet.ViewModel.PrimaryWindow
             _new.AddExtension = true;
             _new.CheckPathExists = true;
             _new.DefaultExt = ".xml";
-            _new.Filter = "Xml files (*.xml)|*.xml";
+            _new.Filter = Resources.MenuViewModel_DoOpenFiles_Xml_files____xml____xml;
             _new.Title = Resources.MenuViewModel_DoNewFiles_Select_file_name___;
             _new.InitialDirectory = Data.FullPathSaveDirectory;
             _new.FileOk += NewFile;
@@ -48,16 +62,16 @@ namespace Parakeet.ViewModel.PrimaryWindow
         private void NewFile(object sender, CancelEventArgs e)
         {
             FileDialog _new = (FileDialog)sender;
-            Data.getInstance().FileTitle = _new.FileName;
-            Data.getInstance().DirectoryModels.Clear();
-            Data.getInstance().RemoveRules.Clear();
-            Data.getInstance().RenameRules.Clear();
-            StatusBarViewModel.getInstance().RunRefresh();
+            Data.GetInstance().FileTitle = _new.FileName;
+            Data.GetInstance().DirectoryModels.Clear();
+            Data.GetInstance().RemoveRules.Clear();
+            Data.GetInstance().RenameRules.Clear();
+            StatusBarViewModel.GetInstance().RunRefresh();
         }
 
         public ICommand OpenFiles
         {
-            get { return openFiles ?? (openFiles = new RelayCommand(DoOpenFiles, CanOpenFiles)); }
+            get { return _openFiles ?? (_openFiles = new RelayCommand(DoOpenFiles, CanOpenFiles)); }
         }
 
         private bool CanOpenFiles()
@@ -68,18 +82,18 @@ namespace Parakeet.ViewModel.PrimaryWindow
         private void DoOpenFiles()
         {
             OpenFileDialog open = new OpenFileDialog();
-            open.Filter = "Xml files (*.xml)|*.xml";
+            open.Filter = Resources.MenuViewModel_DoOpenFiles_Xml_files____xml____xml;
             open.InitialDirectory = Data.FullPathSaveDirectory;
-            open.Title = "Select a xml file";
-            open.FileOk += gettingFile;
+            open.Title = Resources.MenuViewModel_DoOpenFiles_Select_a_xml_file;
+            open.FileOk += GettingFile;
             open.ShowDialog();
-            StatusBarViewModel.getInstance().RunRefresh();
+            StatusBarViewModel.GetInstance().RunRefresh();
         }
 
-        private void gettingFile(object sender, CancelEventArgs e)
+        private void GettingFile(object sender, CancelEventArgs e)
         {
             FileDialog tmp = (FileDialog)sender;
-            var data = Data.getInstance();
+            var data = Data.GetInstance();
             data.FileTitle = tmp.FileName;
             data.DirectoryModels.Clear();
             data.RemoveRules.Clear();
@@ -89,23 +103,23 @@ namespace Parakeet.ViewModel.PrimaryWindow
 
         public ICommand SaveFiles
         {
-            get { return saveFiles ?? (saveFiles = new RelayCommand(DoSaveFiles, CanSaveFiles)); }
+            get { return _saveFiles ?? (_saveFiles = new RelayCommand(DoSaveFiles, CanSaveFiles)); }
         }
 
         private bool CanSaveFiles()
         {
-            return !string.IsNullOrEmpty(Data.getInstance().FileTitle);
+            return !string.IsNullOrEmpty(Data.GetInstance().FileTitle);
         }
 
         private void DoSaveFiles()
         {
-            Data.getInstance().WriteData();
-            StatusBarViewModel.getInstance().RunRefresh();
+            Data.GetInstance().WriteData();
+            StatusBarViewModel.GetInstance().RunRefresh();
         }
 
         public ICommand SaveFilesUnder
         {
-            get { return saveFilesUnder ?? (saveFilesUnder = new RelayCommand(DoSaveFilesUnder, CanSaveFilesUnder)); }
+            get { return _saveFilesUnder ?? (_saveFilesUnder = new RelayCommand(DoSaveFilesUnder, CanSaveFilesUnder)); }
         }
 
         private bool CanSaveFilesUnder()
@@ -129,15 +143,15 @@ namespace Parakeet.ViewModel.PrimaryWindow
         private void save_fileOk(object sender, CancelEventArgs e)
         {
             string fileTitle = ((FileDialog)sender).FileName;
-            var data = Data.getInstance();
+            var data = Data.GetInstance();
             data.FileTitle = fileTitle;
             data.WriteData();
-            StatusBarViewModel.getInstance().RunRefresh();
+            StatusBarViewModel.GetInstance().RunRefresh();
         }
 
         public ICommand Exit
         {
-            get { return exit ?? (exit = new RelayCommand(DoExit, CanExit)); }
+            get { return _exit ?? (_exit = new RelayCommand(DoExit, CanExit)); }
         }
 
         private bool CanExit()
@@ -147,7 +161,54 @@ namespace Parakeet.ViewModel.PrimaryWindow
 
         private void DoExit()
         {
-            mainWindow.Close();
+            _mainWindow.Close();
+        }
+
+        public ICommand English
+        {
+            get { return this._english ?? (this._english = new RelayCommand(DoEnglish)); }
+        }
+
+        private void DoEnglish()
+        {
+            EnCheck = true;
+            FrCheck = false;
+            CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("en");
+            Settings.Default.CultureInfo = "en";
+            System.Windows.MessageBox.Show(System.Windows.Application.Current.MainWindow, "Please restart Parakeet to make the modification take effect.", "English");
+        }
+
+        public bool EnCheck
+        {
+            get { return _en; }
+            set
+            {
+                _en = value;
+                OnPropertyChanged("EnCheck");
+            }
+        }
+
+        public ICommand French
+        {
+            get { return this._french ?? (this._french = new RelayCommand(DoFrench)); }
+        }
+
+        private void DoFrench()
+        {
+            EnCheck = false;
+            FrCheck = true;
+            CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("fr");
+            Settings.Default.CultureInfo = "fr";
+            System.Windows.MessageBox.Show(System.Windows.Application.Current.MainWindow, "Redémarrer Parakeet pour que la modification prennet effet.", "Français");
+        }
+
+        public bool FrCheck {
+            get { return _fr; }
+            set
+            {
+                _fr = value;
+                OnPropertyChanged("FrCheck");
+            }
         }
     }
 }

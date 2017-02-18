@@ -118,147 +118,148 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="DirectoryControlViewModel_DoAddDirectory_Select_a_folder_to_add____" xml:space="preserve">
-    <value />
+    <value>Select a folder</value>
   </data>
   <data name="MenuViewModel_DoNewFiles_Select_file_name___" xml:space="preserve">
-    <value />
+    <value>Enter new file name</value>
   </data>
   <data name="MenuViewModel_DoSaveFilesUnder_Sous____" xml:space="preserve">
-    <value />
+    <value>Save under</value>
   </data>
   <data name="MenuViewModel_DoSaveFilesUnder_Xml_files___xml______xml" xml:space="preserve">
-    <value />
+    <value>Xml files (*.xml)|*.xml</value>
   </data>
   <data name="MenuView_Exit" xml:space="preserve">
-    <value />
+    <value>Exit</value>
   </data>
   <data name="MenuView_FileHeader" xml:space="preserve">
-    <value />
+    <value>File</value>
   </data>
   <data name="MenuView_Language" xml:space="preserve">
-    <value />
+    <value>Language</value>
   </data>
   <data name="MenuView_NewFile" xml:space="preserve">
-    <value />
+    <value>New file</value>
   </data>
   <data name="MenuView_OpenFile" xml:space="preserve">
-    <value />
+    <value>Open file</value>
   </data>
   <data name="MenuView_Save" xml:space="preserve">
-    <value />
+    <value>Save</value>
   </data>
   <data name="MenuView_SaveUnder" xml:space="preserve">
-    <value />
+    <value>Save under...</value>
   </data>
   <data name="MenuViewModel_DoOpenFiles_Xml_files____xml____xml" xml:space="preserve">
-    <value />
+    <value>Xml files (*.xml)|*.xml</value>
   </data>
   <data name="MenuViewModel_DoOpenFiles_Select_a_xml_file" xml:space="preserve">
-    <value />
+    <value>Select a xml file</value>
   </data>
   <data name="StatusBarViewModel_StatusTask_Running" xml:space="preserve">
-    <value />
+    <value>Running</value>
   </data>
   <data name="StatusBarViewModel_StatusTask_Waiting" xml:space="preserve">
-    <value />
+    <value>Waiting</value>
   </data>
   <data name="ListContextMenuView_Delete" xml:space="preserve">
-    <value />
+    <value>Delete</value>
   </data>
   <data name="ListContextMenuView_Down" xml:space="preserve">
-    <value />
+    <value>Move down</value>
   </data>
   <data name="ListContextMenuView_Up" xml:space="preserve">
-    <value />
+    <value>Move up</value>
   </data>
   <data name="StatusBarView_Cancel" xml:space="preserve">
-    <value />
+    <value>Cancel</value>
   </data>
   <data name="StatusBarView_File" xml:space="preserve">
-    <value />
+    <value>File :</value>
   </data>
   <data name="ChangeFileNameView_AddRules" xml:space="preserve">
-    <value />
+    <value>Add rule</value>
   </data>
   <data name="ChangeFileNameView_DeleteRules" xml:space="preserve">
-    <value />
+    <value>Delete rule</value>
   </data>
   <data name="ChangeFileNameView_HeaderActivated" xml:space="preserve">
-    <value />
+    <value>On</value>
   </data>
   <data name="ChangeFileNameView_HeaderFirst" xml:space="preserve">
-    <value />
+    <value>Change</value>
   </data>
   <data name="ChangeFileNameView_HeaderSecond" xml:space="preserve">
-    <value />
+    <value>By</value>
   </data>
   <data name="ChangeFileNameView_HeaderTarget" xml:space="preserve">
-    <value />
+    <value>Target</value>
   </data>
   <data name="DirectoryControlView_AddDirectory" xml:space="preserve">
-    <value />
+    <value>Add folder</value>
   </data>
   <data name="DirectoryControlView_DeleteEntry" xml:space="preserve">
-    <value />
+    <value>Delete</value>
   </data>
   <data name="DirectoryControlView_HeaderActivated" xml:space="preserve">
-    <value />
+    <value>On</value>
   </data>
   <data name="DirectoryControlView_HeaderFolder" xml:space="preserve">
-    <value />
+    <value>Folder</value>
   </data>
   <data name="DirectoryControlView_StartTask" xml:space="preserve">
-    <value />
+    <value>Start task</value>
   </data>
   <data name="RemoveFilesView_Add" xml:space="preserve">
-    <value />
+    <value>Add</value>
   </data>
   <data name="RemoveFilesView_Delete" xml:space="preserve">
-    <value />
+    <value>Delete selection</value>
   </data>
   <data name="RemoveFilesView_HeaderActivated" xml:space="preserve">
-    <value />
+    <value>On</value>
   </data>
   <data name="RemoveFilesView_HeaderExtension" xml:space="preserve">
-    <value />
+    <value>Extension</value>
   </data>
   <data name="RemoveFilesView_HeaderString" xml:space="preserve">
-    <value />
+    <value>String</value>
   </data>
   <data name="SortByView_AddRegex" xml:space="preserve">
-    <value />
+    <value>Add Regex</value>
   </data>
   <data name="SortByView_DeleteEntry" xml:space="preserve">
-    <value />
+    <value>Delete Regex</value>
   </data>
   <data name="SortByView_HeaderActivated" xml:space="preserve">
-    <value />
+    <value>On</value>
   </data>
   <data name="SortByView_HeaderRegex" xml:space="preserve">
-    <value />
+    <value>Regex</value>
   </data>
   <data name="MainWindow_MainWindow_Error_File_Reading" xml:space="preserve">
-    <value />
+    <value>Error during reading of default file.</value>
   </data>
   <data name="MainWindow_ChangeName" xml:space="preserve">
-    <value />
+    <value>Rename</value>
   </data>
   <data name="MainWindow_RemoveFile" xml:space="preserve">
-    <value />
+    <value>Remove</value>
   </data>
   <data name="MainWindow_SortBy" xml:space="preserve">
-    <value />
-  </data>
-  <data name="Data_TaskCompleted_Result" xml:space="preserve">
-    <value />
-  </data>
-  <data name="Data_TaskCompleted_ActionUserCancel" xml:space="preserve">
-    <value />
+    <value>Sort</value>
   </data>
   <data name="Data_TaskCompleted_ActionExecuteOn" xml:space="preserve">
-    <value />
+    <value>Action execute on</value>
+  </data>
+  <data name="Data_TaskCompleted_ActionUserCancel" xml:space="preserve">
+    <value>Task cancel by user!</value>
+  </data>
+  <data name="Data_TaskCompleted_Result" xml:space="preserve">
+    <value>Result</value>
   </data>
   <data name="Data_WriteData_Error" xml:space="preserve">
-    <value />
+    <value>Writing Error.
+</value>
   </data>
 </root>

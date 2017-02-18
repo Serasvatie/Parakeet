@@ -14,15 +14,11 @@ namespace Parakeet.ViewModel
             {
                 if (_canExecute != null)
                     CommandManager.RequerySuggested += value;
-                else
-                    throw new NotImplementedException();
             }
             remove
             {
                 if (_canExecute != null)
                     CommandManager.RequerySuggested += value;
-                else
-                    throw new NotImplementedException();
             }
         }
 

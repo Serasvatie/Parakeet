@@ -11,22 +11,22 @@ namespace Parakeet.ViewModel.TaskWindow
 {
     public class TaskViewModel : BaseNotifyPropertyChanged
     {
-        private View.TaskWindow.TaskWindow taskWindow;
-        private Dictionary<string, dynamic> lists;
+        private View.TaskWindow.TaskWindow _taskWindow;
+        private Dictionary<string, dynamic> _lists;
 
-        private bool isRecursive;
-        private bool isRemove;
-        private bool isRename;
-        private bool isSort;
+        private bool _isRecursive;
+        private bool _isRemove;
+        private bool _isRename;
+        private bool _isSort;
 
-        private ICommand startTask;
-        private ICommand cancelTasks;
+        private ICommand _startTask;
+        private ICommand _cancelTasks;
 
         public TaskViewModel(View.TaskWindow.TaskWindow _taskWindow, Dictionary<string, dynamic> lists)
         {
-            taskWindow = _taskWindow;
-            taskWindow.Closed += OnClose;
-            this.lists = lists;
+            this._taskWindow = _taskWindow;
+            this._taskWindow.Closed += OnClose;
+            this._lists = lists;
             this.IsRecursive = Settings.Default.TaskRecursive;
             this.IsRemove = Settings.Default.TaskRemove;
             this.IsSort = Settings.Default.TaskSort;
@@ -35,55 +35,55 @@ namespace Parakeet.ViewModel.TaskWindow
 
         private void OnClose(object sender, EventArgs e)
         {
-            Settings.Default.TaskSort = isSort;
-            Settings.Default.TaskRename = isRename;
-            Settings.Default.TaskRecursive = isRecursive;
-            Settings.Default.TaskRemove = isRemove;
+            Settings.Default.TaskSort = _isSort;
+            Settings.Default.TaskRename = _isRename;
+            Settings.Default.TaskRecursive = _isRecursive;
+            Settings.Default.TaskRemove = _isRemove;
         }
 
         public bool IsRecursive
         {
-            get { return isRecursive; }
+            get { return _isRecursive; }
             set
             {
-                isRecursive = value;
+                _isRecursive = value;
                 OnPropertyChanged("IsRecursive");
             }
         }
 
         public bool IsRemove
         {
-            get { return isRemove; }
+            get { return _isRemove; }
             set
             {
-                isRemove = value;
+                _isRemove = value;
                 OnPropertyChanged("IsRemove");
             }
         }
 
         public bool IsRename
         {
-            get { return isRename; }
+            get { return _isRename; }
             set
             {
-                isRename = value;
+                _isRename = value;
                 OnPropertyChanged("IsRename");
             }
         }
 
         public bool IsSort
         {
-            get { return isSort; }
+            get { return _isSort; }
             set
             {
-                isSort = value;
+                _isSort = value;
                 OnPropertyChanged("IsSort");
             }
         }
 
         public ICommand StartTask
         {
-            get { return startTask ?? (startTask = new RelayCommand(DoStartTask, CanStartTask)); }
+            get { return _startTask ?? (_startTask = new RelayCommand(DoStartTask, CanStartTask)); }
         }
 
         private bool CanStartTask()
@@ -93,26 +93,30 @@ namespace Parakeet.ViewModel.TaskWindow
 
         private void DoStartTask()
         {
-            lists.Add("Recursive", IsRecursive);
+            _lists.Add("Recursive", IsRecursive);
             if (!IsRemove)
-                lists.Remove("RemovingRules");
+                _lists.Remove("RemovingRules");
             if (!IsRename)
-                lists.Remove("RenamingRules");
+                _lists.Remove("RenamingRules");
             if (!IsSort)
-                lists.Remove("SortingRules");
-            Data.getInstance().manager.SettingLists(lists);
-            Data.getInstance().manager.bwTask.RunWorkerAsync();
-            taskWindow.Close();
+                _lists.Remove("SortingRules");
+            Data.GetInstance().FFManager.SettingLists(_lists);
+            Data.GetInstance().SManager.SettingList(_lists);
+            if (IsRemove || IsRename)
+                Data.GetInstance().FFManager.BwTask.RunWorkerAsync();
+            if (IsSort)
+                Data.GetInstance().SManager.BwTask.RunWorkerAsync();
+            _taskWindow.Close();
         }
 
         public ICommand CancelTask
         {
-            get { return cancelTasks ?? (cancelTasks = new RelayCommand(DoCancelTask, () => true)); }
+            get { return _cancelTasks ?? (_cancelTasks = new RelayCommand(DoCancelTask, () => true)); }
         }
 
         private void DoCancelTask()
         {
-            taskWindow.Close();
+            _taskWindow.Close();
         }
     }
 }

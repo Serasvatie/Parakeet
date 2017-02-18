@@ -1,54 +1,56 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
-using FFManager.Model;
+using Manager.Manager;
+using Parakeet.Model;
 
 namespace Parakeet.ViewModel.PrimaryWindow
 {
     public class SortByViewModel : BaseNotifyPropertyChanged
     {
-        private static ObservableCollection<SortByRule> rules;
-        private int selectedIndex;
+        private int _selectedIndex;
 
-        private string strings;
+        private string _strings;
 
-        private ICommand addRules;
-        private ICommand deleteRules;
+        private ICommand _addRules;
+        private ICommand _deleteRules;
+        private ICommand _doUp;
+        private ICommand _doDown;
+
 
         public SortByViewModel()
         {
-            rules = new ObservableCollection<SortByRule>();
-            selectedIndex = 0;
-            strings = null;
+            _selectedIndex = 0;
+            _strings = null;
         }
 
         public static ObservableCollection<SortByRule> ListRules
         {
-            get { return rules; }
+            get { return Data.GetInstance().SortRules; }
         }
 
         public int SelectedIndex
         {
-            get { return selectedIndex; }
+            get { return _selectedIndex; }
             set
             {
-                selectedIndex = value;
+                _selectedIndex = value;
                 OnPropertyChanged("SelectedIndex");
             }
         }
 
         public string Strings
         {
-            get { return strings; }
+            get { return _strings; }
             set
             {
-                strings = value;
+                _strings = value;
                 OnPropertyChanged("Strings");
             }
         }
 
         public ICommand AddRules
         {
-            get { return this.addRules ?? (this.addRules = new RelayCommand(DoAddRules, CanAddRules)); }
+            get { return this._addRules ?? (this._addRules = new RelayCommand(DoAddRules, CanAddRules)); }
         }
 
         private bool CanAddRules()
@@ -59,24 +61,54 @@ namespace Parakeet.ViewModel.PrimaryWindow
         private void DoAddRules()
         {
             var tmp = new SortByRule(Strings, true);
-            rules.Add(tmp);
+            ListRules.Add(tmp);
             Strings = null;
         }
 
-        public ICommand DeleteRules
+        public ICommand DeleteEntry
         {
-            get { return this.deleteRules ?? (this.deleteRules = new RelayCommand(DoDeleteRules, CanDeleteRules)); }
+            get { return this._deleteRules ?? (this._deleteRules = new RelayCommand(DoDeleteRules, CanDeleteRules)); }
         }
 
         private bool CanDeleteRules()
         {
-            return rules.Count > 0;
+            return ListRules.Count > 0;
         }
 
         private void DoDeleteRules()
         {
-            rules.RemoveAt(SelectedIndex);
+            ListRules.RemoveAt(SelectedIndex);
             SelectedIndex = 0;
+        }
+
+        public ICommand DoUp
+        {
+            get { return this._doUp ?? (this._doUp = new RelayCommand(DoUpC, CanUp)); }
+        }
+
+        private bool CanUp()
+        {
+            return SelectedIndex >= 1;
+        }
+
+        private void DoUpC()
+        {
+            ListRules.Move(SelectedIndex, SelectedIndex - 1);
+        }
+
+        public ICommand DoDown
+        {
+            get { return this._doDown ?? (this._doDown = new RelayCommand(DoDownC, CanDown)); }
+        }
+
+        private bool CanDown()
+        {
+            return SelectedIndex < ListRules.Count - 1;
+        }
+
+        private void DoDownC()
+        {
+            ListRules.Move(SelectedIndex, SelectedIndex + 1);
         }
     }
 }
