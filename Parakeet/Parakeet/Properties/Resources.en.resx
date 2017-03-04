@@ -262,4 +262,25 @@
     <value>Writing Error.
 </value>
   </data>
+  <data name="TaskView_Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="TaskView_DeleteDescrition" xml:space="preserve">
+    <value>Deleting files task :</value>
+  </data>
+  <data name="TaskView_Recursive" xml:space="preserve">
+    <value>Recursive :</value>
+  </data>
+  <data name="TaskView_RenamingDescription" xml:space="preserve">
+    <value>Renaming files task :</value>
+  </data>
+  <data name="TaskView_SortDescription" xml:space="preserve">
+    <value>Sorting files task :</value>
+  </data>
+  <data name="TaskView_Start" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="TaskView_TitleWindow" xml:space="preserve">
+    <value>Starting process...</value>
+  </data>
 </root>

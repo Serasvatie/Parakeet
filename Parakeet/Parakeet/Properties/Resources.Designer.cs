@@ -491,5 +491,68 @@ namespace Parakeet.Properties {
                 return ResourceManager.GetString("StatusBarViewModel_StatusTask_Waiting", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à .
+        /// </summary>
+        public static string TaskView_Cancel {
+            get {
+                return ResourceManager.GetString("TaskView_Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à .
+        /// </summary>
+        public static string TaskView_DeleteDescrition {
+            get {
+                return ResourceManager.GetString("TaskView_DeleteDescrition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à .
+        /// </summary>
+        public static string TaskView_Recursive {
+            get {
+                return ResourceManager.GetString("TaskView_Recursive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à .
+        /// </summary>
+        public static string TaskView_RenamingDescription {
+            get {
+                return ResourceManager.GetString("TaskView_RenamingDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à .
+        /// </summary>
+        public static string TaskView_SortDescription {
+            get {
+                return ResourceManager.GetString("TaskView_SortDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à .
+        /// </summary>
+        public static string TaskView_Start {
+            get {
+                return ResourceManager.GetString("TaskView_Start", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à .
+        /// </summary>
+        public static string TaskView_TitleWindow {
+            get {
+                return ResourceManager.GetString("TaskView_TitleWindow", resourceCulture);
+            }
+        }
     }
 }
