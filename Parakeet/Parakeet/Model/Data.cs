@@ -5,8 +5,11 @@ using System.Security.AccessControl;
 using System.Security.Principal;
 using System.Windows;
 using System.Xml;
+using Manager;
 using Manager.Manager;
 using Parakeet.Properties;
+using Parakeet.View.PrimaryWindow;
+using Parakeet.ViewModel.PrimaryWindow;
 
 namespace Parakeet.Model
 {
@@ -21,6 +24,7 @@ namespace Parakeet.Model
         public SerializableList<RemoveRule> RemoveRules;
         public SerializableList<DirectoryModel> DirectoryModels;
         public SerializableList<SortByRule> SortRules;
+        public DocDistModel DocDistModel;
 
         private string _fileTitle;
 
@@ -48,6 +52,7 @@ namespace Parakeet.Model
             DirectoryModels = new SerializableList<DirectoryModel>();
             RemoveRules = new SerializableList<RemoveRule>();
             SortRules = new SerializableList<SortByRule>();
+            DocDistModel = new DocDistModel();
             FFManager.BwTask.RunWorkerCompleted += TaskCompleted;
             SManager.BwTask.RunWorkerCompleted += TaskCompleted;
         }

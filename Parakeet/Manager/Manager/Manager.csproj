@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="ChangeRule.cs" />
     <Compile Include="DirectoryModel.cs" />
+    <Compile Include="DocDistModel.cs" />
     <Compile Include="EnumParakeet.cs" />
     <Compile Include="AManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

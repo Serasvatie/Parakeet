@@ -283,4 +283,14 @@
   <data name="TaskView_TitleWindow" xml:space="preserve">
     <value>Lancement du traitement...</value>
   </data>
+  <data name="DocDistView_Description" xml:space="preserve">
+    <value>Cette tâche sert uniquement à chercher les similitudes dans les noms de fichiers ou dossiers.
+Si deux noms similaires sont au-dessus du seuil spécifié alors il va vous être spécifié de cette similitudes a la fin de la tâche.</value>
+  </data>
+  <data name="DocDistView_Threshold" xml:space="preserve">
+    <value>Seuil (0 - 100 %) :</value>
+  </data>
+  <data name="MainWindow_FindSimilitude" xml:space="preserve">
+    <value>Similitude</value>
+  </data>
 </root>
