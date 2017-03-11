@@ -113,6 +113,8 @@ namespace Parakeet.ViewModel.TaskWindow
                 _lists.Remove("RenamingRules");
             if (!IsSort)
                 _lists.Remove("SortingRules");
+            if (!IsChecking)
+                _lists.Remove("DocDistRules");
             Data.GetInstance().FFManager.SettingLists(_lists);
             Data.GetInstance().SManager.SettingList(_lists);
             Data.GetInstance().CManager.SettingList(_lists);

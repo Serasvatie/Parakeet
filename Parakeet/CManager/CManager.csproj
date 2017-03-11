@@ -43,6 +43,12 @@
     <Compile Include="CManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Manager\Manager\Manager.csproj">
+      <Project>{2D34F9AA-31A2-4F7B-B075-B0AFA4AF7231}</Project>
+      <Name>Manager</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

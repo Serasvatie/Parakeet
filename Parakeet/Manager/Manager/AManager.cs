@@ -13,6 +13,8 @@ namespace Manager.Manager
         protected List<RemoveRule> RemoveRules = new List<RemoveRule>();
         protected List<ChangeRule> RenameRules = new List<ChangeRule>();
         protected List<SortByRule> SortRules = new List<SortByRule>();
+        protected DocDistModel DocDistRules;
+
         protected bool Recursive;
 
         public event EventHandler IsBwStarted;
