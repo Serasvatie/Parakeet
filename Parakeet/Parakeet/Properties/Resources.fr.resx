@@ -293,4 +293,7 @@ Si deux noms similaires sont au-dessus du seuil spécifié alors il va vous êtr
   <data name="MainWindow_FindSimilitude" xml:space="preserve">
     <value>Similitude</value>
   </data>
+  <data name="TaskView_Checking" xml:space="preserve">
+    <value>Comparaison de noms :</value>
+  </data>
 </root>

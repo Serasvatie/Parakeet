@@ -531,6 +531,15 @@ namespace Parakeet.Properties {
         /// <summary>
         ///   Recherche une chaîne localisée semblable à .
         /// </summary>
+        public static string TaskView_Checking {
+            get {
+                return ResourceManager.GetString("TaskView_Checking", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à .
+        /// </summary>
         public static string TaskView_DeleteDescrition {
             get {
                 return ResourceManager.GetString("TaskView_DeleteDescrition", resourceCulture);

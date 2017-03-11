@@ -250,6 +250,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CManager\CManager.csproj">
+      <Project>{804995c5-68e1-41d2-a594-77a38be7bd8f}</Project>
+      <Name>CManager</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Manager\FFManager\FFManager.csproj">
       <Project>{2d478c0a-c99c-4336-a47e-3a2e789f98e3}</Project>
       <Name>FFManager</Name>

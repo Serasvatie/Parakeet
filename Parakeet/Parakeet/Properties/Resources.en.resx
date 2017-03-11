@@ -293,4 +293,7 @@ If two names are above the specific threshold then the application will tell you
   <data name="MainWindow_FindSimilitude" xml:space="preserve">
     <value>Similitude Name</value>
   </data>
+  <data name="TaskView_Checking" xml:space="preserve">
+    <value>Compare names :</value>
+  </data>
 </root>

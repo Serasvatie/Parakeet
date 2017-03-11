@@ -291,4 +291,7 @@
   <data name="MainWindow_FindSimilitude" xml:space="preserve">
     <value />
   </data>
+  <data name="TaskView_Checking" xml:space="preserve">
+    <value />
+  </data>
 </root>

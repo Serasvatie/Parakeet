@@ -30,6 +30,7 @@ namespace Parakeet.Model
 
         public FFManager.FFManager FFManager = new FFManager.FFManager();
         public SManager.SManager SManager = new SManager.SManager();
+        public CManager.CManager CManager = new CManager.CManager();
 
         private static Data _instance;
         static readonly object Instancelock = new object();
@@ -55,6 +56,7 @@ namespace Parakeet.Model
             DocDistModel = new DocDistModel();
             FFManager.BwTask.RunWorkerCompleted += TaskCompleted;
             SManager.BwTask.RunWorkerCompleted += TaskCompleted;
+            CManager.BwTask.RunWorkerCompleted += TaskCompleted;
         }
 
         private void TaskCompleted(object sender, RunWorkerCompletedEventArgs e)

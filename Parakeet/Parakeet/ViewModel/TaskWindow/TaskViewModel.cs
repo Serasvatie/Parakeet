@@ -18,6 +18,7 @@ namespace Parakeet.ViewModel.TaskWindow
         private bool _isRemove;
         private bool _isRename;
         private bool _isSort;
+        private bool _isChecking;
 
         private ICommand _startTask;
         private ICommand _cancelTasks;
@@ -31,6 +32,7 @@ namespace Parakeet.ViewModel.TaskWindow
             this.IsRemove = Settings.Default.TaskRemove;
             this.IsSort = Settings.Default.TaskSort;
             this.IsRename = Settings.Default.TaskRename;
+            this.IsChecking = Settings.Default.TaskCheck;
         }
 
         private void OnClose(object sender, EventArgs e)
@@ -39,6 +41,7 @@ namespace Parakeet.ViewModel.TaskWindow
             Settings.Default.TaskRename = _isRename;
             Settings.Default.TaskRecursive = _isRecursive;
             Settings.Default.TaskRemove = _isRemove;
+            Settings.Default.TaskCheck = _isChecking;
         }
 
         public bool IsRecursive
@@ -81,6 +84,16 @@ namespace Parakeet.ViewModel.TaskWindow
             }
         }
 
+        public bool IsChecking
+        {
+            get { return _isChecking; }
+            set
+            {
+                _isChecking = value;
+                OnPropertyChanged("IsChecking");
+            }
+        }
+
         public ICommand StartTask
         {
             get { return _startTask ?? (_startTask = new RelayCommand(DoStartTask, CanStartTask)); }
@@ -102,10 +115,13 @@ namespace Parakeet.ViewModel.TaskWindow
                 _lists.Remove("SortingRules");
             Data.GetInstance().FFManager.SettingLists(_lists);
             Data.GetInstance().SManager.SettingList(_lists);
+            Data.GetInstance().CManager.SettingList(_lists);
             if (IsRemove || IsRename)
                 Data.GetInstance().FFManager.BwTask.RunWorkerAsync();
             if (IsSort)
                 Data.GetInstance().SManager.BwTask.RunWorkerAsync();
+            if (IsChecking)
+                Data.GetInstance().CManager.BwTask.RunWorkerAsync();
             _taskWindow.Close();
         }
 
