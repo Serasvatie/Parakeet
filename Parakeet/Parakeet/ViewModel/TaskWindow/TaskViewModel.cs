@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -89,6 +90,7 @@ namespace Parakeet.ViewModel.TaskWindow
             get { return _isChecking; }
             set
             {
+                Debug.WriteLine(value);
                 _isChecking = value;
                 OnPropertyChanged("IsChecking");
             }
@@ -101,7 +103,7 @@ namespace Parakeet.ViewModel.TaskWindow
 
         private bool CanStartTask()
         {
-            return IsRename || IsRemove || IsSort;
+            return IsRename || IsRemove || IsSort || IsChecking;
         }
 
         private void DoStartTask()
@@ -123,7 +125,11 @@ namespace Parakeet.ViewModel.TaskWindow
             if (IsSort)
                 Data.GetInstance().SManager.BwTask.RunWorkerAsync();
             if (IsChecking)
+            {
+                Debug.WriteLine("gfdgfdvfdfdgvfdgsdf");
                 Data.GetInstance().CManager.BwTask.RunWorkerAsync();
+
+            }
             _taskWindow.Close();
         }
 

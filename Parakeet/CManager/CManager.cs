@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Manager;
 using Manager.Manager;
@@ -37,11 +39,75 @@ namespace CManager
         {
             base.ExecuteTask(sender, e);
 
+            Dictionary<string, int> first;
+            Dictionary<string, int> second;
+
+            Console.WriteLine(DocDistRules.Threshold); 
+
             foreach (var tmp in DirectoryCover)
             {
                 if (tmp.Activated)
                     Search(tmp.Path);
             }
+            foreach (var strToCheck in allData)
+            {
+                foreach (var strCompare in allData)
+                {
+                    if (strToCheck == strCompare)
+                        continue;
+                    first = ComputeFrequency(ParseDocument(Path.GetFileName(strToCheck)));
+                    second = ComputeFrequency(ParseDocument(Path.GetFileName(strCompare)));
+                    var dist = ComputeDistance(first, second);
+                    Console.WriteLine(dist);
+                    var pourcent = (dist * 100) / Math.Acos(1);
+                    if (pourcent >= DocDistRules.Threshold)
+                    {
+                        Console.WriteLine("Similitude higher than the treshold has been found : " + pourcent);
+                        Console.WriteLine(strToCheck);
+                        Console.WriteLine(strCompare);
+                    }
+                }
+            }
+        }
+
+        private double ComputeDistance(Dictionary<string, int> first, Dictionary<string, int> second)
+        {
+            int num = ComputeInnerProduc(first, second);
+            double den = Math.Sqrt(ComputeInnerProduc(first, first) * ComputeInnerProduc(second, second));
+            return Math.Acos(num / den);
+        }
+
+        private int ComputeInnerProduc(Dictionary<string, int> first, Dictionary<string, int> second)
+        {
+            int sum = 0;
+
+            foreach (var key in first.Keys)
+                if (second.ContainsKey(key))
+                    sum += first[key] * second[key];
+            return sum;
+        }
+
+        private Dictionary<string, int> ComputeFrequency(string elem)
+        {
+            Dictionary<string, int> stock = new Dictionary<string, int>();
+
+//            Console.WriteLine("Calcul frequency of : " + elem);
+            string[] tmp = elem.Split(' ');
+            for (int i = 0; i < tmp.Length; i++)
+            {
+                if (stock.ContainsKey(tmp[i]))
+                    stock[tmp[i]]++;
+                else
+                    stock.Add(tmp[i], 1);
+            }
+            return stock;
+        }
+
+        private string ParseDocument(string elem)
+        {
+            Regex reg = new Regex("[^a-z0-9A-Z -]");
+            Console.WriteLine("Original name : " + elem);
+            return reg.Replace(elem, " ");
         }
 
         private void Search(string tmp)
