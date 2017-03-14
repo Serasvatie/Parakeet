@@ -58,8 +58,7 @@ namespace CManager
                     first = ComputeFrequency(ParseDocument(Path.GetFileName(strToCheck)));
                     second = ComputeFrequency(ParseDocument(Path.GetFileName(strCompare)));
                     var dist = ComputeDistance(first, second);
-                    Console.WriteLine(dist);
-                    var pourcent = (dist * 100) / Math.Acos(1);
+                    var pourcent = 100 - (dist * 100 / Math.Acos(0));
                     if (pourcent >= DocDistRules.Threshold)
                     {
                         Console.WriteLine("Similitude higher than the treshold has been found : " + pourcent);
@@ -91,8 +90,8 @@ namespace CManager
         {
             Dictionary<string, int> stock = new Dictionary<string, int>();
 
-//            Console.WriteLine("Calcul frequency of : " + elem);
-            string[] tmp = elem.Split(' ');
+            //Console.WriteLine("Calcul frequency of : " + elem);
+            string[] tmp = elem.Split(new [] {' '}, StringSplitOptions.RemoveEmptyEntries);
             for (int i = 0; i < tmp.Length; i++)
             {
                 if (stock.ContainsKey(tmp[i]))
@@ -106,7 +105,7 @@ namespace CManager
         private string ParseDocument(string elem)
         {
             Regex reg = new Regex("[^a-z0-9A-Z -]");
-            Console.WriteLine("Original name : " + elem);
+            //Console.WriteLine("Original name : " + elem);
             return reg.Replace(elem, " ");
         }
 
