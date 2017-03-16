@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Security.AccessControl;
@@ -66,8 +67,22 @@ namespace Parakeet.Model
                 MessageBox.Show(App.Current.MainWindow, Resources.Data_TaskCompleted_ActionUserCancel, Resources.Data_TaskCompleted_Result);
                 return;
             }
-            var res = e.Result as int?;
-            MessageBox.Show(App.Current.MainWindow, Resources.Data_TaskCompleted_ActionExecuteOn + res + " éléments !", Resources.Data_TaskCompleted_Result);
+            int? resNormalTask = e.Result as int?;
+            if (resNormalTask != null)
+            {
+                MessageBox.Show(App.Current.MainWindow, Resources.Data_TaskCompleted_ActionExecuteOn + resNormalTask + " éléments !", Resources.Data_TaskCompleted_Result);
+            }
+            List<DocDistResultModel> resDocDist = e.Result as List<DocDistResultModel>;
+            if (resDocDist != null)
+            {
+                foreach (var res in resDocDist)
+                {
+                    Console.WriteLine(res.Distance);
+                    Console.WriteLine(res.Percentage);
+                    Console.WriteLine(res.First);
+                    Console.WriteLine(res.Second);
+                }
+            }
         }
 
         public static Data GetInstance()

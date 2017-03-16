@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Net.WebSockets;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -41,8 +42,7 @@ namespace CManager
 
             Dictionary<string, int> first;
             Dictionary<string, int> second;
-
-            Console.WriteLine(DocDistRules.Threshold); 
+            List<DocDistResultModel> listResult = new List<DocDistResultModel>();
 
             foreach (var tmp in DirectoryCover)
             {
@@ -60,13 +60,10 @@ namespace CManager
                     var dist = ComputeDistance(first, second);
                     var pourcent = 100 - (dist * 100 / Math.Acos(0));
                     if (pourcent >= DocDistRules.Threshold)
-                    {
-                        Console.WriteLine("Similitude higher than the treshold has been found : " + pourcent);
-                        Console.WriteLine(strToCheck);
-                        Console.WriteLine(strCompare);
-                    }
+                        listResult.Add(new DocDistResultModel(strToCheck, strCompare, dist, pourcent));
                 }
             }
+            e.Result = listResult;
         }
 
         private double ComputeDistance(Dictionary<string, int> first, Dictionary<string, int> second)
@@ -90,8 +87,7 @@ namespace CManager
         {
             Dictionary<string, int> stock = new Dictionary<string, int>();
 
-            //Console.WriteLine("Calcul frequency of : " + elem);
-            string[] tmp = elem.Split(new [] {' '}, StringSplitOptions.RemoveEmptyEntries);
+            string[] tmp = elem.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
             for (int i = 0; i < tmp.Length; i++)
             {
                 if (stock.ContainsKey(tmp[i]))
@@ -105,7 +101,6 @@ namespace CManager
         private string ParseDocument(string elem)
         {
             Regex reg = new Regex("[^a-z0-9A-Z -]");
-            //Console.WriteLine("Original name : " + elem);
             return reg.Replace(elem, " ");
         }
 
