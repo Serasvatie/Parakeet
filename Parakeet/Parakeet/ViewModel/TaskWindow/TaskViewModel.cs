@@ -90,7 +90,6 @@ namespace Parakeet.ViewModel.TaskWindow
             get { return _isChecking; }
             set
             {
-                Debug.WriteLine(value);
                 _isChecking = value;
                 OnPropertyChanged("IsChecking");
             }
@@ -125,11 +124,7 @@ namespace Parakeet.ViewModel.TaskWindow
             if (IsSort)
                 Data.GetInstance().SManager.BwTask.RunWorkerAsync();
             if (IsChecking)
-            {
-                Debug.WriteLine("gfdgfdvfdfdgvfdgsdf");
                 Data.GetInstance().CManager.BwTask.RunWorkerAsync();
-
-            }
             _taskWindow.Close();
         }
 

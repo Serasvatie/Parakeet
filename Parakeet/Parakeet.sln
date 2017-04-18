@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SManager", "Manager\SManage
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manager", "Manager\Manager\Manager.csproj", "{2D34F9AA-31A2-4F7B-B075-B0AFA4AF7231}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CManager", "CManager\CManager.csproj", "{804995C5-68E1-41D2-A594-77A38BE7BD8F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CManager", "Manager\CManager\CManager.csproj", "{804995C5-68E1-41D2-A594-77A38BE7BD8F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

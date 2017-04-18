@@ -110,7 +110,7 @@ namespace CManager
                 allData.Add(tmp);
             if (DocDistRules.Target == Target.All || DocDistRules.Target == Target.File)
                 foreach (var file in Directory.GetFiles(tmp))
-                    allData.Add(tmp);
+                    allData.Add(file);
             if (DocDistRules.Target == Target.All || DocDistRules.Target == Target.Folder)
                 foreach (var directory in Directory.GetDirectories(tmp))
                     Search(directory);
