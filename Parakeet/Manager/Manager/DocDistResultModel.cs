@@ -53,5 +53,18 @@ namespace Manager
             get { return _pourcent; }
             set { _pourcent = value; }
         }
-    }
+
+		public override bool Equals(object other)
+		{
+			var item = other as DocDistResultModel;
+			if (_dist != item._dist)
+				return false;
+			return true;
+		}
+
+		public override int GetHashCode()
+		{
+			return base.GetHashCode();
+		}
+	}
 }
