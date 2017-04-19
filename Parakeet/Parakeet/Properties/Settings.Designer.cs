@@ -94,5 +94,17 @@ namespace Parakeet.Properties {
                 this["CultureInfo"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool TaskCheck {
+            get {
+                return ((bool)(this["TaskCheck"]));
+            }
+            set {
+                this["TaskCheck"] = value;
+            }
+        }
     }
 }

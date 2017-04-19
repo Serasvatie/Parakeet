@@ -24,6 +24,9 @@
             <TabItem Header="{x:Static l:Resources.MainWindow_SortBy}">
                 <View:SortByView x:Name="SortByView"/>
             </TabItem>
+            <TabItem Header="{x:Static l:Resources.MainWindow_FindSimilitude}">
+                <View:DocDistView x:Name="DocDistView"/>
+            </TabItem>
         </TabControl>
         <View:DirectoryControlView Grid.Row="2" x:Name="DirectoryControlView"/>
         <View:StatusBarView Grid.Row="3" x:Name="StatusBarView"/>

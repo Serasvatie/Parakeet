@@ -1,12 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Security.AccessControl;
 using System.Security.Principal;
 using System.Windows;
 using System.Xml;
+using Manager;
 using Manager.Manager;
 using Parakeet.Properties;
+using Parakeet.View.PrimaryWindow;
+using Parakeet.ViewModel.PrimaryWindow;
 
 namespace Parakeet.Model
 {
@@ -21,11 +25,13 @@ namespace Parakeet.Model
         public SerializableList<RemoveRule> RemoveRules;
         public SerializableList<DirectoryModel> DirectoryModels;
         public SerializableList<SortByRule> SortRules;
+        public DocDistModel DocDistModel;
 
         private string _fileTitle;
 
         public FFManager.FFManager FFManager = new FFManager.FFManager();
         public SManager.SManager SManager = new SManager.SManager();
+        public CManager.CManager CManager = new CManager.CManager();
 
         private static Data _instance;
         static readonly object Instancelock = new object();
@@ -48,8 +54,10 @@ namespace Parakeet.Model
             DirectoryModels = new SerializableList<DirectoryModel>();
             RemoveRules = new SerializableList<RemoveRule>();
             SortRules = new SerializableList<SortByRule>();
+            DocDistModel = new DocDistModel();
             FFManager.BwTask.RunWorkerCompleted += TaskCompleted;
             SManager.BwTask.RunWorkerCompleted += TaskCompleted;
+            CManager.BwTask.RunWorkerCompleted += TaskCompleted;
         }
 
         private void TaskCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -59,8 +67,22 @@ namespace Parakeet.Model
                 MessageBox.Show(App.Current.MainWindow, Resources.Data_TaskCompleted_ActionUserCancel, Resources.Data_TaskCompleted_Result);
                 return;
             }
-            var res = e.Result as int?;
-            MessageBox.Show(App.Current.MainWindow, Resources.Data_TaskCompleted_ActionExecuteOn + res + " éléments !", Resources.Data_TaskCompleted_Result);
+            int? resNormalTask = e.Result as int?;
+            if (resNormalTask != null)
+            {
+                MessageBox.Show(App.Current.MainWindow, Resources.Data_TaskCompleted_ActionExecuteOn + resNormalTask + " éléments !", Resources.Data_TaskCompleted_Result);
+            }
+            List<DocDistResultModel> resDocDist = e.Result as List<DocDistResultModel>;
+            if (resDocDist != null)
+            {
+                foreach (var res in resDocDist)
+                {
+                    Console.WriteLine(res.Distance);
+                    Console.WriteLine(res.Percentage);
+                    Console.WriteLine(res.First);
+                    Console.WriteLine(res.Second);
+                }
+            }
         }
 
         public static Data GetInstance()

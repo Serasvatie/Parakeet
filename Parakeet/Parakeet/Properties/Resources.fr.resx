@@ -262,4 +262,38 @@
     <value>Erreur durant l'écriture du fichier.
 </value>
   </data>
+  <data name="TaskView_Cancel" xml:space="preserve">
+    <value>Annuler</value>
+  </data>
+  <data name="TaskView_DeleteDescrition" xml:space="preserve">
+    <value>Suppression de fichiers :</value>
+  </data>
+  <data name="TaskView_Recursive" xml:space="preserve">
+    <value>Recursivement :</value>
+  </data>
+  <data name="TaskView_RenamingDescription" xml:space="preserve">
+    <value>Renommage de fichiers:</value>
+  </data>
+  <data name="TaskView_SortDescription" xml:space="preserve">
+    <value>Triage des fichiers :</value>
+  </data>
+  <data name="TaskView_Start" xml:space="preserve">
+    <value>Commencer</value>
+  </data>
+  <data name="TaskView_TitleWindow" xml:space="preserve">
+    <value>Lancement du traitement...</value>
+  </data>
+  <data name="DocDistView_Description" xml:space="preserve">
+    <value>Cette tâche sert uniquement à chercher les similitudes dans les noms de fichiers ou dossiers.
+Si deux noms similaires sont au-dessus du seuil spécifié alors il va vous être spécifié de cette similitudes a la fin de la tâche.</value>
+  </data>
+  <data name="DocDistView_Threshold" xml:space="preserve">
+    <value>Seuil (0 - 100 %) :</value>
+  </data>
+  <data name="MainWindow_FindSimilitude" xml:space="preserve">
+    <value>Similitude</value>
+  </data>
+  <data name="TaskView_Checking" xml:space="preserve">
+    <value>Comparaison de noms :</value>
+  </data>
 </root>

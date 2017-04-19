@@ -76,11 +76,11 @@
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -115,6 +115,7 @@
     <Compile Include="ViewModel\BaseNotifyPropertyChanged.cs" />
     <Compile Include="ViewModel\EnumParakeet.cs" />
     <Compile Include="ViewModel\PrimaryWindow\ChangeFileNameViewModel.cs" />
+    <Compile Include="ViewModel\PrimaryWindow\DocDistViewModel.cs" />
     <Compile Include="ViewModel\PrimaryWindow\MenuViewModel.cs" />
     <Compile Include="ViewModel\PrimaryWindow\DirectoryControlViewModel.cs" />
     <Compile Include="ViewModel\PrimaryWindow\RemoveFilesViewModel.cs" />
@@ -127,6 +128,9 @@
     </Compile>
     <Compile Include="View\PrimaryWindow\DirectoryControlView.xaml.cs">
       <DependentUpon>DirectoryControlView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PrimaryWindow\DocDistView.xaml.cs">
+      <DependentUpon>DocDistView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\PrimaryWindow\ListContextMenuView.xaml.cs">
       <DependentUpon>ListContextMenuView.xaml</DependentUpon>
@@ -163,6 +167,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\PrimaryWindow\DirectoryControlView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PrimaryWindow\DocDistView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -218,7 +226,6 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="Parakeet_CléTemporaire.pfx" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -242,6 +249,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Manager\CManager\CManager.csproj">
+      <Project>{804995c5-68e1-41d2-a594-77a38be7bd8f}</Project>
+      <Name>CManager</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Manager\FFManager\FFManager.csproj">
       <Project>{2d478c0a-c99c-4336-a47e-3a2e789f98e3}</Project>
       <Name>FFManager</Name>

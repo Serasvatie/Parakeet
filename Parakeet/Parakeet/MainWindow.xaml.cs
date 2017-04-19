@@ -2,6 +2,7 @@
 using System.Windows;
 using Parakeet.Model;
 using Parakeet.Properties;
+using Parakeet.View.PrimaryWindow;
 using Parakeet.ViewModel.PrimaryWindow;
 
 namespace Parakeet
@@ -16,6 +17,7 @@ namespace Parakeet
         private RemoveFilesViewModel _removeFiles;
         private MenuViewModel _menu;
         private SortByViewModel _sortBy;
+        private DocDistViewModel _docDist;
 
         public MainWindow()
         {
@@ -42,6 +44,7 @@ namespace Parakeet
             _removeFiles = new RemoveFilesViewModel();
             _menu = new MenuViewModel(this);
             _sortBy = new SortByViewModel();
+            _docDist = new DocDistViewModel();
 
             #endregion
 
@@ -53,6 +56,7 @@ namespace Parakeet
             this.MenuView.DataContext = _menu;
             this.SortByView.DataContext = _sortBy;
             this.StatusBarView.DataContext = StatusBarViewModel.GetInstance();
+            this.DocDistView.DataContext = _docDist;
 
             #endregion
         }
