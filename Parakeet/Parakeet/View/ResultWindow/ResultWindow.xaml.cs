@@ -1,16 +1,8 @@
-﻿using System;
+﻿using Manager;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Parakeet.View.ResultWindow
 {
@@ -19,9 +11,20 @@ namespace Parakeet.View.ResultWindow
 	/// </summary>
 	public partial class ResultWindow : Window
 	{
-		public ResultWindow()
+		public ResultWindow(object result)
 		{
 			InitializeComponent();
+			List<DocDistResultModel> resDocDist = result as List<DocDistResultModel>;
+			if (resDocDist != null)
+			{
+				foreach (var res in resDocDist)
+				{
+					Console.WriteLine(res.Distance);
+					Console.WriteLine(res.Percentage);
+					Console.WriteLine(res.First);
+					Console.WriteLine(res.Second);
+				}
+			}
 		}
 	}
 }
