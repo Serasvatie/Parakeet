@@ -1,4 +1,5 @@
 ﻿using Manager;
+using Parakeet.ViewModel.ResultWindow;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,20 +12,12 @@ namespace Parakeet.View.ResultWindow
 	/// </summary>
 	public partial class ResultWindow : Window
 	{
+		private ResultWindowViewModel ResultViewModel;
+
 		public ResultWindow(object result)
 		{
 			InitializeComponent();
-			List<DocDistResultModel> resDocDist = result as List<DocDistResultModel>;
-			if (resDocDist != null)
-			{
-				foreach (var res in resDocDist)
-				{
-					Console.WriteLine(res.Distance);
-					Console.WriteLine(res.Percentage);
-					Console.WriteLine(res.First);
-					Console.WriteLine(res.Second);
-				}
-			}
+			ResultViewModel = new ResultWindowViewModel(result as List<DocDistResultModel>);
 		}
 	}
 }
