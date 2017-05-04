@@ -4,8 +4,51 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Parakeet.View.ResultWindow"
-                 xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
-                 xmlns:xcdg="http://schemas.xceed.com/wpf/xaml/datagrid"
 			 mc:Ignorable="d"
-             d:DesignHeight="300" d:DesignWidth="300">
+			 Width="400"
+			 Height="400">
+	<DataGrid x:Name="Data" ItemsSource="{Binding DocDistResult}" AutoGenerateColumns="False" IsReadOnly="True" CanUserResizeRows="False" CanUserReorderColumns="True" CanUserResizeColumns="True" CanUserSortColumns="True"
+			  AlternatingRowBackground="Gainsboro" AlternationCount="2">
+		<DataGrid.Columns>
+			<DataGridTemplateColumn Header="Target" Width="200">
+				<DataGridTemplateColumn.CellTemplate>
+					<DataTemplate>
+						<TextBlock Text="{Binding Title}" />
+					</DataTemplate>
+				</DataGridTemplateColumn.CellTemplate>
+			</DataGridTemplateColumn>
+			<DataGridTemplateColumn Header="Distance" Width="190">
+				<DataGridTemplateColumn.CellTemplate>
+					<DataTemplate>
+						<TextBlock Text="{Binding Percentage}" />
+					</DataTemplate>
+				</DataGridTemplateColumn.CellTemplate>
+			</DataGridTemplateColumn>
+		</DataGrid.Columns>
+		<DataGrid.RowDetailsTemplate>
+			<DataTemplate>
+				<Grid>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="1*"/>
+						<RowDefinition Height="5"/>
+						<RowDefinition Height="1*"/>
+					</Grid.RowDefinitions>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="1*"/>
+						<ColumnDefinition Width="5"/>
+						<ColumnDefinition Width="1*"/>
+					</Grid.ColumnDefinitions>
+					<TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding First}"/>
+					<Separator Grid.Row="1" Grid.Column="0"/>
+					<TextBlock Grid.Row="2" Grid.Column="0" Text="{Binding Second}"/>
+					<Separator Grid.Row="0" Grid.RowSpan="3" Grid.Column="1">
+						<Separator.LayoutTransform>
+							<RotateTransform Angle="90" />
+						</Separator.LayoutTransform>
+					</Separator>
+					<TextBlock Grid.Row="0" Grid.RowSpan="3" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Distance}"/>
+				</Grid>
+			</DataTemplate>
+		</DataGrid.RowDetailsTemplate>
+	</DataGrid>
 </UserControl>

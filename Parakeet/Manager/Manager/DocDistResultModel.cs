@@ -57,6 +57,8 @@ namespace Manager
 		public override bool Equals(object other)
 		{
 			var item = other as DocDistResultModel;
+			if (item == null)
+				return false;
 			if (_dist != item._dist)
 				return false;
 			return true;

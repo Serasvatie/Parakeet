@@ -9,11 +9,16 @@ namespace Parakeet.ViewModel.ResultWindow
 {
 	class ResultWindowViewModel
 	{
-		private List<DocDistResultModel> _list;
+		private List<ItemDocDistResultViewModel> _list;
 
 		public ResultWindowViewModel(List<DocDistResultModel> data)
 		{
-			_list = data;
+			_list = data.Select(x => new ItemDocDistResultViewModel(x)).ToList();
+		}
+
+		public List<ItemDocDistResultViewModel> DocDistResult
+		{
+			get { return _list; }
 		}
 	}
 }
