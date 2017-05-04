@@ -10,14 +10,14 @@
 	<DataGrid x:Name="Data" ItemsSource="{Binding DocDistResult}" AutoGenerateColumns="False" IsReadOnly="True" CanUserResizeRows="False" CanUserReorderColumns="True" CanUserResizeColumns="True" CanUserSortColumns="True"
 			  AlternatingRowBackground="Gainsboro" AlternationCount="2">
 		<DataGrid.Columns>
-			<DataGridTemplateColumn Header="Target" Width="200">
+			<DataGridTemplateColumn Header="Target" SortMemberPath="Title" CanUserSort="True" Width="200">
 				<DataGridTemplateColumn.CellTemplate>
 					<DataTemplate>
 						<TextBlock Text="{Binding Title}" />
 					</DataTemplate>
 				</DataGridTemplateColumn.CellTemplate>
 			</DataGridTemplateColumn>
-			<DataGridTemplateColumn Header="Distance" Width="190">
+			<DataGridTemplateColumn Header="Distance" SortMemberPath="Percentage" CanUserSort="True" Width="190">
 				<DataGridTemplateColumn.CellTemplate>
 					<DataTemplate>
 						<TextBlock Text="{Binding Percentage}" />
