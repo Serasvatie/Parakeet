@@ -17,7 +17,10 @@ namespace Parakeet.View.ResultWindow
 		public ResultWindow(object result)
 		{
 			InitializeComponent();
-			ResultViewModel = new ResultWindowViewModel(result as List<DocDistResultModel>);
+			if (result is List<DocDistModel>)
+				ResultViewModel = new ResultWindowViewModel(result as List<DocDistResultModel>);
+			else
+				Close();
 			this.DocDist.DataContext = ResultViewModel;
 		}
 	}
