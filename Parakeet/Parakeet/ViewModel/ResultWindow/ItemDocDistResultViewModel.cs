@@ -41,9 +41,7 @@ namespace Parakeet.ViewModel.ResultWindow
 		{
 			get
 			{
-				var tmp = Path.GetFileNameWithoutExtension(_model.First);
-				Console.WriteLine(tmp);
-				return tmp;
+				return Path.GetFileNameWithoutExtension(_model.First);
 			}
 		}
 	}

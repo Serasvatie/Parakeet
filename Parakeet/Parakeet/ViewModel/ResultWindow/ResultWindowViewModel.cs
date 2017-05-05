@@ -4,19 +4,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Data;
 
 namespace Parakeet.ViewModel.ResultWindow
 {
 	class ResultWindowViewModel
 	{
-		private List<ItemDocDistResultViewModel> _list;
+		private ListCollectionView _list;
 
 		public ResultWindowViewModel(List<DocDistResultModel> data)
 		{
-			_list = data.Select(x => new ItemDocDistResultViewModel(x)).ToList();
+			_list = new ListCollectionView(data.Select(x => new ItemDocDistResultViewModel(x)).ToList());
+			_list.GroupDescriptions.Add(new PropertyGroupDescription("Percentage"));
 		}
 
-		public List<ItemDocDistResultViewModel> DocDistResult
+		public ListCollectionView DocDistResult
 		{
 			get { return _list; }
 		}
