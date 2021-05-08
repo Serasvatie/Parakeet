@@ -17,7 +17,7 @@ namespace Parakeet.View.ResultWindow
 		public ResultWindow(object result)
 		{
 			InitializeComponent();
-			if (result is List<DocDistModel>)
+			if (result is List<DocDistResultModel>)
 				ResultViewModel = new ResultWindowViewModel(result as List<DocDistResultModel>);
 			else
 				Close();

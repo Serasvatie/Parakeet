@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Security.AccessControl;
 using System.Security.Principal;
@@ -71,9 +72,16 @@ namespace Parakeet.Model
 			{
 				MessageBox.Show(App.Current.MainWindow, Resources.Data_TaskCompleted_ActionExecuteOn + resNormalTask + " éléments !", Resources.Data_TaskCompleted_Result);
 			}
-			ResultWindow win = new ResultWindow(e.Result);
-			win.ShowActivated = true;
-			win.Show();
+		    try
+		    {
+		        ResultWindow win = new ResultWindow(e.Result) {ShowActivated = true};
+		        win.Show();
+		    }
+		    catch (Exception exception)
+		    {
+		        Debug.WriteLine(exception.Source);
+		    }
+
 		}
 
 		public static Data GetInstance()
