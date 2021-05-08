@@ -282,4 +282,16 @@
   <data name="TaskView_TitleWindow" xml:space="preserve">
     <value />
   </data>
+  <data name="DocDistView_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="DocDistView_Threshold" xml:space="preserve">
+    <value />
+  </data>
+  <data name="MainWindow_FindSimilitude" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TaskView_Checking" xml:space="preserve">
+    <value />
+  </data>
 </root>

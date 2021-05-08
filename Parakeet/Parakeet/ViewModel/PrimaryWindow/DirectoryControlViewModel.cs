@@ -105,7 +105,8 @@ namespace Parakeet.ViewModel.PrimaryWindow
                 {"Directories", ListDirectory.ToList()},
                 {"RemovingRules", RemoveFilesViewModel.ListRules.ToList()},
                 {"RenamingRules", ChangeFileNameViewModel.ListChangeRules.ToList()},
-                {"SortingRules", SortByViewModel.ListRules.ToList()}
+                {"SortingRules", SortByViewModel.ListRules.ToList()},
+                {"DocDistRules", Data.GetInstance().DocDistModel }
             };
             var taskWindow = new View.TaskWindow.TaskWindow(tmp);
             taskWindow.ShowDialog();

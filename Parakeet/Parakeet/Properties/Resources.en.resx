@@ -283,4 +283,17 @@
   <data name="TaskView_TitleWindow" xml:space="preserve">
     <value>Starting process...</value>
   </data>
+  <data name="DocDistView_Description" xml:space="preserve">
+    <value>This task purpose is to find any similitude between names of file or directory.
+If two names are above the specific threshold then the application will tell you at the end of the task.</value>
+  </data>
+  <data name="DocDistView_Threshold" xml:space="preserve">
+    <value>Threshold (0 - 100 %):</value>
+  </data>
+  <data name="MainWindow_FindSimilitude" xml:space="preserve">
+    <value>Similitude Name</value>
+  </data>
+  <data name="TaskView_Checking" xml:space="preserve">
+    <value>Compare names :</value>
+  </data>
 </root>

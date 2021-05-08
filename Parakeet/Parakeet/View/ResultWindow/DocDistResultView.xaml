@@ -1,0 +1,85 @@
+﻿<UserControl x:Class="Parakeet.View.ResultWindow.DocDistResultView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Parakeet.View.ResultWindow"
+			 mc:Ignorable="d"
+			 Width="400"
+			 Height="400">
+	<DataGrid x:Name="Data" ItemsSource="{Binding DocDistResult}" AutoGenerateColumns="False" IsReadOnly="True" CanUserResizeRows="False" CanUserReorderColumns="True" CanUserResizeColumns="True" CanUserSortColumns="True"
+			  AlternatingRowBackground="Gainsboro" AlternationCount="2">
+		<DataGrid.Columns>
+			<DataGridTemplateColumn Header="Target" SortMemberPath="Title" CanUserSort="True" Width="200">
+				<DataGridTemplateColumn.CellTemplate>
+					<DataTemplate>
+						<TextBlock Text="{Binding Title}" />
+					</DataTemplate>
+				</DataGridTemplateColumn.CellTemplate>
+			</DataGridTemplateColumn>
+			<DataGridTemplateColumn Header="Distance" SortMemberPath="Percentage" CanUserSort="True" Width="190">
+				<DataGridTemplateColumn.CellTemplate>
+					<DataTemplate>
+						<TextBlock Text="{Binding Percentage}" />
+					</DataTemplate>
+				</DataGridTemplateColumn.CellTemplate>
+			</DataGridTemplateColumn>
+		</DataGrid.Columns>
+		<DataGrid.RowDetailsTemplate>
+			<DataTemplate>
+				<Grid>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="1*"/>
+						<RowDefinition Height="5"/>
+						<RowDefinition Height="1*"/>
+					</Grid.RowDefinitions>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="1*"/>
+						<ColumnDefinition Width="5"/>
+						<ColumnDefinition Width="1*"/>
+					</Grid.ColumnDefinitions>
+					<TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding First}"/>
+					<Separator Grid.Row="1" Grid.Column="0"/>
+					<TextBlock Grid.Row="2" Grid.Column="0" Text="{Binding Second}"/>
+					<Separator Grid.Row="0" Grid.RowSpan="3" Grid.Column="1">
+						<Separator.LayoutTransform>
+							<RotateTransform Angle="90" />
+						</Separator.LayoutTransform>
+					</Separator>
+					<TextBlock Grid.Row="0" Grid.RowSpan="3" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Distance}"/>
+				</Grid>
+			</DataTemplate>
+		</DataGrid.RowDetailsTemplate>
+		<DataGrid.GroupStyle>
+			<GroupStyle>
+				<GroupStyle.HeaderTemplate>
+					<DataTemplate>
+						<StackPanel>
+							<TextBlock Text="{Binding Path=Name}" />
+						</StackPanel>
+					</DataTemplate>
+				</GroupStyle.HeaderTemplate>
+				<GroupStyle.ContainerStyle>
+					<Style TargetType="{x:Type GroupItem}">
+						<Setter Property="Template">
+							<Setter.Value>
+								<ControlTemplate TargetType="{x:Type GroupItem}">
+									<Expander>
+										<Expander.Header>
+											<StackPanel Orientation="Horizontal">
+												<TextBlock Text="{Binding Path=Name, StringFormat='\{0} ', Mode=OneWay}" />
+												<TextBlock Text="{Binding Path=ItemCount}"/>
+												<TextBlock Text=" Items"/>
+											</StackPanel>
+										</Expander.Header>
+										<ItemsPresenter />
+									</Expander>
+								</ControlTemplate>
+							</Setter.Value>
+						</Setter>
+					</Style>
+				</GroupStyle.ContainerStyle>
+			</GroupStyle>
+		</DataGrid.GroupStyle>
+	</DataGrid>
+</UserControl>

@@ -207,6 +207,24 @@ namespace Parakeet.Properties {
         /// <summary>
         ///   Recherche une chaîne localisée semblable à .
         /// </summary>
+        public static string DocDistView_Description {
+            get {
+                return ResourceManager.GetString("DocDistView_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à .
+        /// </summary>
+        public static string DocDistView_Threshold {
+            get {
+                return ResourceManager.GetString("DocDistView_Threshold", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à .
+        /// </summary>
         public static string ListContextMenuView_Delete {
             get {
                 return ResourceManager.GetString("ListContextMenuView_Delete", resourceCulture);
@@ -237,6 +255,15 @@ namespace Parakeet.Properties {
         public static string MainWindow_ChangeName {
             get {
                 return ResourceManager.GetString("MainWindow_ChangeName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à .
+        /// </summary>
+        public static string MainWindow_FindSimilitude {
+            get {
+                return ResourceManager.GetString("MainWindow_FindSimilitude", resourceCulture);
             }
         }
         
@@ -498,6 +525,15 @@ namespace Parakeet.Properties {
         public static string TaskView_Cancel {
             get {
                 return ResourceManager.GetString("TaskView_Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à .
+        /// </summary>
+        public static string TaskView_Checking {
+            get {
+                return ResourceManager.GetString("TaskView_Checking", resourceCulture);
             }
         }
         

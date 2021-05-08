@@ -106,7 +106,7 @@ namespace SManager
             {
                 if (!rule.IsActivated)
                     continue;
-                var tmp = Regex.Match(Path.GetFileNameWithoutExtension(p), @rule.Strings).Groups[0].Value;
+                var tmp = Regex.Match(Path.GetFileNameWithoutExtension(p), rule.Strings).Groups[0].Value;
                 Debug.WriteLine("Result of sort regex : " + tmp);
                 if (tmp != "")
                 {

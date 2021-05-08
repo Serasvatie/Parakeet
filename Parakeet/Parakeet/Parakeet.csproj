@@ -76,11 +76,11 @@
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -115,18 +115,24 @@
     <Compile Include="ViewModel\BaseNotifyPropertyChanged.cs" />
     <Compile Include="ViewModel\EnumParakeet.cs" />
     <Compile Include="ViewModel\PrimaryWindow\ChangeFileNameViewModel.cs" />
+    <Compile Include="ViewModel\PrimaryWindow\DocDistViewModel.cs" />
     <Compile Include="ViewModel\PrimaryWindow\MenuViewModel.cs" />
     <Compile Include="ViewModel\PrimaryWindow\DirectoryControlViewModel.cs" />
     <Compile Include="ViewModel\PrimaryWindow\RemoveFilesViewModel.cs" />
     <Compile Include="ViewModel\PrimaryWindow\SortByViewModel.cs" />
     <Compile Include="ViewModel\PrimaryWindow\StatusBarViewModel.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />
+    <Compile Include="ViewModel\ResultWindow\ItemDocDistResultViewModel.cs" />
+    <Compile Include="ViewModel\ResultWindow\ResultWindowViewModel.cs" />
     <Compile Include="ViewModel\TaskWindow\TaskViewModel.cs" />
     <Compile Include="View\PrimaryWindow\ChangeFileNameView.xaml.cs">
       <DependentUpon>ChangeFileNameView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\PrimaryWindow\DirectoryControlView.xaml.cs">
       <DependentUpon>DirectoryControlView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PrimaryWindow\DocDistView.xaml.cs">
+      <DependentUpon>DocDistView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\PrimaryWindow\ListContextMenuView.xaml.cs">
       <DependentUpon>ListContextMenuView.xaml</DependentUpon>
@@ -142,6 +148,12 @@
     </Compile>
     <Compile Include="View\PrimaryWindow\StatusBarView.xaml.cs">
       <DependentUpon>StatusBarView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ResultWindow\DocDistResultView.xaml.cs">
+      <DependentUpon>DocDistResultView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ResultWindow\ResultWindow.xaml.cs">
+      <DependentUpon>ResultWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\TaskWindow\TaskWindow.xaml.cs">
       <DependentUpon>TaskWindow.xaml</DependentUpon>
@@ -166,6 +178,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\PrimaryWindow\DocDistView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\PrimaryWindow\ListContextMenuView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -183,6 +199,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\PrimaryWindow\StatusBarView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ResultWindow\DocDistResultView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ResultWindow\ResultWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -241,6 +265,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Manager\CManager\CManager.csproj">
+      <Project>{804995c5-68e1-41d2-a594-77a38be7bd8f}</Project>
+      <Name>CManager</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Manager\FFManager\FFManager.csproj">
       <Project>{2d478c0a-c99c-4336-a47e-3a2e789f98e3}</Project>
       <Name>FFManager</Name>
