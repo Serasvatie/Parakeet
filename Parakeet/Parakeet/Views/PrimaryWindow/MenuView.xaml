@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="Parakeet.Views.PrimaryWindow.MenuView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:l="clr-namespace:Parakeet.Properties"
+             xmlns:prism="http://prismlibrary.com/"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             xmlns:local="clr-namespace:Parakeet.Views.PrimaryWindow">
+
+    <Menu>
+        <MenuItem Header="{x:Static l:Strings.MenuView_FileHeader}">
+            <MenuItem Header="{x:Static l:Strings.MenuView_NewFile}" Command="{Binding NewFiles}"/>
+            <MenuItem Header="{x:Static l:Strings.MenuView_OpenFile}" Command="{Binding OpenFiles}"/>
+            <Separator/>
+            <MenuItem Header="{x:Static l:Strings.MenuView_Save}" Command="{Binding SaveFiles}"/>
+            <MenuItem Header="{x:Static l:Strings.MenuView_SaveUnder}" Command="{Binding SaveFilesUnder}"/>
+            <Separator/>
+            <MenuItem Header="{x:Static l:Strings.MenuView_Exit}" Command="{Binding Exit}"/>
+        </MenuItem>
+        <MenuItem Header="{x:Static l:Strings.MenuView_Language}">
+            <MenuItem Header="English" Command="{Binding English}" IsChecked="{Binding EnCheck}"/>
+            <MenuItem Header="Français" Command="{Binding French}" IsChecked="{Binding FrCheck}"/>
+        </MenuItem>
+    </Menu>
+</UserControl>
