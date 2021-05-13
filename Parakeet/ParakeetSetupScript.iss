@@ -30,12 +30,12 @@ Name: "{app}\en"
 Name: "{app}\fr"
 
 [Files]
-Source: "D:\Code\Parakeet\Parakeet\Parakeet\bin\Release\Parakeet.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\Code\Parakeet\Parakeet\Parakeet\bin\Release\FFManager.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\Code\Parakeet\Parakeet\Parakeet\bin\Release\Manager.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\Code\Parakeet\Parakeet\Parakeet\bin\Release\SManager.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\Code\Parakeet\Parakeet\Parakeet\bin\Release\en\Parakeet.resources.dll"; DestDir: "{app}\en"; Flags: ignoreversion 
-Source: "D:\Code\Parakeet\Parakeet\Parakeet\bin\Release\fr\Parakeet.resources.dll"; DestDir: "{app}\fr"; Flags: ignoreversion
+Source: "D:\Code\Parakeet\Parakeet\Parakeet\bin\Release\net5.0-windows\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs
+;Source: "D:\Code\Parakeet\Parakeet\Parakeet\bin\Release\FFManager.dll"; DestDir: "{app}"; Flags: ignoreversion
+;Source: "D:\Code\Parakeet\Parakeet\Parakeet\bin\Release\Manager.dll"; DestDir: "{app}"; Flags: ignoreversion
+;Source: "D:\Code\Parakeet\Parakeet\Parakeet\bin\Release\SManager.dll"; DestDir: "{app}"; Flags: ignoreversion
+;Source: "D:\Code\Parakeet\Parakeet\Parakeet\bin\Release\en\Parakeet.resources.dll"; DestDir: "{app}\en"; Flags: ignoreversion 
+;Source: "D:\Code\Parakeet\Parakeet\Parakeet\bin\Release\fr\Parakeet.resources.dll"; DestDir: "{app}\fr"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
