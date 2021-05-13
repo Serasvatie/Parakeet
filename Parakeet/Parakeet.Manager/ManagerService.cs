@@ -13,6 +13,7 @@ namespace Parakeet.Manager
 		private RenameTask RenameTask;
 		private SortingTask SortTask;
 		private DocDistTask DocDistTask;
+		private int currentProgress;
 
 		internal readonly IProjectHelper ProjectHelper;
 		internal ManagerData ManagerData { get; private set; }
@@ -31,10 +32,12 @@ namespace Parakeet.Manager
 
 		public void StartManaging(System.ComponentModel.BackgroundWorker _backgroundWorker, System.ComponentModel.DoWorkEventArgs e, Models.Inputs.LauncherParameter parameters)
 		{
+			currentProgress = 0;
 			ManagerData = new ManagerData(parameters);
 			Result = new ResultOutput();
 
 			DiscoveringPaths();
+			ReportProgress(_backgroundWorker, 20);
 			HandleTaskWithCancellation(_backgroundWorker,
 				() => RemovingTask.PerformTask(),
 				// After performing removing task, be sure to use IsPathValid for each PathsData
@@ -49,12 +52,20 @@ namespace Parakeet.Manager
 
 		private void HandleTaskWithCancellation(System.ComponentModel.BackgroundWorker _backgroundWorker, params Action[] tasks)
 		{
-			foreach (var task in tasks)
+			for (int i = 0; i < tasks.Length; i++)
 			{
+				var task = tasks[i];
 				if (_backgroundWorker.CancellationPending)
 					break;
 				task.Invoke();
+				ReportProgress(_backgroundWorker, i * 80 / tasks.Length);
 			}
+		}
+
+		private void ReportProgress(System.ComponentModel.BackgroundWorker _backgroundWorker, int percentageToAdd)
+		{
+			currentProgress += percentageToAdd;
+			_backgroundWorker.ReportProgress(currentProgress);
 		}
 
 		internal void UpdatePathsDataFromDirectoryMoving(string oldPath, string newPath)

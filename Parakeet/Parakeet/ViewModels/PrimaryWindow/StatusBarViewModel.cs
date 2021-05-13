@@ -29,8 +29,13 @@ namespace Parakeet.ViewModels.PrimaryWindow
 			ea.GetEvent<ProjectChangedEvent>().Subscribe(ProjectChanged);
 			ea.GetEvent<ManagerLaunchingEvent>().Subscribe(ManagerLaunching);
 			ea.GetEvent<ManagerLaunchedEvent>().Subscribe(ManagerLaunched);
-
+			ea.GetEvent<ManagerLaunchingProgressReportEvent>().Subscribe(ProgressReport);
 			CancelCommand = new DelegateCommand(DoCancel, CanCancel).ObservesProperty(() => IsManagerBusy);
+		}
+
+		private void ProgressReport(int obj)
+		{
+			Progress = obj;
 		}
 
 		private void ManagerLaunching()
@@ -41,6 +46,7 @@ namespace Parakeet.ViewModels.PrimaryWindow
 		private void ManagerLaunched()
 		{
 			IsManagerBusy = false;
+			Progress = 0;
 		}
 
 		private void DoCancel()
@@ -60,9 +66,11 @@ namespace Parakeet.ViewModels.PrimaryWindow
 
 		public string FileName => projectHelper.FileName;
 
-		public bool StatusValue
+		private int progress;
+		public int Progress
 		{
-			get { return false; }
+			get { return progress; }
+			set { SetProperty(ref progress, value); }
 		}
 	}
 }

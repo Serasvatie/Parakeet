@@ -34,7 +34,13 @@ namespace Parakeet.Services
 			};
 			_backgroundWorker.DoWork += ExecuteManager;
 			_backgroundWorker.RunWorkerCompleted += ManagerCompleted;
+			_backgroundWorker.ProgressChanged += ProgressChanged;
 			_backgroundWorker.RunWorkerAsync();
+		}
+
+		private void ProgressChanged(object sender, ProgressChangedEventArgs e)
+		{
+			ea.GetEvent<ManagerLaunchingProgressReportEvent>().Publish(e.ProgressPercentage);
 		}
 
 		public void CancelWorker()
