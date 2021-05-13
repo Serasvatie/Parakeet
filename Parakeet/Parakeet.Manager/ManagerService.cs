@@ -1,6 +1,7 @@
 ﻿using Parakeet.Manager.Tasks;
 using Parakeet.Models;
 using Parakeet.Models.Outputs;
+using System;
 using System.IO;
 
 namespace Parakeet.Manager
@@ -28,20 +29,32 @@ namespace Parakeet.Manager
 			DocDistTask = new DocDistTask(this);
 		}
 
-		public void StartManaging(System.ComponentModel.DoWorkEventArgs e, Models.Inputs.LauncherParameter parameters)
+		public void StartManaging(System.ComponentModel.BackgroundWorker _backgroundWorker, System.ComponentModel.DoWorkEventArgs e, Models.Inputs.LauncherParameter parameters)
 		{
 			ManagerData = new ManagerData(parameters);
 			Result = new ResultOutput();
 
 			DiscoveringPaths();
-			RemovingTask.PerformTask();
-			// After performing removing task, be sure to use IsPathValid for each PathsData
-			RenameTask.PerformTask();
-			SortTask.PerformTask();
-			DocDistTask.PerformTask();
+			HandleTaskWithCancellation(_backgroundWorker,
+				() => RemovingTask.PerformTask(),
+				// After performing removing task, be sure to use IsPathValid for each PathsData
+				() => RenameTask.PerformTask(),
+				() => SortTask.PerformTask(),
+				() => DocDistTask.PerformTask()
+				);
 
 			Result.PathsDatas = ManagerData.Paths;
 			e.Result = Result;
+		}
+
+		private void HandleTaskWithCancellation(System.ComponentModel.BackgroundWorker _backgroundWorker, params Action[] tasks)
+		{
+			foreach (var task in tasks)
+			{
+				if (_backgroundWorker.CancellationPending)
+					break;
+				task.Invoke();
+			}
 		}
 
 		internal void UpdatePathsDataFromDirectoryMoving(string oldPath, string newPath)

@@ -50,7 +50,7 @@ namespace Parakeet
 			containerRegistry.RegisterDialog<ResultsView, ResultsViewModel>("ResultsDialog");
 
 			containerRegistry.Register<ManagerService>();
-			containerRegistry.Register<ManagerLauncher>();
+			containerRegistry.RegisterSingleton<ManagerLauncher>();
 		}
 
 		private void MappingProfile(IMapperConfigurationExpression obj)

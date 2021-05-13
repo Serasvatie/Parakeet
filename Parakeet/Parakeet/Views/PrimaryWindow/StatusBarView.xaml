@@ -13,8 +13,9 @@
                         <ColumnDefinition Width="0.15*"/>
                         <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
+						<ColumnDefinition Width="Auto"/>
+						<ColumnDefinition Width="Auto"/>
+					</Grid.ColumnDefinitions>
                 </Grid>
             </ItemsPanelTemplate>
         </StatusBar.ItemsPanel>
@@ -23,12 +24,12 @@
         </StatusBarItem>
         <StatusBarItem Grid.Column="1">
             <TextBlock TextAlignment="Left" Text="{Binding FileName}"/>
-        </StatusBarItem>
-        <StatusBarItem Grid.Column="2">
-            <TextBlock TextAlignment="Right" Text="{Binding StatusTask}"/>
-        </StatusBarItem>
+        </StatusBarItem> 
         <StatusBarItem Grid.Column="3">
             <ProgressBar HorizontalAlignment="Right" Width="150" Height="15" IsIndeterminate="{Binding StatusValue}"/>
         </StatusBarItem>
-    </StatusBar>
+		<StatusBarItem Grid.Column="4">
+			<Button HorizontalAlignment="Right" Width="50" Height="20" TextBlock.FontSize="12" Content="{x:Static l:Strings.StatusBarView_Cancel}" Command="{Binding CancelCommand}"/>
+		</StatusBarItem>
+	</StatusBar>
 </UserControl>
