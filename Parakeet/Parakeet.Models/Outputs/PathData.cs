@@ -9,7 +9,7 @@ namespace Parakeet.Models.Outputs
 
 		public string ParentPath { get; private set; }
 
-		public List<string> History { get; private set; }
+		public List<string> History { get; set; }
 
 		public Target Target { get; private set; }
 

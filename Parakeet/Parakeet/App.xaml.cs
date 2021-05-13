@@ -44,12 +44,13 @@ namespace Parakeet
 			containerRegistry.RegisterForNavigation<RenamedView, RenamedViewModel>();
 			containerRegistry.RegisterForNavigation<SortedView, SortedViewModel>();
 			containerRegistry.RegisterForNavigation<DocDistResultView, DocDistResultViewModel>();
+			containerRegistry.RegisterForNavigation<DataView, DataViewModel>();
 
 			containerRegistry.RegisterDialog<TaskWindow, TaskViewModel>("TaskDialog");
 			containerRegistry.RegisterDialog<ResultsView, ResultsViewModel>("ResultsDialog");
 
 			containerRegistry.Register<ManagerService>();
-			containerRegistry.Register<ManagerLauncher>();
+			containerRegistry.RegisterSingleton<ManagerLauncher>();
 		}
 
 		private void MappingProfile(IMapperConfigurationExpression obj)

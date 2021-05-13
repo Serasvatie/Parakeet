@@ -216,6 +216,15 @@ namespace Parakeet.Properties {
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
+        public static string DocDistView_CaseSensitive {
+            get {
+                return ResourceManager.GetString("DocDistView_CaseSensitive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
         public static string DocDistView_Description {
             get {
                 return ResourceManager.GetString("DocDistView_Description", resourceCulture);

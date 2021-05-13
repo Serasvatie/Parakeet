@@ -89,7 +89,12 @@ namespace Parakeet.Manager.Tasks
 		private string ParseDocument(string elem)
 		{
 			Regex reg = new Regex("[^a-z0-9A-Z ]");
-			return reg.Replace(elem, " ");
+			var substitued = reg.Replace(elem, " ");
+			if (managerService.ProjectHelper.Project.DocDist.CaseSensitive)
+			{
+				return substitued;
+			}
+			return substitued.ToLowerInvariant();
 		}
 
 	}

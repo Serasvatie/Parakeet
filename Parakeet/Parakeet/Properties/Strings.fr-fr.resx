@@ -320,4 +320,7 @@ Si deux noms similaires sont au-dessus du seuil spécifié alors il va vous êtr
   <data name="ResultsView_Title" xml:space="preserve">
     <value>Données de résultat</value>
   </data>
+  <data name="DocDistView_CaseSensitive" xml:space="preserve">
+    <value>Sensitive case :</value>
+  </data>
 </root>

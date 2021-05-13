@@ -13,7 +13,11 @@ namespace Parakeet.Extensions
 		public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
 		{
 			if (targetType == typeof(string))
+			{
+				if (value == null)
+					return "";
 				return Path.GetFileName(value.ToString());
+			}
 			else
 				throw new NotImplementedException();
 		}

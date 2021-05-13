@@ -1,6 +1,7 @@
 ﻿using Parakeet.Manager.Tasks;
 using Parakeet.Models;
 using Parakeet.Models.Outputs;
+using System;
 using System.IO;
 
 namespace Parakeet.Manager
@@ -12,6 +13,7 @@ namespace Parakeet.Manager
 		private RenameTask RenameTask;
 		private SortingTask SortTask;
 		private DocDistTask DocDistTask;
+		private int currentProgress;
 
 		internal readonly IProjectHelper ProjectHelper;
 		internal ManagerData ManagerData { get; private set; }
@@ -28,19 +30,42 @@ namespace Parakeet.Manager
 			DocDistTask = new DocDistTask(this);
 		}
 
-		public void StartManaging(System.ComponentModel.DoWorkEventArgs e, Models.Inputs.LauncherParameter parameters)
+		public void StartManaging(System.ComponentModel.BackgroundWorker _backgroundWorker, System.ComponentModel.DoWorkEventArgs e, Models.Inputs.LauncherParameter parameters)
 		{
+			currentProgress = 0;
 			ManagerData = new ManagerData(parameters);
 			Result = new ResultOutput();
 
 			DiscoveringPaths();
-			RemovingTask.PerformTask();
-			// After performing removing task, be sure to use IsPathValid for each PathsData
-			RenameTask.PerformTask();
-			SortTask.PerformTask();
-			DocDistTask.PerformTask();
+			ReportProgress(_backgroundWorker, 20);
+			HandleTaskWithCancellation(_backgroundWorker,
+				() => RemovingTask.PerformTask(),
+				// After performing removing task, be sure to use IsPathValid for each PathsData
+				() => RenameTask.PerformTask(),
+				() => SortTask.PerformTask(),
+				() => DocDistTask.PerformTask()
+				);
 
+			Result.PathsDatas = ManagerData.Paths;
 			e.Result = Result;
+		}
+
+		private void HandleTaskWithCancellation(System.ComponentModel.BackgroundWorker _backgroundWorker, params Action[] tasks)
+		{
+			for (int i = 0; i < tasks.Length; i++)
+			{
+				var task = tasks[i];
+				if (_backgroundWorker.CancellationPending)
+					break;
+				task.Invoke();
+				ReportProgress(_backgroundWorker, i * 80 / tasks.Length);
+			}
+		}
+
+		private void ReportProgress(System.ComponentModel.BackgroundWorker _backgroundWorker, int percentageToAdd)
+		{
+			currentProgress += percentageToAdd;
+			_backgroundWorker.ReportProgress(currentProgress);
 		}
 
 		internal void UpdatePathsDataFromDirectoryMoving(string oldPath, string newPath)
