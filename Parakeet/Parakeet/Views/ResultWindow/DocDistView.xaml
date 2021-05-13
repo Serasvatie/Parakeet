@@ -18,7 +18,8 @@
 			  CanUserReorderColumns="True" 
 			  CanUserResizeColumns="True" 
 			  CanUserSortColumns="False"
-			  AlternatingRowBackground="Gainsboro" AlternationCount="2">
+			  AlternatingRowBackground="Gainsboro" AlternationCount="2"
+			  EnableRowVirtualization="True">
 		<DataGrid.Columns>
 			<DataGridTextColumn Header="First" CanUserSort="True" Width="Auto" Binding="{Binding First.CurrentPath}"/>
 			<DataGridTextColumn Header="Second" CanUserSort="True" Width="Auto" Binding="{Binding Second.CurrentPath}"/>

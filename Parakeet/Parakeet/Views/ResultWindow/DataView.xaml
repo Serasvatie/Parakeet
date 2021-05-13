@@ -11,7 +11,7 @@
 			 prism:ViewModelLocator.AutoWireViewModel="True"
 			 >
 	<DataGrid x:Name="Data" ItemsSource="{Binding PathsDatas}" AutoGenerateColumns="False" IsReadOnly="True" CanUserResizeRows="True" CanUserReorderColumns="True" CanUserResizeColumns="True" CanUserSortColumns="True"
-			  AlternatingRowBackground="Gainsboro" AlternationCount="2">
+			  AlternatingRowBackground="Gainsboro" AlternationCount="2" EnableRowVirtualization="True">
 		<DataGrid.Columns>
 			<DataGridTextColumn Header="Filename" CanUserSort="True" Width="Auto" Binding="{Binding CurrentPath, Converter={mu:FileName}}"/>
 			<DataGridTextColumn Header="Parent path" CanUserSort="True" Width="Auto" Binding="{Binding ParentPath}"/>
@@ -20,7 +20,7 @@
 				<DataGridTemplateColumn.CellTemplate>
 					<DataTemplate>
 						<DataGrid ItemsSource="{Binding History}"  AutoGenerateColumns="False" IsReadOnly="True" CanUserResizeRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False"
-			  AlternatingRowBackground="Gainsboro" AlternationCount="2" HeadersVisibility="None">
+			  AlternatingRowBackground="Gainsboro" AlternationCount="2" HeadersVisibility="None" EnableRowVirtualization="True">
 							<DataGrid.Columns>
 								<DataGridTextColumn CanUserSort="False" Width="Auto" Binding="{Binding}"/>
 							</DataGrid.Columns>
