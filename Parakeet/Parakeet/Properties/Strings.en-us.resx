@@ -320,4 +320,7 @@ If two names are above the specific threshold then the application will tell you
   <data name="ResultsView_Title" xml:space="preserve">
     <value>Results data</value>
   </data>
+  <data name="DocDistView_CaseSensitive" xml:space="preserve">
+    <value>Case sensitive : </value>
+  </data>
 </root>
