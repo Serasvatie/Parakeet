@@ -21,6 +21,7 @@ namespace Parakeet.ViewModels.ResultWindow
 		public ICommand RenamedCommand { get; private set; }
 		public ICommand SortedCommand { get; private set; }
 		public ICommand DocDistCommand { get; private set; }
+		public ICommand DataCommand { get; private set; }
 		public ICommand CloseDialogCommand { get; private set; }
 		public event Action<IDialogResult> RequestClose;
 
@@ -38,9 +39,15 @@ namespace Parakeet.ViewModels.ResultWindow
 			RenamedCommand = new DelegateCommand(ShowRenamed, CanShowRenamed).ObservesProperty(() => ResultOutput);
 			SortedCommand = new DelegateCommand(ShowSorted, CanShowSorted).ObservesProperty(() => ResultOutput);
 			DocDistCommand = new DelegateCommand(ShowDocDist, CanShowDocDist).ObservesProperty(() => ResultOutput);
+			DataCommand = new DelegateCommand(ShowData);
 		}
 
 		#region Command
+		private void ShowData()
+		{
+			NavigateResultsRegion("DataView");
+		}
+
 		private void ShowDocDist()
 		{
 			NavigateResultsRegion("DocDistResultView");

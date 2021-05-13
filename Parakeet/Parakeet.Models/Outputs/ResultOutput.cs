@@ -13,5 +13,7 @@ namespace Parakeet.Models.Outputs
 		public List<FolderCreationResult> FolderCreationResults { get; private set; } = new List<FolderCreationResult>();
 
 		public List<DocDistResultModel> DocDistResults { get; private set; } = new List<DocDistResultModel>();
+
+		public List<PathData> PathsDatas { get; set; } = new List<PathData>();
 	}
 }

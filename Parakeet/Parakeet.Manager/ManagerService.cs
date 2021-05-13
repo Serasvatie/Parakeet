@@ -40,6 +40,7 @@ namespace Parakeet.Manager
 			SortTask.PerformTask();
 			DocDistTask.PerformTask();
 
+			Result.PathsDatas = ManagerData.Paths;
 			e.Result = Result;
 		}
 

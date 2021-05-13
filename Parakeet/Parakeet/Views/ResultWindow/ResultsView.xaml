@@ -18,7 +18,7 @@
 			<Button Margin="0 7 7 7" Content="{x:Static l:Strings.ResultsView_RenameCommand}" Command="{Binding RenamedCommand}"/>
 			<Button Margin="0 7 7 7" Content="{x:Static l:Strings.ResultsView_SortCommand}" Command="{Binding SortedCommand}"/>
 			<Button Margin="0 7 7 7" Content="{x:Static l:Strings.ResultsView_DocDistCommand}" Command="{Binding DocDistCommand}"/>
-			<Button Margin="0 7 7 7" Content="{x:Static l:Strings.ResutlsView_DataCommand}"/>
+			<Button Margin="0 7 7 7" Content="{x:Static l:Strings.ResutlsView_DataCommand}" Command="{Binding DataCommand}"/>
 		</StackPanel>
 		<ContentControl prism:RegionManager.RegionName="ResultsRegion" x:Name="ResultsRegion" Grid.Row="1"/>
 		<Button Grid.Row="2" Margin="0 7 0 7" Width="50" HorizontalAlignment="Right" Content="{x:Static l:Strings.ResultsView_Ok}" Command="{Binding CloseDialogCommand}" IsDefault="True"/>
