@@ -1,0 +1,37 @@
+﻿<UserControl x:Class="Parakeet.Views.ResultWindow.SortedView"
+			 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+			 xmlns:ViewModels="clr-namespace:Parakeet.ViewModels.ResultWindow"
+			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 xmlns:mu="clr-namespace:Parakeet.Extensions"
+			 d:DataContext="{d:DesignInstance ViewModels:SortedViewModel, IsDesignTimeCreatable=True}"
+			 mc:Ignorable="d"
+			 xmlns:prism="http://prismlibrary.com/"
+			 prism:ViewModelLocator.AutoWireViewModel="True"
+			 >
+
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="0.5*"/>
+			<RowDefinition Height="0.5*"/>
+		</Grid.RowDefinitions>
+		<DataGrid ItemsSource="{Binding FolderCreated}" AutoGenerateColumns="False" IsReadOnly="True" CanUserResizeRows="False" CanUserReorderColumns="True" CanUserResizeColumns="True" CanUserSortColumns="True"
+			  AlternatingRowBackground="Gainsboro" AlternationCount="2" Grid.Row="0" EnableRowVirtualization="True">
+			<DataGrid.Columns>
+				<DataGridTextColumn Header="Folder created" CanUserSort="True" Width="Auto" Binding="{Binding FolderCreatedPath, Converter={mu:FileName}}"/>
+				<DataGridTextColumn Header="Full path" CanUserSort="True" Width="Auto" Binding="{Binding FolderCreatedPath}"/>
+			</DataGrid.Columns>
+		</DataGrid>
+		<DataGrid ItemsSource="{Binding SortResults}" AutoGenerateColumns="False" IsReadOnly="True" CanUserResizeRows="False" CanUserReorderColumns="True" CanUserResizeColumns="True" CanUserSortColumns="True"
+			  AlternatingRowBackground="Gainsboro" AlternationCount="2" Grid.Row="1" EnableRowVirtualization="True">
+			<DataGrid.Columns>
+				<DataGridTextColumn Header="Destination" CanUserSort="True" Width="Auto" Binding="{Binding Destination, Converter={mu:FileName}}"/>
+				<DataGridTextColumn Header="Target Name" CanUserSort="True" Width="Auto" Binding="{Binding OldPath, Converter={mu:FileName}}"/>
+				<DataGridTextColumn Header="New path" CanUserSort="True" Width="Auto" Binding="{Binding NewPath}"/>
+				<DataGridTextColumn Header="Old path" CanUserSort="True" Width="Auto" Binding="{Binding OldPath}"/>
+				<DataGridTextColumn Header="Target" CanUserSort="True" Width="Auto" Binding="{Binding Type}"/>
+			</DataGrid.Columns>
+		</DataGrid>
+	</Grid>
+</UserControl>
