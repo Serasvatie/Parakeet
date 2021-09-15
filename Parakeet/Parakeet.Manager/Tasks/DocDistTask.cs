@@ -42,7 +42,15 @@ namespace Parakeet.Manager.Tasks
 						first = ComputeFrequency(ParseDocument(Path.GetFileName(firstPath.CurrentPath)));
 						second = ComputeFrequency(ParseDocument(Path.GetFileName(secondPath.CurrentPath)));
 						var dist = ComputeDistance(first, second);
-						var pourcent = Math.Floor(100 - (dist * 100 / Math.Acos(0)));
+						double pourcent = 100;
+						if (managerService.ProjectHelper.Project.DocDist.Percentage)
+						{
+							pourcent = Math.Floor(dist * 100);
+						}
+						else
+						{
+							pourcent = Math.Floor(100 - (dist * 100 / Math.Acos(0)));
+						}
 						if (pourcent >= managerService.ProjectHelper.Project.DocDist.Threshold)
 						{
 							DocDistResultModel res = new DocDistResultModel(firstPath, secondPath, dist, pourcent);
@@ -58,6 +66,10 @@ namespace Parakeet.Manager.Tasks
 		{
 			int num = ComputeInnerProduct(first, second);
 			double den = Math.Sqrt(ComputeInnerProduct(first, first) * ComputeInnerProduct(second, second));
+			if (managerService.ProjectHelper.Project.DocDist.Percentage)
+			{
+				return num / den;
+			}
 			return Math.Acos(num / den);
 		}
 

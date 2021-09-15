@@ -234,6 +234,15 @@ namespace Parakeet.Properties {
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
+        public static string DocDistView_Percentage {
+            get {
+                return ResourceManager.GetString("DocDistView_Percentage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
         public static string DocDistView_Threshold {
             get {
                 return ResourceManager.GetString("DocDistView_Threshold", resourceCulture);

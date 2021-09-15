@@ -7,6 +7,7 @@ namespace Parakeet.Models.Inputs
 		private int _threshold;
 		private Target _target;
 		private bool _caseSensitive;
+		private bool _percentage;
 
 		public DocDistModel()
 		{
@@ -37,6 +38,12 @@ namespace Parakeet.Models.Inputs
 		{
 			get => _caseSensitive;
 			set => _caseSensitive = value;
+		}
+
+		public bool Percentage
+		{
+			get { return _percentage; }
+			set => _percentage = value;
 		}
 	}
 }

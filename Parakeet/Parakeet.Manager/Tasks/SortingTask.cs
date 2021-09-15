@@ -1,4 +1,5 @@
 ﻿using Parakeet.Models.Outputs;
+using System;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -23,19 +24,26 @@ namespace Parakeet.Manager.Tasks
 
 			if (managerService.ManagerData.Parameters.ShouldSort)
 			{
-				PathData[] subOfRootDirectories = GenerateSubOfRootDirectories();
-				for (int i = 0; i < subOfRootDirectories.Length; i++)
+				try
 				{
-					var path = subOfRootDirectories[i];
-					if (!path.IsPathValid())
-						continue;
-					var newDir = DoCheckRules(path.CurrentPath);
-					if (!string.IsNullOrEmpty(newDir))
+					PathData[] subOfRootDirectories = GenerateSubOfRootDirectories();
+					for (int i = 0; i < subOfRootDirectories.Length; i++)
 					{
-						MovePath(path, newDir);
-						subOfRootDirectories = GenerateSubOfRootDirectories();
-						i = 0;
+						var path = subOfRootDirectories[i];
+						if (!path.IsPathValid())
+							continue;
+						var newDir = DoCheckRules(path.CurrentPath);
+						if (!string.IsNullOrEmpty(newDir))
+						{
+							MovePath(path, newDir);
+							subOfRootDirectories = GenerateSubOfRootDirectories();
+							i = 0;
+						}
 					}
+				}
+				catch (Exception ex)
+				{
+					Console.WriteLine(ex);
 				}
 			}
 		}
