@@ -321,4 +321,7 @@
   <data name="DocDistView_CaseSensitive" xml:space="preserve">
     <value></value>
   </data>
+  <data name="DocDistView_Percentage" xml:space="preserve">
+    <value></value>
+  </data>
 </root>

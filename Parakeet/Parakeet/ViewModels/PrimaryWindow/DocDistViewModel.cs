@@ -13,6 +13,7 @@ namespace Parakeet.ViewModels.PrimaryWindow
 		private int _treshold;
 		private Target _target;
 		private bool _isSensitiveCase;
+		private bool _percentage;
 
 		public DocDistViewModel(IProjectHelper projectHelper, IEventAggregator ea)
 		{
@@ -58,6 +59,16 @@ namespace Parakeet.ViewModels.PrimaryWindow
 			{
 				_projectHelper.Project.DocDist.CaseSensitive = value;
 				SetProperty(ref _isSensitiveCase, value);
+			}
+		}
+
+		public bool Percentage
+		{
+			get { return _percentage; }
+			set
+			{
+				_projectHelper.Project.DocDist.Percentage = value;
+				SetProperty(ref _percentage, value);
 			}
 		}
 	}
